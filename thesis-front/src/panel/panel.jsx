@@ -3,6 +3,8 @@ import {css} from 'glamor';
 import Menu from "../menu/menu";
 import {MonitoringComponent} from "../MonitoringComponent";
 import {SearchComponent} from "../SearchComponent";
+import {ComponentWithLoading} from "../loading/loading_hoc";
+import {LoadingComponent} from "../loading/loading";
 
 const MAIN_HEADER_HEIGHT = 60;
 const MAIN_HEADER_WIDTH = 60;
@@ -63,11 +65,12 @@ export class Panel extends Component {
     super();
     this.state = {
       menuItemSelected: 0,
+      isLoading: true,
     };
   }
 
   onItemClicked = (menuItemSelected) => {
-    this.setState({menuItemSelected});
+    this.setState({menuItemSelected, isLoading: false});
   };
 
   render() {
@@ -78,7 +81,15 @@ export class Panel extends Component {
       container = <MonitoringComponent/>;
     } else if (this.state.menuItemSelected === 2) {
       container = <SearchComponent/>;
+    } else {
+      container = <LoadingComponent/>;
     }
+
+    let ContainerWithLoading = ComponentWithLoading(() => {
+      return <div className={contentContainer} id='ContentContainer'>
+        {container}
+      </div>;
+    });
 
     return (
       <div className={panelContainer} id='MainPanelContainer'>
@@ -93,9 +104,7 @@ export class Panel extends Component {
 
         <div className={panelBody} id='PanelBody'>
           <Menu onItemClicked={this.onItemClicked}/>
-          <div className={contentContainer} id='ContentContainer'>
-            {container}
-          </div>
+          <ContainerWithLoading isLoading={this.state.isLoading}/>
         </div>
       </div>
     );
