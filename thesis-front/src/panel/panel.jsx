@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {css} from 'glamor';
-import Menu from "../menu/menu";
-import {MonitoringComponent} from "../MonitoringComponent";
-import {SearchComponent} from "../SearchComponent";
-import {ComponentWithLoading} from "../loading/loading_hoc";
-import {LoadingComponent} from "../loading/loading";
+import Menu from "../components/menu/menu";
+import {MonitoringPanelComponent} from "./monitoring/monitoring_panel";
+import {SearchPanelComponent} from "./search/search_panel";
+import {ComponentWithLoading} from "../components/loading/loading_hoc";
+import {LoadingComponent} from "../components/loading/loading";
 
 const MAIN_HEADER_HEIGHT = 60;
 const MAIN_HEADER_WIDTH = 60;
@@ -78,9 +78,9 @@ export class Panel extends Component {
     let container;
 
     if (this.state.menuItemSelected === 1) {
-      container = <MonitoringComponent/>;
+      container = <MonitoringPanelComponent/>;
     } else if (this.state.menuItemSelected === 2) {
-      container = <SearchComponent/>;
+      container = <SearchPanelComponent/>;
     } else {
       container = <LoadingComponent/>;
     }

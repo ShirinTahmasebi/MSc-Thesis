@@ -8,8 +8,7 @@ const monitoringComponentContainerStyle = css({
 });
 
 
-export class SearchComponent extends Component {
-
+export class SearchPanelComponent extends Component {
   render() {
     return (
       <div className={monitoringComponentContainerStyle}>
@@ -17,5 +16,4 @@ export class SearchComponent extends Component {
       </div>
     );
   }
-
 }
