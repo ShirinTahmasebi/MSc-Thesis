@@ -3,7 +3,7 @@ import {css} from 'glamor';
 
 
 /* Icon + Text = 200px */
-let menuItem = css({
+const menuItemStyle = css({
   display: 'flex', /* row - nowrap */
   backgroundColor: '#1261A0',
   height: '40px',
@@ -15,7 +15,7 @@ let menuItem = css({
 });
 
 /* Padding + FontSize = 60px */
-let menuIconContainer = css({
+const menuIconContainerStyle = css({
   display: 'flex', /* row - nowrap */
   fontSize: '1.5em', /* 1.5 / 0.0625 = 24px */
   justifyContent: 'center',
@@ -24,7 +24,7 @@ let menuIconContainer = css({
 });
 
 /* Padding + FontSize + Width = 140px */
-let menuTextContainer = css({
+const menuTextContainerStyle = css({
   display: 'flex',
   fontSize: '1em',
   justifyContent: 'flex-start',
@@ -39,11 +39,11 @@ export class MenuItem extends Component {
 
   render() {
     return (
-      <li className={menuItem} onClick={this.props.onClick}>
-        <div className={menuIconContainer}>
+      <li className={menuItemStyle} onClick={this.props.onClick}>
+        <div className={menuIconContainerStyle}>
           <i className={this.props.itemIconClassName}/>
         </div>
-        <div className={menuTextContainer}>
+        <div className={menuTextContainerStyle}>
           {this.props.children}
         </div>
       </li>

@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {css, keyframes} from 'glamor';
 
-// body {
-//
-// }
-
-let container = css({
+const containerStyle = css({
   position: 'fixed',
   margin: 0,
   padding: 0,
@@ -17,14 +13,14 @@ let container = css({
   justifyContent: 'center',
 });
 
-let rotation = keyframes({
+const rotationAnimation = keyframes({
   '0%': {transform: 'rotate(0deg)'},
   '50%': {transform: 'rotate(-180deg)'},
   '100%': {transform: 'rotate(0deg)'},
 });
 
 
-let box = css({
+const boxStyle = css({
   width: '180px',
   height: '180px',
   borderRight: '4px solid',
@@ -33,30 +29,30 @@ let box = css({
   borderTop: '4px solid transparent !important',
   borderRadius: '50%',
   position: 'absolute',
-  animation: `${rotation} 2s infinite`,
+  animation: `${rotationAnimation} 2s infinite`,
 });
 
-let b1 = css(box, {
+const b1Style = css(boxStyle, {
   width: '130px',
   height: '130px',
   borderColor: '#AB4B52',
 });
 
-let b2 = css(box, {
+const b2Style = css(boxStyle, {
   width: '110px',
   height: '110px',
   borderColor: '#1261A0',
   animationDelay: '100ms',
 });
 
-let b3 = css(box, {
+const b3Style = css(boxStyle, {
   width: '90px',
   height: '90px',
   borderColor: '#904B52',
   animationDelay: '200ms',
 });
 
-let b4 = css(box, {
+const b4Style = css(boxStyle, {
   display: 'none',
   width: '100px',
   height: '100px',
@@ -67,11 +63,11 @@ let b4 = css(box, {
 export class LoadingComponent extends Component {
   render() {
     return (
-      <div className={container}>
-        <div className={b1}/>
-        <div className={b2}/>
-        <div className={b3}/>
-        <div className={b4}/>
+      <div className={containerStyle}>
+        <div className={b1Style}/>
+        <div className={b2Style}/>
+        <div className={b3Style}/>
+        <div className={b4Style}/>
       </div>
     );
   }

@@ -9,20 +9,20 @@ import {LoadingComponent} from "../loading/loading";
 const MAIN_HEADER_HEIGHT = 60;
 const MAIN_HEADER_WIDTH = 60;
 
-let panelContainer = css({
+const panelContainerStyle = css({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
 });
 
-let panelHeader = css({
+const panelHeaderStyle = css({
   position: 'fixed',
   display: 'flex',
   width: '100%',
   height: MAIN_HEADER_HEIGHT,
 });
 
-let headerLogo = css({
+const headerLogoStyle = css({
   display: 'flex',
   width: MAIN_HEADER_WIDTH,
   height: MAIN_HEADER_HEIGHT,
@@ -33,7 +33,7 @@ let headerLogo = css({
   backgroundColor: '#AB4B52',
 });
 
-let headerTitle = css({
+const headerTitleStyle = css({
   width: `calc(100% - ${MAIN_HEADER_WIDTH}px)`,
   height: MAIN_HEADER_HEIGHT,
   display: 'flex',
@@ -44,14 +44,14 @@ let headerTitle = css({
   backgroundColor: '#904B52',
 });
 
-let panelBody = css({
+const panelBodyStyle = css({
   marginTop: MAIN_HEADER_HEIGHT,
   marginLeft: MAIN_HEADER_WIDTH,
   display: 'flex',
   width: `calc(100% - ${MAIN_HEADER_WIDTH}px)`,
 });
 
-let contentContainer = css({
+const contentContainerStyle = css({
   width: '100%',
   backgroundColor: '#eee',
   height: '1000px',
@@ -86,23 +86,23 @@ export class Panel extends Component {
     }
 
     let ContainerWithLoading = ComponentWithLoading(() => {
-      return <div className={contentContainer} id='ContentContainer'>
+      return <div className={contentContainerStyle} id='ContentContainer'>
         {container}
       </div>;
     });
 
     return (
-      <div className={panelContainer} id='MainPanelContainer'>
-        <div className={panelHeader} id='MainPanelHeader'>
-          <div className={headerLogo} id='HeaderLogo'>
+      <div className={panelContainerStyle} id='MainPanelContainer'>
+        <div className={panelHeaderStyle} id='MainPanelHeader'>
+          <div className={headerLogoStyle} id='HeaderLogo'>
             <i className={"fa fa-btc"} id='HeaderLogo'/>
           </div>
-          <div className={headerTitle} id='HeaderTitle'>
+          <div className={headerTitleStyle} id='HeaderTitle'>
             Monitoring Dashboard
           </div>
         </div>
 
-        <div className={panelBody} id='PanelBody'>
+        <div className={panelBodyStyle} id='PanelBody'>
           <Menu onItemClicked={this.onItemClicked}/>
           <ContainerWithLoading isLoading={this.state.isLoading}/>
         </div>
