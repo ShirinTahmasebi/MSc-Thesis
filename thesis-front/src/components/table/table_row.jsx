@@ -5,7 +5,7 @@ import {tableRowContainerStyle, getRowMarginalRibbon} from "./table_row_style";
 export default class TableRowComponent extends Component {
 
   render() {
-    const {cellWeights, cellData, rowIndex, shouldDisplayAddButton} = this.props;
+    const {cellWeights, cellData, rowIndex, shouldDisplayAddButton, isSelectable, isDeletable, isViewable} = this.props;
     const cellWeightSum = cellWeights.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
     let dataCells = [];
@@ -20,7 +20,9 @@ export default class TableRowComponent extends Component {
 
     return (
       <div className={tableRowContainerStyle}>
-        <div className={headerStyle} data-should-display-add-button={shouldDisplayAddButton}>{dataCells}</div>
+        <div className={headerStyle}
+             data-should-be-full-width={shouldDisplayAddButton || isSelectable || isDeletable || isViewable}
+        >{dataCells}</div>
       </div>
     );
   }

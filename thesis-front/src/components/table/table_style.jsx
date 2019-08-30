@@ -6,6 +6,27 @@ export const verticalCenter = css({
   alignItems: 'center',
 });
 
+export const addButtonContainerStyle = css(verticalCenter, {
+  overflow: 'hidden',
+  justifyContent: 'flex-end',
+  height: '50px',
+  backgroundColor: 'white',
+  '[data-should-be-full-width=true]': {
+    width: '20%',
+  },
+  '[data-should-be-full-width=false]': {
+    width: '0%',
+  },
+});
+
+export const addButtonStyle = css(verticalCenter, {
+  justifyContent: 'flex-start',
+  padding: '8px',
+  margin: '10px',
+  marginRight: '12px',
+  border: '1px solid black',
+});
+
 export const addButtonIconStyle = css({
   overflow: 'hidden',
   cursor: 'default',
@@ -22,28 +43,15 @@ export const headerContainerStyle = css(verticalCenter, {
   backgroundColor: 'white',
 });
 
-export const addButtonStyle = css(verticalCenter, {
-  overflow: 'hidden',
-  justifyContent: 'flex-end',
-  height: '50px',
-  backgroundColor: 'white',
-  '[data-should-display-add-button=true]': {
-    width: '20%',
-  },
-  '[data-should-display-add-button=false]': {
-    width: '0%',
-  },
-});
-
 export const headerStyle = css(verticalCenter, {
   justifyContent: 'flex-start',
   height: '50px',
   backgroundColor: 'white',
-  '[data-should-display-add-button=true]': {
+  '[data-should-be-full-width=true]': {
     width: '80%',
   },
-  '[data-should-display-add-button=false]': {
-    width: '80%',
+  '[data-should-be-full-width=false]': {
+    width: '100%',
   },
 });
 

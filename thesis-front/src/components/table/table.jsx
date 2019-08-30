@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import {css} from 'glamor';
 import TableRowComponent from './table_row';
 import {
   addButtonIconStyle,
+  addButtonContainerStyle,
   addButtonStyle,
   addButtonTextStyle,
   createHeaderCellStyle,
   headerContainerStyle,
   headerStyle,
   getRowRibbonStyle,
-  verticalCenter,
 } from "./table_style";
 
 export default class TableComponent extends Component {
@@ -23,14 +22,6 @@ export default class TableComponent extends Component {
       },
     };
   }
-
-  addButtonStyle = () => css(verticalCenter, {
-    justifyContent: 'flex-start',
-    padding: '8px',
-    margin: '10px',
-    marginRight: '12px',
-    border: '1px solid black',
-  });
 
   getHeaderExceptAddButton = () => {
     const {headers} = this.state.data;
@@ -48,11 +39,10 @@ export default class TableComponent extends Component {
 
   getAddButton = () => {
     const {shouldDisplayAddButton, addButtonCallback, addButtonText} = this.props;
-    const addButtonContainerStyle = this.addButtonStyle();
-    let addButton = (<div className={addButtonContainerStyle} key={'addButton'}/>);
+    let addButton = (<div key={'addButton'}/>);
     if (shouldDisplayAddButton) {
       addButton = (
-        <div className={addButtonContainerStyle} key={'addButton'} onClick={addButtonCallback}>
+        <div className={addButtonStyle} key={'addButton'} onClick={addButtonCallback}>
           <div className={addButtonIconStyle}>
             <i className={"fa fa-plus"}/>
           </div>
@@ -65,6 +55,7 @@ export default class TableComponent extends Component {
 
   getBodyRows = () => {
     const {headers, body} = this.state.data;
+    const {shouldDisplayAddButton, isSelectable, isDeletable, isViewable} = this.props;
 
     const cellWeights = headers.map(header => header[1]);
 
@@ -74,7 +65,10 @@ export default class TableComponent extends Component {
         cellData={value}
         rowIndex={index}
         key={value + index}
-        shouldDisplayAddButton
+        shouldDisplayAddButton={shouldDisplayAddButton}
+        isSelectable={isSelectable}
+        isDeletable={isDeletable}
+        isViewable={isViewable}
       />;
     });
   };
@@ -98,19 +92,19 @@ export default class TableComponent extends Component {
   }
 
   render() {
-    const {shouldDisplayAddButton} = this.props;
+    const {shouldDisplayAddButton, isSelectable, isDeletable, isViewable} = this.props;
 
     const headerCells = this.getHeaderExceptAddButton();
     const addButton = this.getAddButton();
     const bodyRows = this.getBodyRows();
-
+    const shouldBeFullWidth = shouldDisplayAddButton || isSelectable || isDeletable || isViewable;
     return (
       <div style={{width: '80%'}}>
         <div className={headerContainerStyle}>
           {/* 80% of total width */}
-          <div className={headerStyle} data-should-display-add-button={shouldDisplayAddButton}>{headerCells}</div>
+          <div className={headerStyle} data-should-be-full-width={shouldBeFullWidth}>{headerCells}</div>
           {/* 20% of total width */}
-          <div className={addButtonStyle} data-should-display-add-button={shouldDisplayAddButton}>{addButton}</div>
+          <div className={addButtonContainerStyle} data-should-be-full-width={shouldBeFullWidth}>{addButton}</div>
         </div>
         <div>{bodyRows}</div>
       </div>

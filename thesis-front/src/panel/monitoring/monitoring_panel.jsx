@@ -15,8 +15,12 @@ export class MonitoringPanelComponent extends Component {
       <div className={monitoringComponentContainerStyle}>
         <TableComponent
           shouldDisplayAddButton={true}
+          isEditable={false}
+          isDeletable={false}
+          isViewable={false}
           addButtonCallback={() => alert("HERE")}
-          addButtonText={'Add Device'}/>
+          addButtonText={'Add Device'}
+        />
         {this.props.children}
       </div>
     );
