@@ -14,6 +14,14 @@ export const tableRowContainerStyle = css({
   border: '1px solid black',
   backgroundColor: 'white',
   width: '100%',
+  ':hover': {
+    '[data-is-odd=true]': {
+      backgroundColor: '#c27ba015',
+    },
+    '[data-is-odd=false]': {
+      backgroundColor: '#597eaa15',
+    },
+  },
 });
 
 export const getRowMarginalRibbon = (cellWeightSum) => {
@@ -21,13 +29,19 @@ export const getRowMarginalRibbon = (cellWeightSum) => {
     getRowRibbonStyle(cellWeightSum),
     {
       '[data-is-odd=true]': {
-        backgroundColor: '#AB4B52',
+        backgroundColor: '#AB4B52DD',
       },
       '[data-is-odd=false]': {
-        backgroundColor: '#3895D3',
+        backgroundColor: '#3895D3DD',
       },
     });
 };
+
+export const dataRowsStyle = css(
+  dataColumnsStyle, {
+    backgroundColor: 'transparent',
+  },
+);
 
 export const tableRowButtonStyle = css(
   verticalCenter, {
@@ -39,6 +53,12 @@ export const tableRowButtonStyle = css(
     paddingBottom: `${rowButtonPadding}px`,
     fontSize: '1.5em',
     ':hover': {
-      color: '#3895D3',
+      '[data-is-odd=true]': {
+        color: '#AB4B52',
+      },
+      '[data-is-odd=false]': {
+        color: '#3895D3',
+      },
     },
-  });
+  },
+);

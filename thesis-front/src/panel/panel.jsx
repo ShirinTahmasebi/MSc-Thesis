@@ -53,7 +53,7 @@ const panelBodyStyle = css({
 
 const contentContainerStyle = css({
   width: '100%',
-  backgroundColor: '#eee',
+  backgroundColor: 'white',
   height: '1000px',
   paddingTop: '20px',
   paddingLeft: '20px',

@@ -20,6 +20,9 @@ export class MonitoringPanelComponent extends Component {
           isViewable={true}
           addButtonCallback={() => alert("HERE")}
           addButtonText={'Add Device'}
+          editCallback={(rowData) => alert(rowData)}
+          deleteCallback={(rowData) => alert(rowData)}
+          viewCallback={(rowData) => alert(rowData)}
         />
         {this.props.children}
       </div>

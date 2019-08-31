@@ -10,9 +10,9 @@ export const rowButtonContainersStyle = css(verticalCenter, {
   overflow: 'hidden',
   justifyContent: 'center',
   height: '50px',
-  backgroundColor: 'white',
+  backgroundColor: 'transparent',
   '[data-should-be-full-width=true]': {
-    width: '20%',
+    width: '15%',
   },
   '[data-should-be-full-width=false]': {
     width: '0%',
@@ -48,7 +48,7 @@ export const dataColumnsStyle = css(verticalCenter, {
   height: '50px',
   backgroundColor: 'white',
   '[data-should-be-full-width=true]': {
-    width: '80%',
+    width: '85%',
   },
   '[data-should-be-full-width=false]': {
     width: '100%',

@@ -55,7 +55,7 @@ export default class TableComponent extends Component {
 
   getBodyRows = () => {
     const {headers, body} = this.state.data;
-    const {shouldDisplayAddButton, isEditable, isDeletable, isViewable} = this.props;
+    const {shouldDisplayAddButton, isEditable, isDeletable, isViewable, editCallback, deleteCallback, viewCallback} = this.props;
 
     const cellWeights = headers.map(header => header[1]);
 
@@ -69,6 +69,9 @@ export default class TableComponent extends Component {
         isEditable={isEditable}
         isDeletable={isDeletable}
         isViewable={isViewable}
+        editCallback={editCallback}
+        deleteCallback={deleteCallback}
+        viewCallback={viewCallback}
       />;
     });
   };
@@ -82,10 +85,10 @@ export default class TableComponent extends Component {
     ];
 
     const body = [
-      ["Device 1", "DeviceId1", "User1"],
-      ["Device 2", "DeviceId2", "User2"],
-      ["Device 3", "DeviceId3", "User3"],
-      ["Device 4", "DeviceId4", "User4"],
+      ["Device 1", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User1"],
+      ["Device 2", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User2"],
+      ["Device 3", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User3"],
+      ["Device 4", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User4"],
     ];
 
     this.setState({data: {headers, body}});
