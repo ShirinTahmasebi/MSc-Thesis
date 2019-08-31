@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import TableRowComponent from './table_row';
 import {
-  addButtonIconStyle,
-  addButtonContainerStyle,
-  addButtonStyle,
-  addButtonTextStyle,
+  headerButtonIconStyle,
+  rowButtonContainersStyle,
+  headerButtonStyle,
+  headerButtonTextStyle,
   createHeaderCellStyle,
   headerContainerStyle,
-  headerStyle,
+  dataColumnsStyle,
   getRowRibbonStyle,
 } from "./table_style";
 
@@ -42,11 +42,11 @@ export default class TableComponent extends Component {
     let addButton = (<div key={'addButton'}/>);
     if (shouldDisplayAddButton) {
       addButton = (
-        <div className={addButtonStyle} key={'addButton'} onClick={addButtonCallback}>
-          <div className={addButtonIconStyle}>
+        <div className={headerButtonStyle} key={'addButton'} onClick={addButtonCallback}>
+          <div className={headerButtonIconStyle}>
             <i className={"fa fa-plus"}/>
           </div>
-          <div className={addButtonTextStyle}>{addButtonText}</div>
+          <div className={headerButtonTextStyle}>{addButtonText}</div>
         </div>
       );
     }
@@ -55,7 +55,7 @@ export default class TableComponent extends Component {
 
   getBodyRows = () => {
     const {headers, body} = this.state.data;
-    const {shouldDisplayAddButton, isSelectable, isDeletable, isViewable} = this.props;
+    const {shouldDisplayAddButton, isEditable, isDeletable, isViewable} = this.props;
 
     const cellWeights = headers.map(header => header[1]);
 
@@ -66,7 +66,7 @@ export default class TableComponent extends Component {
         rowIndex={index}
         key={value + index}
         shouldDisplayAddButton={shouldDisplayAddButton}
-        isSelectable={isSelectable}
+        isEditable={isEditable}
         isDeletable={isDeletable}
         isViewable={isViewable}
       />;
@@ -102,9 +102,9 @@ export default class TableComponent extends Component {
       <div style={{width: '80%'}}>
         <div className={headerContainerStyle}>
           {/* 80% of total width */}
-          <div className={headerStyle} data-should-be-full-width={shouldBeFullWidth}>{headerCells}</div>
+          <div className={dataColumnsStyle} data-should-be-full-width={shouldBeFullWidth}>{headerCells}</div>
           {/* 20% of total width */}
-          <div className={addButtonContainerStyle} data-should-be-full-width={shouldBeFullWidth}>{addButton}</div>
+          <div className={rowButtonContainersStyle} data-should-be-full-width={shouldBeFullWidth}>{addButton}</div>
         </div>
         <div>{bodyRows}</div>
       </div>

@@ -6,9 +6,9 @@ export const verticalCenter = css({
   alignItems: 'center',
 });
 
-export const addButtonContainerStyle = css(verticalCenter, {
+export const rowButtonContainersStyle = css(verticalCenter, {
   overflow: 'hidden',
-  justifyContent: 'flex-end',
+  justifyContent: 'center',
   height: '50px',
   backgroundColor: 'white',
   '[data-should-be-full-width=true]': {
@@ -19,7 +19,7 @@ export const addButtonContainerStyle = css(verticalCenter, {
   },
 });
 
-export const addButtonStyle = css(verticalCenter, {
+export const headerButtonStyle = css(verticalCenter, {
   justifyContent: 'flex-start',
   padding: '8px',
   margin: '10px',
@@ -27,7 +27,7 @@ export const addButtonStyle = css(verticalCenter, {
   border: '1px solid black',
 });
 
-export const addButtonIconStyle = css({
+export const headerButtonIconStyle = css({
   overflow: 'hidden',
   cursor: 'default',
   font: '10em',
@@ -35,7 +35,7 @@ export const addButtonIconStyle = css({
   color: '#2FD04F',
 });
 
-export const addButtonTextStyle = css({cursor: 'default', overflow: 'hidden', whiteSpace: 'nowrap'});
+export const headerButtonTextStyle = css({cursor: 'default', overflow: 'hidden', whiteSpace: 'nowrap'});
 
 export const headerContainerStyle = css(verticalCenter, {
   justifyContent: 'flex-start',
@@ -43,7 +43,7 @@ export const headerContainerStyle = css(verticalCenter, {
   backgroundColor: 'white',
 });
 
-export const headerStyle = css(verticalCenter, {
+export const dataColumnsStyle = css(verticalCenter, {
   justifyContent: 'flex-start',
   height: '50px',
   backgroundColor: 'white',
