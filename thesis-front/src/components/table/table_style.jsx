@@ -1,12 +1,18 @@
 import {css} from 'glamor';
 
-export const verticalCenter = css({
+export const rowVerticallyCentered = css({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
 });
 
-export const rowButtonContainersStyle = css(verticalCenter, {
+export const columnHorizontallyCentered = css({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+});
+
+export const rowButtonContainersStyle = css(rowVerticallyCentered, {
   overflow: 'hidden',
   justifyContent: 'center',
   height: '50px',
@@ -19,7 +25,7 @@ export const rowButtonContainersStyle = css(verticalCenter, {
   },
 });
 
-export const headerButtonStyle = css(verticalCenter, {
+export const headerButtonStyle = css(rowVerticallyCentered, {
   justifyContent: 'flex-start',
   padding: '8px',
   margin: '10px',
@@ -37,13 +43,13 @@ export const headerButtonIconStyle = css({
 
 export const headerButtonTextStyle = css({cursor: 'default', overflow: 'hidden', whiteSpace: 'nowrap'});
 
-export const headerContainerStyle = css(verticalCenter, {
+export const headerContainerStyle = css(rowVerticallyCentered, {
   justifyContent: 'flex-start',
   border: '1px solid black',
   backgroundColor: 'white',
 });
 
-export const dataColumnsStyle = css(verticalCenter, {
+export const dataColumnsStyle = css(rowVerticallyCentered, {
   justifyContent: 'flex-start',
   height: '50px',
   backgroundColor: 'white',
@@ -56,7 +62,7 @@ export const dataColumnsStyle = css(verticalCenter, {
 });
 
 export const createHeaderCellStyle = (headerWeight) => {
-  return css(verticalCenter, {
+  return css(rowVerticallyCentered, {
     flex: `${headerWeight}`,
     height: '100%',
     justifyContent: 'flex-start',

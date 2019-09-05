@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {
+  stepContainerStyle,
   buttonsContainerStyle,
   buttonStyle,
   buttonContainerStartSpaceStyle,
-  buttonContainerEndSpaceStyle,
+  buttonContainerEndSpaceStyle, headerContainerStyle,
 } from './form_multistep_style';
+import FormMultiStepItemComponent from "./form_multistep_item";
 
 export default class FormMultiStepMasterComponent extends Component {
 
@@ -26,12 +28,18 @@ export default class FormMultiStepMasterComponent extends Component {
     const {steps, currentStepNumber} = this.state;
     let currentStepComponent = steps.map(step => {
       if (steps[currentStepNumber] === step) {
-        return <div key={`Step Number ${currentStepNumber}`}>{this.displayStep(step)}</div>;
+        return (
+          <div
+            className={stepContainerStyle}
+            key={`Step Number ${currentStepNumber}`}>
+            {this.displayStep(step)}
+          </div>
+        );
       }
       return null;
     });
 
-    const masterFormHeader = <div>Header</div>;
+    const masterFormHeader = <div className={headerContainerStyle}>Header</div>;
     const masterFormContent = currentStepComponent;
     const masterFormFooter = this.getFormPrevNextButtons();
     return (
@@ -45,7 +53,7 @@ export default class FormMultiStepMasterComponent extends Component {
 
   displayStep = (step) => {
     const {formDataMap} = this.props;
-    return formDataMap.get(step).component;
+    return <FormMultiStepItemComponent>{formDataMap.get(step).component}</FormMultiStepItemComponent>;
   };
 
   goToNextStep = () => {

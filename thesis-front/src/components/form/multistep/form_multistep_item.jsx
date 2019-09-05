@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {sampleStyle} from './form_multistep_style';
+import {stepContainerStyle} from './form_multistep_style';
 
 export default class FormMultiStepItemComponent extends Component {
 
@@ -9,6 +9,6 @@ export default class FormMultiStepItemComponent extends Component {
   }
 
   render() {
-    return {};
+    return (<div className={stepContainerStyle}>{this.props.children}</div>);
   }
 }

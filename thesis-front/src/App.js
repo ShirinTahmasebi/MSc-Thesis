@@ -5,11 +5,9 @@ import {LoadingComponent} from "./components/loading/loading";
 
 function App() {
   return (
-    <div className="App">
-      <Panel>
-        <LoadingComponent/>
-      </Panel>
-    </div>
+    <Panel>
+      <LoadingComponent/>
+    </Panel>
   );
 }
 

@@ -1,5 +1,5 @@
 import {css} from 'glamor';
-import {getRowRibbonStyle, verticalCenter, dataColumnsStyle} from "./table_style";
+import {getRowRibbonStyle, rowVerticallyCentered, dataColumnsStyle} from "./table_style";
 
 const rowButtonPadding = 1.5;
 const rowButtonMargin = 0;
@@ -44,7 +44,7 @@ export const dataRowsStyle = css(
 );
 
 export const tableRowButtonStyle = css(
-  verticalCenter, {
+  rowVerticallyCentered, {
     justifyContent: 'center',
     flex: 0.23,
     height: `${rowTotalHeight - (rowButtonMargin * 2) - (rowButtonPadding * 2)}px`,
