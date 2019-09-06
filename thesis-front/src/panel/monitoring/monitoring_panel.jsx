@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {css} from 'glamor';
 import TableComponent from "../../components/table/table";
 import FormMultiStepMasterComponent from "../../components/form/multistep/form_multistep_master";
-import AddDeviceInfoFormComponent from "./add_device/add_device_info_form";
+import AddDeviceInfoFormComponent from "./add_device/info/add_device_info_form";
+import AddDeviceAccessPoliciesFormComponent from "./add_device/access_policies/add_device_access_policies";
+import AddDeviceMonitoringPoliciesFormComponent from "./add_device/monitoring_policies/add_device_monitoring_policies";
 
 const monitoringComponentContainerStyle = css({
   width: '100%',
@@ -38,6 +40,20 @@ export class MonitoringPanelComponent extends Component {
   getMonitoringPanelMain = () =>
     <div className={monitoringComponentContainerStyle}>
       <TableComponent
+        shouldQueryForData={false}
+        url={""}
+        headers={[
+          // Header Text + Weight
+          ["Name", 2],
+          ["Device Id", 6],
+          ["Username", 2],
+        ]}
+        body={[
+          ["Device 1", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User1"],
+          ["Device 2", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User2"],
+          ["Device 3", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User3"],
+          ["Device 4", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User4"],
+        ]}
         shouldDisplayAddButton={true}
         isEditable={true}
         isDeletable={true}
@@ -77,7 +93,7 @@ export class MonitoringPanelComponent extends Component {
             "key2": "value2",
             "key3": "value3",
           },
-          "component": <div style={{width: '90%', height: '500px', backgroundColor: '#0f0'}}>accessPoliciesStep</div>,
+          "component": <AddDeviceAccessPoliciesFormComponent/>,
         }],
         ["monitoringPoliciesStep", {
           "initialValues": {
@@ -90,7 +106,7 @@ export class MonitoringPanelComponent extends Component {
             "key2": "value2",
             "key3": "value3",
           },
-          "component": <div style={{width: '90%', height: '200px', backgroundColor: '#00f'}}>monitoringPoliciesStep</div>,
+          "component": <AddDeviceMonitoringPoliciesFormComponent/>,
         }],
       ],
     );

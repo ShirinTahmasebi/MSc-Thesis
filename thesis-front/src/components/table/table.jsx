@@ -77,19 +77,16 @@ export default class TableComponent extends Component {
   };
 
   componentDidMount() {
-    const headers = [
-      // Header Text + Weight
-      ["Name", 2],
-      ["Device Id", 6],
-      ["Username", 2],
-    ];
-
-    const body = [
-      ["Device 1", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User1"],
-      ["Device 2", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User2"],
-      ["Device 3", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User3"],
-      ["Device 4", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User4"],
-    ];
+    let headers;
+    let body;
+    if (this.props.shouldQueryForData) {
+      // TODO: Query and fill headers and body
+      headers = [];
+      body = [];
+    } else {
+      headers = this.props.headers;
+      body = this.props.body;
+    }
 
     this.setState({data: {headers, body}});
   }

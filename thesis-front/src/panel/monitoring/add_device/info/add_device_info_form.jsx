@@ -8,7 +8,7 @@ import {
 } from "./add_device_style";
 import Dropdown from 'react-dropdown';
 import './dropDownStyle.css';
-import InputTextComponent from "../../../components/input/input";
+import InputTextComponent from "../../../../components/input/input";
 
 export default class AddDeviceInfoFormComponent extends Component {
   constructor() {

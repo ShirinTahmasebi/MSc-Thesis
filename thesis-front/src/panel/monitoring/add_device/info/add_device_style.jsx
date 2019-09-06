@@ -1,5 +1,5 @@
 import {css} from 'glamor';
-import {columnHorizontallyCentered, rowVerticallyCentered} from "../../../components/table/table_style";
+import {columnHorizontallyCentered, rowVerticallyCentered} from "../../../../components/table/table_style";
 
 
 export const totalFormContainerStyle = css(columnHorizontallyCentered, {
