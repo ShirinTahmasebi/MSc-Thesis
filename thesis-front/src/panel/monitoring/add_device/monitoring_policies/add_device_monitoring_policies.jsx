@@ -1,15 +1,34 @@
 import React, {Component} from 'react';
 import TableComponent from "../../../../components/table/table";
 import {tableContainerStyle} from "./add_device_monitoring_policies_style";
+import AddMonitoringPolicyModalComponent from "./add_monitoring_policy_modal";
+
+const VIEWS = {
+  MAIN: 1,
+  ADD_POLICY: 2,
+  OTHER: 3,
+};
 
 export default class AddDeviceMonitoringPoliciesFormComponent extends Component {
 
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      currentView: VIEWS.MAIN,
+    };
   }
 
   render() {
+    if (this.state.currentView === VIEWS.MAIN) {
+      return this.getAddDeviceMonitoringPoliciesListMain();
+    } else if (this.state.currentView === VIEWS.ADD_POLICY) {
+      return this.getAddDeviceMonitoringPoliciesAdd();
+    } else {
+      return null;
+    }
+  }
+
+  getAddDeviceMonitoringPoliciesListMain = () => {
     return (<div className={tableContainerStyle}>
       <TableComponent
         shouldQueryForData={false}
@@ -32,7 +51,7 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
         isEditable={true}
         isDeletable={true}
         isViewable={true}
-        addButtonCallback={() => alert("Add Policy")}
+        addButtonCallback={() => this.setState({currentView: VIEWS.ADD_POLICY})}
         addButtonText={'Add Policy'}
         editCallback={(rowData) => alert(rowData)}
         deleteCallback={(rowData) => alert(rowData)}
@@ -40,5 +59,9 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
       />
       {this.props.children}
     </div>);
-  }
+  };
+
+  getAddDeviceMonitoringPoliciesAdd = () => {
+    return <AddMonitoringPolicyModalComponent/>;
+  };
 }

@@ -1,12 +1,20 @@
 import {css} from 'glamor';
 import {rowVerticallyCentered} from "../table/table_style";
 
-export const containerStyle = css(rowVerticallyCentered,
-  {
-    margin: '5px 0',
-    height: '30px',
-  },
-);
+export const containerStyle = (type) => {
+  let height;
+  if (type === 'dropdown') {
+    height = '100%';
+  } else {
+    height = '30px';
+  }
+  return css(rowVerticallyCentered,
+    {
+      margin: '5px 0',
+      height: `${height}`,
+    },
+  );
+};
 
 export const spaceContainerStyle = css({width: '5%'});
 
@@ -18,16 +26,26 @@ export const getLabelContainerStyle = (labelWidth) => {
   });
 };
 
-export const getInputContainerStyle = (labelWidth, inputToTextRatio) => {
+const getInputContainerStyle = (labelWidth, inputToTextRatio) => {
   const width = labelWidth * inputToTextRatio;
   return css({
     paddingLeft: '5px',
     width: `${width}px`,
     height: '70%',
-    border: '1px solid black',
-    ':focus': {
-      backgroundColor: '#3895D311',
-      outline: 'none',
-    },
   });
+};
+
+export const getTextInputContainerStyle = (labelWidth, inputToTextRatio) => {
+  return css(getInputContainerStyle(labelWidth, inputToTextRatio),
+    {
+      border: '1px solid black',
+      ':focus': {
+        backgroundColor: '#3895D311',
+        outline: 'none',
+      },
+    });
+};
+
+export const getDropdownInputContainerStyle = (labelWidth, inputToTextRatio) => {
+  return css(getInputContainerStyle(labelWidth, inputToTextRatio), {fontSize: '0.9em'});
 };
