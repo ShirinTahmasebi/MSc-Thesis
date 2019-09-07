@@ -5,12 +5,12 @@ const formHeight = '350px';
 
 export const fullWidthStyle = css({width: '100%'});
 
-export const mainContainerStyle = css(rowVerticallyCentered, {width: '100%'});
+export const mainContainerStyle = css({width: '100%'});
+export const contentContainerStyle = css(rowVerticallyCentered, {width: '100%'});
 
 export const attributeListSelectionPartStyle = css({
   flex: '1',
   height: `${formHeight}`,
-  backgroundColor: '#ff0',
 });
 
 export const attributeSelectThresholdStyle = css({
