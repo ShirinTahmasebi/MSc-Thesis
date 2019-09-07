@@ -4,7 +4,13 @@ import {
   buttonsContainerStyle,
   buttonStyle,
   buttonContainerStartSpaceStyle,
-  buttonContainerEndSpaceStyle, headerContainerStyle,
+  buttonContainerEndSpaceStyle,
+  headerContainerStyle,
+  headerTextContainerStyle,
+  getHeaderLineStyle,
+  getHeaderCircleStyle,
+  getTextContainerStyle,
+  getHeaderTextLineStyle,
 } from './form_multistep_style';
 import FormMultiStepItemComponent from "./form_multistep_item";
 
@@ -39,7 +45,7 @@ export default class FormMultiStepMasterComponent extends Component {
       return null;
     });
 
-    const masterFormHeader = <div className={headerContainerStyle}>Header</div>;
+    const masterFormHeader = this.getFormHeader();
     const masterFormContent = currentStepComponent;
     const masterFormFooter = this.getFormPrevNextButtons();
     return (
@@ -85,5 +91,58 @@ export default class FormMultiStepMasterComponent extends Component {
              onClick={this.goToPreviousStep}>Back</div>}
       <div className={buttonContainerStartSpaceStyle}/>
     </div>);
+  };
+
+  getFormHeader = () => {
+    const {formDataMap} = this.props;
+    const circlesCount = this.state.stepsCount;
+    const steps = this.state.steps;
+    let components = [];
+    let headers = [];
+    const stepNames = steps.map(steps => formDataMap.get(steps).stepName);
+    for (let i = 0; i < circlesCount; i++) {
+      let addLine = (i !== (circlesCount - 1));
+      let headerText = formDataMap.get(steps[i]).stepName;
+      console.log(this.get_tex_width(headerText, "11.2px Arial"));
+      const header = <div
+        className={getTextContainerStyle(headerText, this.get_tex_width(headerText, "16px Arial"))}>{headerText}</div>;
+      headers.push(header);
+      components.push(
+        <div
+          key={`Circle Number ${i}`}
+          className={getHeaderCircleStyle(i <= this.state.currentStepNumber)}>
+          {i + 1}
+        </div>,
+      );
+      addLine && components.push(
+        <div
+          key={`Line Number ${i}`}
+          className={getHeaderLineStyle(circlesCount, i < this.state.currentStepNumber)}
+        />,
+      );
+      addLine && headers.push(
+        <div
+          key={`Line Number ${i}`}
+          className={getHeaderTextLineStyle(circlesCount, this.get_tex_width(stepNames.join(""), "11.2px Arial"))}
+        />,
+      );
+    }
+    return (
+      <div>
+        <div className={headerTextContainerStyle}>
+          {headers.map(value => value)}
+        </div>
+        <div className={headerContainerStyle}>
+          {components.map(value => value)}
+        </div>
+      </div>
+    );
+  };
+
+  get_tex_width = (txt, font) => {
+    this.element = document.createElement('canvas');
+    this.context = this.element.getContext("2d");
+    this.context.font = font;
+    return this.context.measureText(txt).width;
   };
 }
