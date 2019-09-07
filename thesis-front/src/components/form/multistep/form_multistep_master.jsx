@@ -12,7 +12,6 @@ import {
   getTextContainerStyle,
   getHeaderTextLineStyle,
 } from './form_multistep_style';
-import FormMultiStepItemComponent from "./form_multistep_item";
 
 export default class FormMultiStepMasterComponent extends Component {
 
@@ -22,10 +21,14 @@ export default class FormMultiStepMasterComponent extends Component {
     // Intentionally want to ignore props updates
     const {formDataMap} = props;
 
+    const stepsStates = new Map();
+    [...formDataMap.keys()].map(componentKey => stepsStates.set(componentKey, {}));
+
     this.state = {
       steps: [...formDataMap.keys()],
       stepsCount: [...formDataMap.keys()].length,
       currentStepNumber: 0,
+      stepsStates: stepsStates,
     };
   }
 
@@ -59,7 +62,15 @@ export default class FormMultiStepMasterComponent extends Component {
 
   displayStep = (step) => {
     const {formDataMap} = this.props;
-    return <FormMultiStepItemComponent>{formDataMap.get(step).component}</FormMultiStepItemComponent>;
+    const ChildComponent = formDataMap.get(step).component;
+    return (
+      <ChildComponent
+        componentKey={step}
+        setMasterStateCallBack={this.setMasterState}
+        initialValues={formDataMap.get(step).initialValues}
+        stepFieldValues={this.state.stepsStates.get(step)}
+        actions={formDataMap.get(step).actions}
+      />);
   };
 
   goToNextStep = () => {
@@ -103,7 +114,6 @@ export default class FormMultiStepMasterComponent extends Component {
     for (let i = 0; i < circlesCount; i++) {
       let addLine = (i !== (circlesCount - 1));
       let headerText = formDataMap.get(steps[i]).stepName;
-      console.log(this.get_tex_width(headerText, "11.2px Arial"));
       const header = <div
         className={getTextContainerStyle(headerText, this.get_tex_width(headerText, "16px Arial"))}>{headerText}</div>;
       headers.push(header);
@@ -144,5 +154,12 @@ export default class FormMultiStepMasterComponent extends Component {
     this.context = this.element.getContext("2d");
     this.context.font = font;
     return this.context.measureText(txt).width;
+  };
+
+  setMasterState = (componentKey, stateKey, stateValue) => {
+    const stepsStatesMap = this.state.stepsStates;
+    const componentStates = stepsStatesMap.get(componentKey);
+    componentStates[stateKey] = stateValue;
+    this.setState({stepsStates: stepsStatesMap});
   };
 }

@@ -14,10 +14,25 @@ export default class InputTextComponent extends Component {
   }
 
   render() {
-    const {label, type, inputToTextRatio, labelWidth, dropDownProps:{onChange, options, defaultOption, placeHolder} = {}} = this.props;
+    const {
+      label,
+      type,
+      inputToTextRatio,
+      labelWidth,
+      onChange: textOnChanged,
+      initalValue,
+      dropDownProps: {onChange, options, defaultOption, placeHolder} = {},
+    } = this.props;
     let inputComponent;
     if (type !== 'dropdown') {
-      inputComponent = <input className={getTextInputContainerStyle(labelWidth, inputToTextRatio)} type={type}/>;
+      inputComponent = (
+        <input
+          className={getTextInputContainerStyle(labelWidth, inputToTextRatio)}
+          onChange={event => textOnChanged(event.target.value)}
+          type={type}
+          defaultValue={initalValue}
+        />
+      );
     } else {
       inputComponent =
         <Dropdown

@@ -80,7 +80,7 @@ export class MonitoringPanelComponent extends Component {
             "key2": "value2",
             "key3": "value3",
           },
-          "component": <AddDeviceInfoFormComponent/>,
+          "component": AddDeviceInfoFormComponent,
           "stepName": "Device Info",
         }],
         ["accessPoliciesStep", {
@@ -94,7 +94,7 @@ export class MonitoringPanelComponent extends Component {
             "key2": "value2",
             "key3": "value3",
           },
-          "component": <AddDeviceAccessPoliciesFormComponent/>,
+          "component": AddDeviceAccessPoliciesFormComponent,
           "stepName": "Access Policies",
         }],
         ["monitoringPoliciesStep", {
@@ -108,7 +108,7 @@ export class MonitoringPanelComponent extends Component {
             "key2": "value2",
             "key3": "value3",
           },
-          "component": <AddDeviceMonitoringPoliciesFormComponent/>,
+          "component": AddDeviceMonitoringPoliciesFormComponent,
           "stepName": "Monitoring Policies",
         }],
       ],

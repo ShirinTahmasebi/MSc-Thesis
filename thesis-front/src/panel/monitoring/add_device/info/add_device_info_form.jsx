@@ -11,9 +11,25 @@ import './dropDownStyle.css';
 import InputTextComponent from "../../../../components/input/input";
 
 export default class AddDeviceInfoFormComponent extends Component {
-  constructor() {
-    super();
-    this.state = {};
+
+  options = [
+    {
+      type: 'group', name: 'Supported', items: [
+        {value: 'Raspberry Pi', label: 'Raspberry Pi'},
+      ],
+    },
+    {
+      type: 'group', name: '--', items: [],
+    },
+  ];
+
+  defaultOption = this.options[0].items[0];
+
+  constructor(props) {
+    super(props);
+    if (!props.stepFieldValues.deviceType) {
+      props.setMasterStateCallBack(props.componentKey, "deviceType", this.defaultOption);
+    }
   }
 
   render() {
@@ -28,27 +44,14 @@ export default class AddDeviceInfoFormComponent extends Component {
   }
 
   getSelectDeviceType = () => {
-    const options = [
-      {
-        type: 'group', name: 'Supported', items: [
-          {value: 'Raspberry Pi', label: 'Raspberry Pi'},
-        ],
-      },
-      {
-        type: 'group', name: '--', items: [
-        ],
-      },
-    ];
-
-    const defaultOption = options[0].items[0];
     return (
       <div className={deviceTypeContainerStyle}>
         <div className={deviceTypeTextStyle}>Device Type</div>
         <div className={deviceTypeDropDownContainerStyle}>
           <Dropdown
-            options={options}
-            onChange={(selected) => console.log(selected)}
-            value={defaultOption}
+            options={this.options}
+            onChange={this.onDeviceTypeChanged}
+            value={this.props.stepFieldValues.deviceType}
             placeholder="Select an option"
           />
         </div>
@@ -60,11 +63,64 @@ export default class AddDeviceInfoFormComponent extends Component {
     return (
       <fieldset className={authenticationDataContainerStyle}>
         <legend>Authentication</legend>
-        <InputTextComponent label={"Device Name:"} type={"text"} labelWidth={'100'} inputToTextRatio={2.25}/>
-        <InputTextComponent label={"IP Address:"} type={"ip"} labelWidth={'100'} inputToTextRatio={2}/>
-        <InputTextComponent label={"Username:"} type={"text"} labelWidth={'100'} inputToTextRatio={2}/>
-        <InputTextComponent label={"Password:"} type={"password"} labelWidth={'100'} inputToTextRatio={2}/>
+
+        <InputTextComponent
+          label={"Device Name:"}
+          type={"text"}
+          labelWidth={'100'}
+          inputToTextRatio={2.25}
+          onChange={this.onDeviceNameChanged}
+          initalValue={this.props.stepFieldValues.deviceName}
+        />
+
+        <InputTextComponent
+          label={"IP Address:"}
+          type={"ip"}
+          labelWidth={'100'}
+          inputToTextRatio={2}
+          onChange={this.onIpAddressChanged}
+          initalValue={this.props.stepFieldValues.ipAddress}
+        />
+
+        <InputTextComponent
+          label={"Username:"}
+          type={"text"}
+          labelWidth={'100'}
+          inputToTextRatio={2}
+          onChange={this.onUsernameChanged}
+          initalValue={this.props.stepFieldValues.username}
+        />
+
+        <InputTextComponent
+          label={"Password:"}
+          type={"password"}
+          labelWidth={'100'}
+          inputToTextRatio={2}
+          onChange={this.onPasswordChanged}
+          initalValue={this.props.stepFieldValues.password}
+        />
+
       </fieldset>
     );
+  };
+
+  onDeviceTypeChanged = (selected) => {
+    this.props.setMasterStateCallBack(this.props.componentKey, "deviceType", selected);
+  };
+
+  onDeviceNameChanged = (deviceName) => {
+    this.props.setMasterStateCallBack(this.props.componentKey, "deviceName", deviceName);
+  };
+
+  onIpAddressChanged = (ipAddress) => {
+    this.props.setMasterStateCallBack(this.props.componentKey, "ipAddress", ipAddress);
+  };
+
+  onUsernameChanged = (username) => {
+    this.props.setMasterStateCallBack(this.props.componentKey, "username", username);
+  };
+
+  onPasswordChanged = (password) => {
+    this.props.setMasterStateCallBack(this.props.componentKey, "password", password);
   };
 }
