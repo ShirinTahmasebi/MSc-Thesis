@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {
   attributeListSelectionPartStyle,
   attributeSelectThresholdStyle,
@@ -8,7 +8,13 @@ import {
 } from "./add_monitoring_policy_modal_style";
 import InputTextComponent from "../../../../components/input/input";
 import DualMultiSelectionComponent from "../../../../components/dual_multi_selection/dual_multi_selection";
-import {ComponentWithModal} from "../../../../components/modal/modal_hoc";
+import {
+  buttonsContainerStyle,
+  buttonStyle,
+  contentContainerStyle, mainContainerStyle, modalButtonContainerEndSpaceStyle, modalButtonContainerStartSpaceStyle,
+  modalHeaderStyle,
+  modalMainStyle,
+} from "../../../../components/modal/modal_hoc_style";
 
 export default class AddMonitoringPolicyModalComponent extends Component {
 
@@ -60,30 +66,22 @@ export default class AddMonitoringPolicyModalComponent extends Component {
       {key: '20', name: 'Attribute 20'},
     ];
 
-    const modalContent = () => {
-      return (
-        <Fragment>
-          <div className={attributeListSelectionPartStyle}>
-            <DualMultiSelectionComponent items={items} ref={this.attributesRef}/>
-          </div>
-          <div className={attributeSelectThresholdStyle}>
-            {minimumThresholdComponent}
-            {maximumThresholdComponent}
-          </div>
-        </Fragment>
-      );
-    };
-
-    const Modal = ComponentWithModal(modalContent);
-
     return (
-      <Modal
-        rightButtonText={'Back'}
-        onRightButtonClickCallback={this.props.onModalCloseClickedCallback}
-        leftButtonText={'Add'}
-        onLeftButtonClickCallback={this.addPolicyAndCloseModal}
-        title={"Add Monitoring Policy"}
-      />
+      <div className={mainContainerStyle}>
+        <div className={modalMainStyle}>
+          <div className={modalHeaderStyle}>{this.props.title}</div>
+          <div className={contentContainerStyle}>
+            <div className={attributeListSelectionPartStyle}>
+              <DualMultiSelectionComponent items={items} ref={this.attributesRef}/>
+            </div>
+            <div className={attributeSelectThresholdStyle}>
+              {minimumThresholdComponent}
+              {maximumThresholdComponent}
+            </div>
+          </div>
+          {this.getFormPrevNextButtons()}
+        </div>
+      </div>
     );
   }
 
@@ -148,5 +146,15 @@ export default class AddMonitoringPolicyModalComponent extends Component {
   onCriticalityLevelChanged = (isMin, criticalityLevel) => {
     isMin && this.setState({minCriticalityLevel: criticalityLevel});
     !isMin && this.setState({maxCriticalityLevel: criticalityLevel});
+  };
+
+  getFormPrevNextButtons = () => {
+    return (
+      <div className={buttonsContainerStyle}>
+        <div className={modalButtonContainerEndSpaceStyle}/>
+        <div className={buttonStyle} onClick={this.props.onModalCloseClickedCallback}>Back</div>
+        <div className={buttonStyle} onClick={this.addPolicyAndCloseModal}>Add</div>
+        <div className={modalButtonContainerStartSpaceStyle}/>
+      </div>);
   };
 }
