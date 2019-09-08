@@ -15,15 +15,30 @@ import {
 } from "../../../../components/form/multistep/form_multistep_style";
 
 export default class AddMonitoringPolicyModalComponent extends Component {
+
+  options = [
+    {value: '1', label: '1'},
+    {value: '2', label: '2'},
+    {value: '3', label: '3'},
+  ];
+  defaultOption = this.options[0];
+
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      minThresholdValue: '',
+      maxThresholdValue: '',
+      minViolationCount: '',
+      maxViolationCount: '',
+      minCriticalityLevel: this.defaultOption,
+      maxCriticalityLevel: this.defaultOption,
+    };
     this.attributesRef = React.createRef();
   }
 
   render() {
-    const minimumThresholdComponent = this.getThresholdComponent('Minimum Threshold');
-    const maximumThresholdComponent = this.getThresholdComponent('Maximum Threshold');
+    const minimumThresholdComponent = this.getThresholdComponent(true);
+    const maximumThresholdComponent = this.getThresholdComponent(false);
 
     // TODO: Fetch Attributes (In ComponentDidMount)
     const items = [
@@ -65,29 +80,37 @@ export default class AddMonitoringPolicyModalComponent extends Component {
     );
   }
 
-  getThresholdComponent = (legendText) => {
-    const options = [
-      {value: '1', label: '1'},
-      {value: '2', label: '2'},
-      {value: '3', label: '3'},
-    ];
-    const defaultOption = options[0];
-
+  getThresholdComponent = (isMin) => {
     return (
       <div className={thresholdPartStyle}>
         <fieldset className={fullWidthStyle}>
-          <legend className={legendTextStyle}>{legendText}</legend>
-          <InputTextComponent label={"Threshold Value :"} type={"text"} labelWidth={'150'} inputToTextRatio={1}/>
-          <InputTextComponent label={"Violation Count:"} type={"text"} labelWidth={'150'} inputToTextRatio={1}/>
+          <legend className={legendTextStyle}>{isMin ? 'Minimum Threshold' : 'Maximum Threshold'}</legend>
+
+          <InputTextComponent
+            label={"Threshold Value :"}
+            type={"text"}
+            labelWidth={'150'}
+            inputToTextRatio={1}
+            onChange={(stateValue) => this.onThresholdValueChanged(isMin, stateValue)}
+          />
+
+          <InputTextComponent
+            label={"Violation Count:"}
+            type={"text"}
+            labelWidth={'150'}
+            inputToTextRatio={1}
+            onChange={(stateValue) => this.onViolationCountChanged(isMin, stateValue)}
+          />
+
           <InputTextComponent
             label={"Criticality Level:"}
             type={"dropdown"}
             labelWidth={'150'}
             inputToTextRatio={1}
             dropDownProps={{
-              options: options,
-              onChange: (selected) => console.log(selected),
-              defaultOption: defaultOption,
+              options: this.options,
+              onChange: (stateValue) => this.onCriticalityLevelChanged(isMin, stateValue),
+              defaultOption: this.defaultOption,
               placeholder: "Select an option",
             }}
           />
@@ -111,7 +134,25 @@ export default class AddMonitoringPolicyModalComponent extends Component {
   };
 
   addPolicyAndCloseModal = () => {
-    // TODO: Get Attributes + Thresholds and Submit Them
-    console.log((this.attributesRef.current.getFinalizedSelectedItems()));
+    // Each entry should define attribute name, max or min, threshold value, violation count, criticality level
+    (this.attributesRef.current.getFinalizedSelectedItems()).map(item => {
+      this.props.addPolicyCallback(item.name, "Min", this.state.minThresholdValue, this.state.minViolationCount, this.state.minCriticalityLevel.value);
+      this.props.addPolicyCallback(item.name, "Max", this.state.maxThresholdValue, this.state.maxViolationCount, this.state.maxCriticalityLevel.value);
+    });
+  };
+
+  onThresholdValueChanged = (isMin, thresholdValue) => {
+    isMin && this.setState({minThresholdValue: thresholdValue});
+    !isMin && this.setState({maxThresholdValue: thresholdValue});
+  };
+
+  onViolationCountChanged = (isMin, violationCount) => {
+    isMin && this.setState({minViolationCount: violationCount});
+    !isMin && this.setState({maxViolationCount: violationCount});
+  };
+
+  onCriticalityLevelChanged = (isMin, criticalityLevel) => {
+    isMin && this.setState({minCriticalityLevel: criticalityLevel});
+    !isMin && this.setState({maxCriticalityLevel: criticalityLevel});
   };
 }

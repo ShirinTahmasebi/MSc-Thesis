@@ -115,7 +115,9 @@ export default class FormMultiStepMasterComponent extends Component {
       let addLine = (i !== (circlesCount - 1));
       let headerText = formDataMap.get(steps[i]).stepName;
       const header = <div
-        className={getTextContainerStyle(headerText, this.get_tex_width(headerText, "16px Arial"))}>{headerText}</div>;
+        className={getTextContainerStyle(headerText, this.get_tex_width(headerText, "16px Arial"))}
+        key={`Header Text Number ${i}`}
+      >{headerText}</div>;
       headers.push(header);
       components.push(
         <div

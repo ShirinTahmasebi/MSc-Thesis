@@ -11,11 +11,21 @@ const VIEWS = {
 
 export default class AddDeviceMonitoringPoliciesFormComponent extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const policiesList = [
+      ["Attribute 1", "Min", "10", "5", "1"],
+      ["Attribute 1", "Max", "10", "5", "1"],
+      ["Attribute 2", "Min", "10", "5", "2"],
+      ["Attribute 2", "Max", "10", "5", "2"],
+    ];
     this.state = {
       currentView: VIEWS.MAIN,
     };
+
+    if (!props.stepFieldValues.policiesList) {
+      this.props.setMasterStateCallBack(this.props.componentKey, "policiesList", policiesList);
+    }
   }
 
   render() {
@@ -41,12 +51,7 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
           ["Violation Count", 1],
           ["Criticality Level", 1],
         ]}
-        body={[
-          ["Attribute 1", "Min", "10", "5", "1"],
-          ["Attribute 1", "Max", "10", "5", "1"],
-          ["Attribute 2", "Min", "10", "5", "2"],
-          ["Attribute 2", "Max", "10", "5", "2"],
-        ]}
+        body={this.props.stepFieldValues.policiesList}
         shouldDisplayAddButton={true}
         isEditable={true}
         isDeletable={true}
@@ -62,6 +67,12 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
   };
 
   getAddDeviceMonitoringPoliciesAdd = () => {
-    return <AddMonitoringPolicyModalComponent/>;
+    return <AddMonitoringPolicyModalComponent addPolicyCallback={this.addPolicy}/>;
+  };
+
+  addPolicy = (attributeName, minOrMax, thresholdValue, violationCount, criticalityLevelValue) => {
+    const policiesList = this.props.stepFieldValues.policiesList;
+    policiesList.push([attributeName, minOrMax, thresholdValue, violationCount, criticalityLevelValue]);
+    this.props.setMasterStateCallBack(this.props.componentKey, "policiesList", policiesList);
   };
 }
