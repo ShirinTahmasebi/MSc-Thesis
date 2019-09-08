@@ -12,18 +12,8 @@ import InputTextComponent from "../../../../components/input/input";
 
 export default class AddDeviceInfoFormComponent extends Component {
 
-  options = [
-    {
-      type: 'group', name: 'Supported', items: [
-        {value: 'Raspberry Pi', label: 'Raspberry Pi'},
-      ],
-    },
-    {
-      type: 'group', name: '--', items: [],
-    },
-  ];
-
-  defaultOption = this.options[0].items[0];
+  options = [{value: 'Raspberry Pi', label: 'Raspberry Pi'}];
+  defaultOption = this.options[0];
 
   constructor(props) {
     super(props);
