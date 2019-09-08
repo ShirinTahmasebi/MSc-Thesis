@@ -13,18 +13,13 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
 
   constructor(props) {
     super(props);
-    const policiesList = [
-      ["Attribute 1", "Min", "10", "5", "1"],
-      ["Attribute 1", "Max", "10", "5", "1"],
-      ["Attribute 2", "Min", "10", "5", "2"],
-      ["Attribute 2", "Max", "10", "5", "2"],
-    ];
+
     this.state = {
       currentView: VIEWS.MAIN,
     };
 
     if (!props.stepFieldValues.policiesList) {
-      this.props.setMasterStateCallBack(this.props.componentKey, "policiesList", policiesList);
+      props.setMasterStateCallBack(props.componentKey, "policiesList", []);
     }
   }
 

@@ -55,17 +55,16 @@ export default class TableComponent extends Component {
 
   getBodyRows = () => {
     const {headers, body} = this.state.data;
-    const {shouldDisplayAddButton, isEditable, isDeletable, isViewable, editCallback, deleteCallback, viewCallback} = this.props;
+    const {isEditable, isDeletable, isViewable, editCallback, deleteCallback, viewCallback} = this.props;
 
     const cellWeights = headers.map(header => header[1]);
 
-    return body.map((value, index) => {
+    const tableRows = (body && body.map((value, index) => {
       return <TableRowComponent
         cellWeights={cellWeights}
         cellData={value}
         rowIndex={index}
         key={value + index}
-        shouldDisplayAddButton={shouldDisplayAddButton}
         isEditable={isEditable}
         isDeletable={isDeletable}
         isViewable={isViewable}
@@ -73,7 +72,21 @@ export default class TableComponent extends Component {
         deleteCallback={deleteCallback}
         viewCallback={viewCallback}
       />;
-    });
+    }));
+
+    if (tableRows.length === 0) {
+      return <TableRowComponent
+        cellWeights={[1]}
+        cellData={["No Data to View!"]}
+        rowIndex={0}
+        key={"Empty Table Body"}
+        isEditable={false}
+        isDeletable={false}
+        isViewable={false}
+      />;
+    }
+
+    return tableRows;
   };
 
   componentDidMount() {
@@ -93,11 +106,11 @@ export default class TableComponent extends Component {
 
   render() {
     const {shouldDisplayAddButton, isSelectable, isDeletable, isViewable} = this.props;
-
     const headerCells = this.getHeaderExceptAddButton();
     const addButton = this.getAddButton();
     const bodyRows = this.getBodyRows();
     const shouldBeFullWidth = shouldDisplayAddButton || isSelectable || isDeletable || isViewable;
+
     return (
       <div style={{width: '80%'}}>
         <div className={headerContainerStyle}>
