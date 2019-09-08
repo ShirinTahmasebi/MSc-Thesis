@@ -1,12 +1,8 @@
 import {css} from 'glamor';
-import {rowVerticallyCentered} from "../../../../components/table/table_style";
 
 const formHeight = '350px';
 
 export const fullWidthStyle = css({width: '100%'});
-
-export const mainContainerStyle = css({width: '100%'});
-export const contentContainerStyle = css(rowVerticallyCentered, {width: '100%'});
 
 export const attributeListSelectionPartStyle = css({
   flex: '1',

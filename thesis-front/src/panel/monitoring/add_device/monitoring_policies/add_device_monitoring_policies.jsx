@@ -16,6 +16,7 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
 
     this.state = {
       currentView: VIEWS.MAIN,
+      showModal: false,
     };
 
     if (!props.stepFieldValues.policiesList) {
@@ -51,7 +52,7 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
         isEditable={true}
         isDeletable={true}
         isViewable={true}
-        addButtonCallback={() => this.setState({currentView: VIEWS.ADD_POLICY})}
+        addButtonCallback={() => this.setState({currentView: VIEWS.ADD_POLICY, showModal: true})}
         addButtonText={'Add Policy'}
         editCallback={(rowData) => alert(rowData)}
         deleteCallback={(rowData) => alert(rowData)}
@@ -62,12 +63,18 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
   };
 
   getAddDeviceMonitoringPoliciesAdd = () => {
-    return <AddMonitoringPolicyModalComponent addPolicyCallback={this.addPolicy}/>;
+    return <AddMonitoringPolicyModalComponent
+      addPolicyCallback={this.addPolicy}
+      onModalCloseClickedCallback={this.closeAddDevicePolicyView}/>;
   };
 
   addPolicy = (attributeName, minOrMax, thresholdValue, violationCount, criticalityLevelValue) => {
     const policiesList = this.props.stepFieldValues.policiesList;
     policiesList.push([attributeName, minOrMax, thresholdValue, violationCount, criticalityLevelValue]);
     this.props.setMasterStateCallBack(this.props.componentKey, "policiesList", policiesList);
+  };
+
+  closeAddDevicePolicyView = () => {
+    this.setState({currentView: VIEWS.MAIN, showModal: false});
   };
 }
