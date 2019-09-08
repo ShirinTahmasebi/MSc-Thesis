@@ -60,21 +60,21 @@ export default class AddMonitoringPolicyModalComponent extends Component {
       {key: '20', name: 'Attribute 20'},
     ];
 
-    const modalContent = (
-      <Fragment>
-        <div className={attributeListSelectionPartStyle}>
-          <DualMultiSelectionComponent items={items} ref={this.attributesRef}/>
-        </div>
-        <div className={attributeSelectThresholdStyle}>
-          {minimumThresholdComponent}
-          {maximumThresholdComponent}
-        </div>
-      </Fragment>
-    );
+    const modalContent = () => {
+      return (
+        <Fragment>
+          <div className={attributeListSelectionPartStyle}>
+            <DualMultiSelectionComponent items={items} ref={this.attributesRef}/>
+          </div>
+          <div className={attributeSelectThresholdStyle}>
+            {minimumThresholdComponent}
+            {maximumThresholdComponent}
+          </div>
+        </Fragment>
+      );
+    };
 
-    const Modal = ComponentWithModal(() => {
-      return modalContent;
-    });
+    const Modal = ComponentWithModal(modalContent);
 
     return (
       <Modal
