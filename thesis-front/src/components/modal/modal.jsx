@@ -5,6 +5,7 @@ import {
   modalButtonContainerStartSpaceStyle, modalHeaderStyle,
   modalMainStyle,
 } from "./modal_hoc_style";
+import {css} from "glamor";
 
 export default class ModalComponent extends Component {
   constructor() {
@@ -25,7 +26,7 @@ export default class ModalComponent extends Component {
   render() {
     return (
       <div className={mainContainerStyle}>
-        <div className={modalMainStyle}>
+        <div className={css(modalMainStyle, this.props.modalMainStyle)}>
           <div className={modalHeaderStyle}>{this.props.title}</div>
           <div className={contentContainerStyle}>
             {this.props.children}

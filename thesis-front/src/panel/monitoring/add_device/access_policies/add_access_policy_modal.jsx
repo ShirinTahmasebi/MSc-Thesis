@@ -132,7 +132,7 @@ export default class AddAccessPolicyModalComponent extends Component {
 
   addPolicyAndCloseModal = () => {
     // Each entry should define resource name, action, access level, target users
-    (this.attributesRef.current.getFinalizedSelectedItems()).map(item => {
+    (this.attributesRef.current.getFinalizedSelectedItems()).map(item =>
       this.props.addPolicyCallback(
         item.name,
         this.state.action.value,
@@ -140,8 +140,7 @@ export default class AddAccessPolicyModalComponent extends Component {
         this.state.targetUsersList,
         this.state.invalidAccessLimit,
         this.state.sequentialAccessLimit,
-      );
-    });
+      ));
     this.props.onModalCloseClickedCallback();
   };
 
@@ -252,7 +251,6 @@ export default class AddAccessPolicyModalComponent extends Component {
             className={inputStyle}
             onChange={event => this.idTextOnChanged(event.target.value)}
             type={"text"}
-            defaultValue={""}
             value={this.state.currentIdInput}
             placeholder={"EnterId"}
           />

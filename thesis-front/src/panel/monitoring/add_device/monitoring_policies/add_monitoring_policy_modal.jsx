@@ -127,6 +127,7 @@ export default class AddMonitoringPolicyModalComponent extends Component {
     (this.attributesRef.current.getFinalizedSelectedItems()).map(item => {
       this.props.addPolicyCallback(item.name, "Min", this.state.minThresholdValue, this.state.minViolationCount, this.state.minCriticalityLevel.value);
       this.props.addPolicyCallback(item.name, "Max", this.state.maxThresholdValue, this.state.maxViolationCount, this.state.maxCriticalityLevel.value);
+      return null;
     });
     this.props.onModalCloseClickedCallback();
   };

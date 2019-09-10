@@ -1,8 +1,6 @@
 import {css} from 'glamor';
 import {rowVerticallyCentered} from "../../../../components/table/table_style";
 
-const formHeight = '350px';
-
 export const fullWidthStyle = css({width: '100%'});
 
 export const topSectionStyle = css(rowVerticallyCentered, fullWidthStyle);
@@ -33,15 +31,6 @@ export const bottomSecondSectionStyle = css(fullWidthStyle, {
 });
 
 export const legendTextStyle = css({color: '#1261A0'});
-
-export const fieldSetStyle = css({height: '100%'});
-
-export const thresholdPartStyle = css(fullWidthStyle, {
-  flex: '1',
-  display: 'flex',
-  alignItems: 'center',
-  height: '100%',
-});
 
 export const innerContainerStyle = css({
   height: '300px',
