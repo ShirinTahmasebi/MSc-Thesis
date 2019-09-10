@@ -1,5 +1,10 @@
 import {css} from 'glamor';
 
+const rowLargeTotalHeight = 50;
+const rowSmallTotalHeight = 30;
+
+const getRowHeight = (isSmall) => isSmall ? rowSmallTotalHeight : rowLargeTotalHeight;
+
 export const rowVerticallyCentered = css({
   display: 'flex',
   flexDirection: 'row',
@@ -12,10 +17,10 @@ export const columnHorizontallyCentered = css({
   alignItems: 'center',
 });
 
-export const rowButtonContainersStyle = css(rowVerticallyCentered, {
+export const getRowButtonContainersStyle = (isSmall) => css(rowVerticallyCentered, {
   overflow: 'hidden',
   justifyContent: 'center',
-  height: '50px',
+  height: `${getRowHeight(isSmall)}px`,
   backgroundColor: 'transparent',
   '[data-should-be-full-width=true]': {
     width: '15%',
@@ -49,9 +54,9 @@ export const headerContainerStyle = css(rowVerticallyCentered, {
   backgroundColor: 'white',
 });
 
-export const dataColumnsStyle = css(rowVerticallyCentered, {
+export const getDataColumnsStyle = (isSmall) => css(rowVerticallyCentered, {
   justifyContent: 'flex-start',
-  height: '50px',
+  height: `${getRowHeight(isSmall)}px`,
   backgroundColor: 'white',
   '[data-should-be-full-width=true]': {
     width: '85%',

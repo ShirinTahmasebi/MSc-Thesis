@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import TableRowComponent from './table_row';
 import {
   headerButtonIconStyle,
-  rowButtonContainersStyle,
+  getRowButtonContainersStyle,
   headerButtonStyle,
   headerButtonTextStyle,
   createHeaderCellStyle,
   headerContainerStyle,
-  dataColumnsStyle,
+  getDataColumnsStyle,
   getRowRibbonStyle,
 } from "./table_style";
+import {css} from "glamor";
 
 export default class TableComponent extends Component {
   constructor() {
@@ -55,7 +56,7 @@ export default class TableComponent extends Component {
 
   getBodyRows = () => {
     const {headers, body} = this.state.data;
-    const {isEditable, isDeletable, isViewable, editCallback, deleteCallback, viewCallback} = this.props;
+    const {isEditable, isDeletable, isViewable, editCallback, deleteCallback, viewCallback, isRowSmall = false} = this.props;
 
     const cellWeights = headers.map(header => header[1]);
 
@@ -71,6 +72,7 @@ export default class TableComponent extends Component {
         editCallback={editCallback}
         deleteCallback={deleteCallback}
         viewCallback={viewCallback}
+        isRowSmall={isRowSmall}
       />;
     }));
 
@@ -83,6 +85,7 @@ export default class TableComponent extends Component {
         isEditable={false}
         isDeletable={false}
         isViewable={false}
+        isRowSmall={isRowSmall}
       />;
     }
 
@@ -105,22 +108,34 @@ export default class TableComponent extends Component {
   }
 
   render() {
-    const {shouldDisplayAddButton, isSelectable, isDeletable, isViewable} = this.props;
+    const {shouldDisplayAddButton, isSelectable, isDeletable, isViewable, shouldDisplayHeader = true, isRowSmall = false} = this.props;
     const headerCells = this.getHeaderExceptAddButton();
     const addButton = this.getAddButton();
     const bodyRows = this.getBodyRows();
     const shouldBeFullWidth = shouldDisplayAddButton || isSelectable || isDeletable || isViewable;
 
-    return (
-      <div style={{width: '80%'}}>
-        <div className={headerContainerStyle}>
-          {/* 80% of total width */}
-          <div className={dataColumnsStyle} data-should-be-full-width={shouldBeFullWidth}>{headerCells}</div>
-          {/* 20% of total width */}
-          <div className={rowButtonContainersStyle} data-should-be-full-width={shouldBeFullWidth}>{addButton}</div>
+    const style = css({width: '80%'}, this.props.style);
+
+    if (shouldDisplayHeader) {
+      return (
+        <div className={style}>
+          <div className={headerContainerStyle}>
+            {/* 80% of total width */}
+            <div className={getDataColumnsStyle(isRowSmall)}
+                 data-should-be-full-width={shouldBeFullWidth}>{headerCells}</div>
+            {/* 20% of total width */}
+            <div className={getRowButtonContainersStyle(isRowSmall)}
+                 data-should-be-full-width={shouldBeFullWidth}>{addButton}</div>
+          </div>
+          <div>{bodyRows}</div>
         </div>
-        <div>{bodyRows}</div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className={style}>
+          <div>{bodyRows}</div>
+        </div>
+      );
+    }
   }
 }

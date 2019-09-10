@@ -1,11 +1,28 @@
 import React, {Component} from 'react';
-import {createHeaderCellStyle, rowButtonContainersStyle} from "./table_style";
-import {dataRowsStyle, getRowMarginalRibbon, tableRowButtonStyle, tableRowContainerStyle} from "./table_row_style";
+import {createHeaderCellStyle, getRowButtonContainersStyle} from "./table_style";
+import {
+  getDataRowsStyle,
+  getRowMarginalRibbon,
+  getTableRowButtonStyle,
+  getTableRowContainerStyle,
+} from "./table_row_style";
 
 export default class TableRowComponent extends Component {
 
   render() {
-    const {cellWeights, cellData, rowIndex, shouldDisplayAddButton, isEditable, isDeletable, isViewable, editCallback, deleteCallback, viewCallback} = this.props;
+    const {
+      cellWeights,
+      cellData,
+      rowIndex,
+      shouldDisplayAddButton,
+      isEditable,
+      isDeletable,
+      isViewable,
+      editCallback,
+      deleteCallback,
+      viewCallback,
+      isRowSmall,
+    } = this.props;
     const cellWeightSum = cellWeights.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
     let dataCells = [];
@@ -24,7 +41,7 @@ export default class TableRowComponent extends Component {
 
     isViewable && buttons.push(
       <div
-        className={tableRowButtonStyle}
+        className={getTableRowButtonStyle(isRowSmall)}
         key={'View Button'}
         data-is-odd={rowIndex % 2 === 1}
         onClick={() => viewCallback(cellData)}
@@ -35,7 +52,7 @@ export default class TableRowComponent extends Component {
 
     isEditable && buttons.push(
       <div
-        className={tableRowButtonStyle}
+        className={getTableRowButtonStyle(isRowSmall)}
         key={'Edit Button'}
         data-is-odd={rowIndex % 2 === 1}
         onClick={() => editCallback(cellData)}
@@ -46,7 +63,7 @@ export default class TableRowComponent extends Component {
 
     isDeletable && buttons.push(
       <div
-        className={tableRowButtonStyle}
+        className={getTableRowButtonStyle(isRowSmall)}
         key={'Delete Button'}
         data-is-odd={rowIndex % 2 === 1}
         onClick={() => deleteCallback(cellData)}
@@ -56,11 +73,11 @@ export default class TableRowComponent extends Component {
     );
 
     return (
-      <div className={tableRowContainerStyle} data-is-odd={rowIndex % 2 === 1}>
-        <div className={dataRowsStyle} data-should-be-full-width={shouldBeFullWidth}>
+      <div className={getTableRowContainerStyle(isRowSmall)} data-is-odd={rowIndex % 2 === 1}>
+        <div className={getDataRowsStyle(isRowSmall)} data-should-be-full-width={shouldBeFullWidth}>
           {dataCells}
         </div>
-        <div className={rowButtonContainersStyle} data-should-be-full-width={shouldBeFullWidth}>
+        <div className={getRowButtonContainersStyle(isRowSmall)} data-should-be-full-width={shouldBeFullWidth}>
           {buttons}
         </div>
       </div>

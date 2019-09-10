@@ -1,16 +1,19 @@
 import {css} from 'glamor';
-import {getRowRibbonStyle, rowVerticallyCentered, dataColumnsStyle} from "./table_style";
+import {getRowRibbonStyle, rowVerticallyCentered, getDataColumnsStyle} from "./table_style";
 
 const rowButtonPadding = 1.5;
 const rowButtonMargin = 0;
-const rowTotalHeight = 50;
+const rowLargeTotalHeight = 50;
+const rowSmallTotalHeight = 30;
 
-export const tableRowContainerStyle = css({
+const getRowHeight = (isSmall) => isSmall ? rowSmallTotalHeight : rowLargeTotalHeight;
+
+export const getTableRowContainerStyle = (isSmall) => css({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'flex-start',
-  height: `${rowTotalHeight}px`,
+  height: `${getRowHeight(isSmall)}px`,
   border: '1px solid black',
   backgroundColor: 'white',
   width: '100%',
@@ -37,17 +40,17 @@ export const getRowMarginalRibbon = (cellWeightSum) => {
     });
 };
 
-export const dataRowsStyle = css(
-  dataColumnsStyle, {
+export const getDataRowsStyle = (isSmall) => css(
+  getDataColumnsStyle(isSmall), {
     backgroundColor: 'transparent',
   },
 );
 
-export const tableRowButtonStyle = css(
+export const getTableRowButtonStyle = (isSmall) => css(
   rowVerticallyCentered, {
     justifyContent: 'center',
     flex: 0.23,
-    height: `${rowTotalHeight - (rowButtonMargin * 2) - (rowButtonPadding * 2)}px`,
+    height: `${getRowHeight(isSmall) - (rowButtonMargin * 2) - (rowButtonPadding * 2)}px`,
     margin: `${rowButtonMargin}px`,
     paddingTop: `${rowButtonPadding}px`,
     paddingBottom: `${rowButtonPadding}px`,
