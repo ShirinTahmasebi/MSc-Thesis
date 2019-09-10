@@ -45,6 +45,8 @@ export default class AddAccessPolicyModalComponent extends Component {
       targetUsersList: [],
       selectedCheckBox: 'Only',
       currentIdInput: '',
+      sequentialAccessLimit: '1',
+      invalidAccessLimit: '1',
     };
     this.attributesRef = React.createRef();
   }
@@ -85,7 +87,7 @@ export default class AddAccessPolicyModalComponent extends Component {
           inputToTextRatio={1}
           dropDownProps={{
             options: this.actionOptions,
-            onChange: (stateValue) => alert(stateValue),
+            onChange: (stateValue) => this.onActionChanged(stateValue),
             defaultOption: this.defaultActionOption,
             placeholder: "Select an option",
           }}
@@ -97,7 +99,7 @@ export default class AddAccessPolicyModalComponent extends Component {
           inputToTextRatio={1}
           dropDownProps={{
             options: this.accessLevelOptions,
-            onChange: (stateValue) => alert(stateValue),
+            onChange: (stateValue) => this.onAccessLevelChanged(stateValue),
             defaultOption: this.defaultAccessLevelOption,
             placeholder: "Select an option",
           }}
@@ -114,14 +116,16 @@ export default class AddAccessPolicyModalComponent extends Component {
           type={"number"}
           labelWidth={'200'}
           inputToTextRatio={0.2}
-          onChange={(stateValue) => alert(stateValue)}
+          onChange={(stateValue) => this.onSequentialAccessLimitChanged(stateValue)}
+          initalValue={this.state.sequentialAccessLimit}
         />
         <InputTextComponent
           label={"Invalid Access Limit:"}
           type={"number"}
           labelWidth={'200'}
           inputToTextRatio={0.2}
-          onChange={(stateValue) => alert(stateValue)}
+          onChange={(stateValue) => this.onInvalidAccessLimitChanged(stateValue)}
+          initalValue={this.state.invalidAccessLimit}
         />
       </div>);
   };
@@ -129,7 +133,14 @@ export default class AddAccessPolicyModalComponent extends Component {
   addPolicyAndCloseModal = () => {
     // Each entry should define resource name, action, access level, target users
     (this.attributesRef.current.getFinalizedSelectedItems()).map(item => {
-      this.props.addPolicyCallback(item.name, this.state.action.value, this.state.accessLevel.value, this.state.targetUsersList);
+      this.props.addPolicyCallback(
+        item.name,
+        this.state.action.value,
+        this.state.accessLevel.value,
+        this.state.targetUsersList,
+        this.state.invalidAccessLimit,
+        this.state.sequentialAccessLimit,
+      );
     });
     this.props.onModalCloseClickedCallback();
   };
@@ -285,5 +296,21 @@ export default class AddAccessPolicyModalComponent extends Component {
     const targetUsersList = this.state.targetUsersList;
     targetUsersList.push([this.state.currentIdInput]);
     this.setState({targetUsersList, currentIdInput: ''});
+  };
+
+  onAccessLevelChanged = (accessLevel) => {
+    this.setState({accessLevel});
+  };
+
+  onActionChanged = (action) => {
+    this.setState({action});
+  };
+
+  onInvalidAccessLimitChanged = (invalidAccessLimit) => {
+    this.setState({invalidAccessLimit});
+  };
+
+  onSequentialAccessLimitChanged = (sequentialAccessLimit) => {
+    this.setState({sequentialAccessLimit});
   };
 };

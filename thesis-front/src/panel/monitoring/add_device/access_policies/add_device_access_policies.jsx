@@ -20,12 +20,7 @@ export default class AddDeviceAccessPoliciesFormComponent extends Component {
     };
 
     if (!props.stepFieldValues.accessPoliciesList) {
-      props.setMasterStateCallBack(props.componentKey, "accessPoliciesList", [
-        ["Resource 1", "Read", "Allow", "All"],
-        ["Resource 2", "Read", "Deny", <div onClick={() => alert("Open Modal of Ids")}>List of Ids</div>],
-        ["Resource 3", "Write", "Deny", "All"],
-        ["Resource 4", "Write", "Allow", "All"],
-      ]);
+      props.setMasterStateCallBack(props.componentKey, "accessPoliciesList", []);
     }
   }
 
@@ -72,7 +67,7 @@ export default class AddDeviceAccessPoliciesFormComponent extends Component {
       onModalCloseClickedCallback={this.closeAddDevicePolicyView}/>;
   };
 
-  addPolicy = (resourceName, action, accessLevel, targetUsersList) => {
+  addPolicy = (resourceName, action, accessLevel, targetUsersList, invalidAccessLimit, sequentialAccessLimit) => {
     const policiesList = this.props.stepFieldValues.accessPoliciesList;
     policiesList.push([resourceName, action, accessLevel, targetUsersList]);
     this.props.setMasterStateCallBack(this.props.componentKey, "accessPoliciesList", policiesList);
