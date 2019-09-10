@@ -6,6 +6,7 @@ import {
   containerStyle,
 } from "./dual_multi_selection_style";
 import DualMultiSelectionItemComponent from "./dual_multi_selection_item";
+import {css} from "glamor";
 
 export default class DualMultiSelectionComponent extends Component {
 
@@ -24,7 +25,7 @@ export default class DualMultiSelectionComponent extends Component {
     const buttons = this.getButtons();
     const selectedItemsList = this.getAllItemsList(false);
     return (
-      <div className={containerStyle}>
+      <div className={css(containerStyle, this.props.style)}>
         <div className={itemsListContainerStyle}>{allItemsList}</div>
         <div className={buttonsContainerStyle}>{buttons}</div>
         <div className={itemsListContainerStyle}>{selectedItemsList}</div>
