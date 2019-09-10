@@ -2,7 +2,7 @@
   "name": "thesis-front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ShirinTahmasebi.github.io/mscThesis",
+  "homepage": "http://ShirinTahmasebi.github.io/MSc-Thesis",
   "dependencies": {
     "font-awesome": "^4.7.0",
     "glamor": "^2.20.40",
