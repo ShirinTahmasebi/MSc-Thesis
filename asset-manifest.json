@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/MSc-Thesis/static/css/main.3486d151.chunk.css",
+    "main.js": "/MSc-Thesis/static/js/main.8b739621.chunk.js",
+    "main.js.map": "/MSc-Thesis/static/js/main.8b739621.chunk.js.map",
+    "runtime~main.js": "/MSc-Thesis/static/js/runtime~main.260d5843.js",
+    "runtime~main.js.map": "/MSc-Thesis/static/js/runtime~main.260d5843.js.map",
+    "static/css/2.04d68eec.chunk.css": "/MSc-Thesis/static/css/2.04d68eec.chunk.css",
+    "static/js/2.ecf18ec4.chunk.js": "/MSc-Thesis/static/js/2.ecf18ec4.chunk.js",
+    "static/js/2.ecf18ec4.chunk.js.map": "/MSc-Thesis/static/js/2.ecf18ec4.chunk.js.map",
+    "index.html": "/MSc-Thesis/index.html",
+    "precache-manifest.bb241890fb4d4738eaeb8b4b169498b0.js": "/MSc-Thesis/precache-manifest.bb241890fb4d4738eaeb8b4b169498b0.js",
+    "service-worker.js": "/MSc-Thesis/service-worker.js",
+    "static/css/2.04d68eec.chunk.css.map": "/MSc-Thesis/static/css/2.04d68eec.chunk.css.map",
+    "static/css/main.3486d151.chunk.css.map": "/MSc-Thesis/static/css/main.3486d151.chunk.css.map",
+    "static/media/font-awesome.min.css": "/MSc-Thesis/static/media/fontawesome-webfont.fee66e71.woff"
+  }
+}
