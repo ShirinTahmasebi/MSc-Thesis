@@ -1,4 +1,5 @@
 import {css} from 'glamor';
+import {rowVerticallyCentered} from "../../../../components/table/table_style";
 
 const formHeight = '350px';
 
@@ -23,3 +24,11 @@ export const thresholdPartStyle = css(fullWidthStyle, {
 });
 
 export const legendTextStyle = css({color: '#1261A0'});
+
+export const containerStyle = css(rowVerticallyCentered, {width: '100%'});
+
+export const dualMultiSelectStyle = {
+  margin: '10px',
+  width: 'calc(100% - 20px)',
+  height: 'calc(100% - 20px)',
+};

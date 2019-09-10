@@ -49,9 +49,9 @@ export default class AddDeviceMonitoringPoliciesFormComponent extends Component 
         ]}
         body={this.props.stepFieldValues.policiesList}
         shouldDisplayAddButton={true}
-        isEditable={true}
+        isEditable={false}
         isDeletable={true}
-        isViewable={true}
+        isViewable={false}
         addButtonCallback={() => this.setState({currentView: VIEWS.ADD_POLICY, showModal: true})}
         addButtonText={'Add Policy'}
         editCallback={(rowData) => alert(rowData)}

@@ -46,7 +46,7 @@ export const modalButtonContainerStartSpaceStyle = css({flex: '0.85'});
 
 export const modalButtonContainerEndSpaceStyle = css({flex: '0.05'});
 
-export const contentContainerStyle = css(rowVerticallyCentered, {
+export const contentContainerStyle = css({
   width: `calc(100% - ${modalPadding * 2}px)`,
   padding: `${modalPadding}px`,
 });
