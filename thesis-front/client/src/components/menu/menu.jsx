@@ -60,6 +60,9 @@ class Menu extends Component {
           <MenuItem itemIconClassName={"fa fa-gear"} id='SettingItem' onClick={() => this.props.onItemClicked(5)}>
             Setting
           </MenuItem>
+          <MenuItem itemIconClassName={"fa fa-first-order"} id='TestItem' onClick={() => this.props.onItemClicked(6)}>
+            Test Solidity
+          </MenuItem>
         </ul>
       </div>
     );

@@ -5,6 +5,7 @@ import {MonitoringPanelComponent} from "./monitoring/monitoring_panel";
 import {SearchPanelComponent} from "./search/search_panel";
 import {ComponentWithLoading} from "../components/loading/loading_hoc";
 import {LoadingComponent} from "../components/loading/loading";
+import {SmartContractTestPanelComponent} from "./test/smart_contract_test_panel";
 
 const MAIN_HEADER_HEIGHT = 60;
 const MAIN_HEADER_WIDTH = 60;
@@ -80,6 +81,8 @@ export class Panel extends Component {
       container = <MonitoringPanelComponent/>;
     } else if (this.state.menuItemSelected === 2) {
       container = <SearchPanelComponent/>;
+    } else if (this.state.menuItemSelected === 6) {
+      container = <SmartContractTestPanelComponent/>;
     } else {
       container = <LoadingComponent/>;
     }
