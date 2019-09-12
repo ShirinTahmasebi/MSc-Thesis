@@ -4,8 +4,6 @@
   "private": true,
   "homepage": "http://ShirinTahmasebi.github.io/MSc-Thesis",
   "dependencies": {
-    // This package has been deprecated. New package is named to "@truffle/hdwallet-provider"
-    // But the deprecated package is intentionally used due to a weird bug in new package.
     "truffle-hdwallet-provider": "1.0.5",
     "font-awesome": "^4.7.0",
     "glamor": "^2.20.40",
@@ -40,5 +38,10 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1"
+  },
+  "comments": {
+    "dependencies": {
+      "truffle-hdwallet-provider": "This package has been deprecated. New package is named to \"@truffle/hdwallet-provider\". But the deprecated package is intentionally used due to a weird bug in new package."
+    }
   }
 }
