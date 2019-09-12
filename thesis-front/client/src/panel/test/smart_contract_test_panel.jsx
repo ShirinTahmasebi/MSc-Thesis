@@ -3,16 +3,17 @@ import getWeb3 from "../../utils/getWeb3";
 import SimpleStorageContract from "../../contracts/SimpleStorage.json";
 
 export class SmartContractTestPanelComponent extends Component {
-  state = {storageValue: 0, web3: null, accounts: null, contract: null};
+  state = {storageValue: 0, web3: null, accounts: null, contract: null, shouldUseMetaMaskProvider: false};
 
   componentDidMount = async () => {
     try {
       // Get network provider and web3 instance.
-      const web3 = await getWeb3();
+      const web3 = await getWeb3(this.state.shouldUseMetaMaskProvider);
 
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
 
+      console.log(accounts);
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = SimpleStorageContract.networks[networkId];

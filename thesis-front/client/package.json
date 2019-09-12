@@ -4,13 +4,16 @@
   "private": true,
   "homepage": "http://ShirinTahmasebi.github.io/MSc-Thesis",
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
-    "web3": "^1.0.0-beta.37",
+    // This package has been deprecated. New package is named to "@truffle/hdwallet-provider"
+    // But the deprecated package is intentionally used due to a weird bug in new package.
+    "truffle-hdwallet-provider": "1.0.5",
     "font-awesome": "^4.7.0",
     "glamor": "^2.20.40",
-    "react-dropdown": "^1.6.4"
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-dropdown": "^1.6.4",
+    "react-scripts": "2.1.1",
+    "web3": "^1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
