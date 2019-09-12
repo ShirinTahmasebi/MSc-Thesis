@@ -36,10 +36,12 @@ const getWeb3 = (shouldUseMetaMaskProvider) => {
   else {
     const HDWalletProvider = require("truffle-hdwallet-provider");
     const Web3 = require("web3");
+    // TODO: Remove hard coded mnemonic
+    // TODO: Enable using provider via mnemonic and account index
+    // TODO: Enable using provider via private key
     const mnemonic = "banner push rocket mutual age agree thrive private goat video anchor mercy"; // 12 word mnemonic
     let provider = new HDWalletProvider(mnemonic, "http://localhost:7545");
-    const web3 = new Web3(provider);
-    return web3;
+    return new Web3(provider);
   }
 };
 

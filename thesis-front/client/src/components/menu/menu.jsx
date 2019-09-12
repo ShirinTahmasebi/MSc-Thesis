@@ -40,6 +40,7 @@ class Menu extends Component {
   onMouseLeave = () => this.setState({openMenu: false});
 
   render() {
+    // TODO: Convert this to a standalone component  - Remove application specific items from here
     return (
       <div className={menuContainerStyle} data-should-open={this.state.openMenu}
            onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
@@ -57,6 +58,7 @@ class Menu extends Component {
           <MenuItem itemIconClassName={"fa fa-wrench"} id='GeneralItem' onClick={() => this.props.onItemClicked(4)}>
             General
           </MenuItem>
+          {/* TODO: Add web3 provider selection section */}
           <MenuItem itemIconClassName={"fa fa-gear"} id='SettingItem' onClick={() => this.props.onItemClicked(5)}>
             Setting
           </MenuItem>
