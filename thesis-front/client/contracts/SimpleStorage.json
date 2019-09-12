@@ -30,15 +30,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/truffle-test/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/truffle-test/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x27a650f3e92e6057b3f1239be6fc335fb57d75c570d7274d8902eb0b04e48014\",\"urls\":[\"bzzr://72f63578772843cf2f8ae2bce4a69c027cbfe7f3e04cc4af14ca023bdc3c35c2\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060bd8061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a7230582021de8af3b3049427324ef08cceb94323f0c9945f9310c5532562b17d76124e110029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a7230582021de8af3b3049427324ef08cceb94323f0c9945f9310c5532562b17d76124e110029",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x27a650f3e92e6057b3f1239be6fc335fb57d75c570d7274d8902eb0b04e48014\",\"urls\":[\"bzzr://72f63578772843cf2f8ae2bce4a69c027cbfe7f3e04cc4af14ca023bdc3c35c2\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060bd8061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820779ca9fe117e5cf6fe8713b98b4eecadce2dd7b023f2ec7ae89ed3f0a7005dae0029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820779ca9fe117e5cf6fe8713b98b4eecadce2dd7b023f2ec7ae89ed3f0a7005dae0029",
   "sourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;",
   "deployedSourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;;;;;;;;;;;;;;;;;;72:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;72:53:1;;;;;;;;;;;;;;;;;:::i;:::-;;129:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;72:53;119:1;106:10;:14;;;;72:53;:::o;129:70::-;165:4;184:10;;177:17;;129:70;:::o",
   "source": "pragma solidity ^0.5.0;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
-  "sourcePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/truffle-test/contracts/SimpleStorage.sol",
+  "sourcePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/truffle-test/contracts/SimpleStorage.sol",
+    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         79
@@ -290,7 +290,7 @@
     "src": "0:202:1"
   },
   "legacyAST": {
-    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/truffle-test/contracts/SimpleStorage.sol",
+    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         79
@@ -549,18 +549,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xEc6e0b9A000bB8715BDC329d170362f1EF29DcFd",
-      "transactionHash": "0xbdd83f82703a6d8e15ef2f7999a480ee2834c7f3cee3f1e403d89e42fbaf629e"
-    },
-    "1568216227913": {
-      "events": {},
-      "links": {},
-      "address": "0x8D99eA66Fb17c0315735F18C97E7c3A7BA72e679",
-      "transactionHash": "0x2557630930d5fc452e20279c72befc02045dd2577709390d0352e82f36beb95d"
+      "address": "0x31FeE8bc03ae0A04aDd948e788218e8215854E70",
+      "transactionHash": "0x352e63c90d4a2d30ea6de46d64251ae3e9bdc13b433ed29a5d43c505fbf1a8f8"
     }
   },
   "schemaVersion": "3.0.15",
-  "updatedAt": "2019-09-11T17:11:36.449Z",
+  "updatedAt": "2019-09-12T17:15:29.678Z",
   "devdoc": {
     "methods": {}
   },

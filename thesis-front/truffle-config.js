@@ -9,6 +9,11 @@ module.exports = {
   //     port: 8545
   //   }
   // }
+  compilers: {
+    solc: {
+      version: "0.4.24",
+    },
+  },
   networks: {
     development: {
       host: "127.0.0.1",
