@@ -30,12 +30,12 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x27a650f3e92e6057b3f1239be6fc335fb57d75c570d7274d8902eb0b04e48014\",\"urls\":[\"bzzr://72f63578772843cf2f8ae2bce4a69c027cbfe7f3e04cc4af14ca023bdc3c35c2\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060bd8061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820779ca9fe117e5cf6fe8713b98b4eecadce2dd7b023f2ec7ae89ed3f0a7005dae0029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820779ca9fe117e5cf6fe8713b98b4eecadce2dd7b023f2ec7ae89ed3f0a7005dae0029",
+  "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":{\"keccak256\":\"0xd4b7e5593eeef1b24cb7f96c41b54296d71c60bcf470bed58f5a266427b067fb\",\"urls\":[\"bzzr://077a6990c8ccc9ce0f33a9d6418c10b0d39ff7fdce26278380a360a99cb026cd\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060df8061001f6000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a72305820ecf9314958cddd9fc60db8d543b51ef1615115806ad413076a4d55f6aceeb5f40029",
+  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a72305820ecf9314958cddd9fc60db8d543b51ef1615115806ad413076a4d55f6aceeb5f40029",
   "sourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;",
-  "deployedSourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;;;;;;;;;;;;;;;;;;72:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;72:53:1;;;;;;;;;;;;;;;;;:::i;:::-;;129:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;72:53;119:1;106:10;:14;;;;72:53;:::o;129:70::-;165:4;184:10;;177:17;;129:70;:::o",
-  "source": "pragma solidity ^0.5.0;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
+  "deployedSourceMap": "25:176:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;72:53;;8:9:-1;5:2;;;30:1;27;20:12;5:2;72:53:1;;;;;;;;;;;;;;;;;;;;;;;;;;129:70;;8:9:-1;5:2;;;30:1;27;20:12;5:2;129:70:1;;;;;;;;;;;;;;;;;;;;;;;72:53;119:1;106:10;:14;;;;72:53;:::o;129:70::-;165:4;184:10;;177:17;;129:70;:::o",
+  "source": "pragma solidity 0.4.24;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
   "sourcePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
   "ast": {
     "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
@@ -51,9 +51,8 @@
         "id": 58,
         "literals": [
           "solidity",
-          "^",
-          "0.5",
-          ".0"
+          "0.4",
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:23:1"
@@ -154,7 +153,8 @@
             "documentation": null,
             "id": 70,
             "implemented": true,
-            "kind": "function",
+            "isConstructor": false,
+            "isDeclaredConst": false,
             "modifiers": [],
             "name": "set",
             "nodeType": "FunctionDefinition",
@@ -191,6 +191,7 @@
               ],
               "src": "84:8:1"
             },
+            "payable": false,
             "returnParameters": {
               "id": 64,
               "nodeType": "ParameterList",
@@ -233,7 +234,8 @@
             "documentation": null,
             "id": 78,
             "implemented": true,
-            "kind": "function",
+            "isConstructor": false,
+            "isDeclaredConst": true,
             "modifiers": [],
             "name": "get",
             "nodeType": "FunctionDefinition",
@@ -243,6 +245,7 @@
               "parameters": [],
               "src": "141:2:1"
             },
+            "payable": false,
             "returnParameters": {
               "id": 74,
               "nodeType": "ParameterList",
@@ -303,9 +306,8 @@
         "id": 58,
         "literals": [
           "solidity",
-          "^",
-          "0.5",
-          ".0"
+          "0.4",
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:23:1"
@@ -406,7 +408,8 @@
             "documentation": null,
             "id": 70,
             "implemented": true,
-            "kind": "function",
+            "isConstructor": false,
+            "isDeclaredConst": false,
             "modifiers": [],
             "name": "set",
             "nodeType": "FunctionDefinition",
@@ -443,6 +446,7 @@
               ],
               "src": "84:8:1"
             },
+            "payable": false,
             "returnParameters": {
               "id": 64,
               "nodeType": "ParameterList",
@@ -485,7 +489,8 @@
             "documentation": null,
             "id": 78,
             "implemented": true,
-            "kind": "function",
+            "isConstructor": false,
+            "isDeclaredConst": true,
             "modifiers": [],
             "name": "get",
             "nodeType": "FunctionDefinition",
@@ -495,6 +500,7 @@
               "parameters": [],
               "src": "141:2:1"
             },
+            "payable": false,
             "returnParameters": {
               "id": 74,
               "nodeType": "ParameterList",
@@ -543,18 +549,18 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x31FeE8bc03ae0A04aDd948e788218e8215854E70",
-      "transactionHash": "0x352e63c90d4a2d30ea6de46d64251ae3e9bdc13b433ed29a5d43c505fbf1a8f8"
+      "address": "0xB28891d1Dad13e265A86c1ba506d5305E2F024fc",
+      "transactionHash": "0x8a6735ba197113e777c496617c51af018732d4792ca41128f798bb8b4b1c2c3b"
     }
   },
   "schemaVersion": "3.0.15",
-  "updatedAt": "2019-09-12T17:15:29.678Z",
+  "updatedAt": "2019-09-14T03:09:00.557Z",
   "devdoc": {
     "methods": {}
   },
