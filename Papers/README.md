@@ -16,4 +16,12 @@
 
 ### Scalable Ethereum
 
+| Title|DOI|Main Contributions|Summarized|
+|---------------|:-:|:---------------------------------------------------------------------------------------:|:---:|
+|<sub>Management and Monitoring of IoT Devices Using Blockchain</sub>|<sub>10.3390/s19040856</sub>|<sub></sub>|<sub>No</sub>|
+|<sub>Healthcare Blockchain System Using Smart Contracts for Secure Automated Remote Patient Monitoring</sub>|<sub>10.1007/s10916-018-0982-x</sub>|<sub></sub>|<sub>No</sub>|
+|<sub>Toward Application of Blockchain for Improved Health Records Management and Patient Care</sub>|<sub>10.30953/bhty.v2.37</sub>|<sub></sub>|<sub>No</sub>|
+|<sub>MedRec: Using Blockchain for Medical Data Access and Permission Management</sub>|<sub>10.1109/OBD.2016.11</sub>|<sub></sub>|<sub>No</sub>|
+|<sub>A Fog Computing Architecture to Share Sensor Data by Means of Blockchain Functionality</sub>|<sub>10.1109/ICFC.2019.00013</sub>|<sub></sub>|<sub>No</sub>|
+|<sub></sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
 
