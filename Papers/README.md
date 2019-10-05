@@ -4,6 +4,7 @@
 
 ### Relay Nodes
 
+
 | Title|DOI|Main Contributions|Summarized|
 |---------------|:-:|:---------------------------------------------------------------------------------------:|:---:|
 |<sub>A Novel Scheme for an Energy Efficient Internet of Things Based on Wireless Sensor Networks</sub>|<sub>10.3390/s151128603</sub>|<sub></sub>|<sub>No</sub>|
@@ -12,6 +13,17 @@
 |<sub>Scalable Video Streaming Relay for Smart Mobile Devices in Wireless Networks</sub>|<sub>10.1371/journal.pone.0167403</sub>|<sub></sub>|<sub>No</sub>|
 |<sub>Wireless Sensor Network Deployment for Water Use Efficiency in Irrigation</sub>|<sub>10.1145/1435473.1435487</sub>|<sub></sub>|<sub>No</sub>|
 |<sub></sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
+
+#### Node Placement Related Works
+
+
+| Title|DOI|Main Contributions|Summarized|
+|---------------|:-:|:---------------------------------------------------------------------------------------:|:---:|
+|<sub>A Novel Control Plane Optimization Strategy for Important Nodes in SDN-IoT Networks</sub>|<sub>10.1109/JIOT.2018.2888504</sub>|<sub>Due to the fact that using a centralized control plane may incur a bottleneck, in this paper a two-level hierarchy control framework is proposed to have a decentralized architecture. These two layers are called master and slave and the goal is to optimize controller placement in slave layer. The optimization objective is to minimize control delay and control cost of critical nodes. Node criticality is evaluated by Fuzzy AHP based on several criteria and factors: device attributes (type, location, and owner), service attributes (delay requirements, privacy requirements, the service user and service profit) and control frequency (number of communications with the controller at one given time). Finally, this optimization problem is solved by Particle Swarm Optimization (PSO) algorithm.</sub>|<sub>No</sub>|
+|<sub>The controller placement problem for wireless SDN</sub>|<sub>10.1007/s11276-019-02077-5</sub>|<sub>In this paper the controller placement problem is investigated in a wireless SDN. Metrics which are considered in the proposed method are: 1) Link failure probability, 2) Average throughput in southbound interface 3) Transparency which is introduced as the latency caused by interference from controllers, 4) Latency. One of their contributions is that although the Euclidean distance is usually used to measure latency, a much more complex model is used to reflect the effects of collision and interference on latency. Finally, hill climbing with simulated annealing is used to find an efficient solution.</sub>|<sub>No</sub>|
+|<sub>SDN Controller Placement With Delay-Overhead Balancing in Wireless Edge Networks</sub>|<sub>10.1109/TNSM.2018.2876064</sub>|<sub>Qin et al. studied the controller placement problem in edge networks. Since increasing the distance between controllers and nodes increases delay significantly, a scattered placement of controllers across the network would reduce both the distance and delay. But scattered placement may increase controller synchronization overhead. So, delay and controller synchronization overhead are 2 contradicting objectives. On the other hand, in the proposed model, there are two strategies for controller synchronization: leaderless, leader-based. Finally, the optimization objective is to minimize delay and controller synchronization overhead for both strategies. </sub>|<sub>No</sub>|
+|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
+
 
 
 ### Scalable Blockchain
