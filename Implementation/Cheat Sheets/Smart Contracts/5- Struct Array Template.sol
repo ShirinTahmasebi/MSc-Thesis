@@ -2,6 +2,9 @@ pragma experimental ABIEncoderV2;
 pragma solidity ^0.5.12;
 
 contract StructArrayTemplate {
+    // It is not possible to get array length. 
+    // So, to be able to handle index out of bound (invalid opcode) a new variable should be
+    // declared to keep track of students number.
     Student[] students;
     
     struct Student {
