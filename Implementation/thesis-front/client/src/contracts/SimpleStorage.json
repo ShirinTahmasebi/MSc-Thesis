@@ -30,15 +30,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol\":{\"keccak256\":\"0xd4b7e5593eeef1b24cb7f96c41b54296d71c60bcf470bed58f5a266427b067fb\",\"urls\":[\"bzzr://077a6990c8ccc9ce0f33a9d6418c10b0d39ff7fdce26278380a360a99cb026cd\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060df8061001f6000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a72305820ecf9314958cddd9fc60db8d543b51ef1615115806ad413076a4d55f6aceeb5f40029",
-  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a72305820ecf9314958cddd9fc60db8d543b51ef1615115806ad413076a4d55f6aceeb5f40029",
+  "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol\":{\"keccak256\":\"0xd4b7e5593eeef1b24cb7f96c41b54296d71c60bcf470bed58f5a266427b067fb\",\"urls\":[\"bzzr://077a6990c8ccc9ce0f33a9d6418c10b0d39ff7fdce26278380a360a99cb026cd\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060df8061001f6000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058201b8c94aec34a53d0088c9e9754d2e1ed5fae02ee1df26235a616ee26e4cb9d4f0029",
+  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146078575b600080fd5b348015605957600080fd5b5060766004803603810190808035906020019092919050505060a0565b005b348015608357600080fd5b50608a60aa565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a723058201b8c94aec34a53d0088c9e9754d2e1ed5fae02ee1df26235a616ee26e4cb9d4f0029",
   "sourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;",
   "deployedSourceMap": "25:176:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;72:53;;8:9:-1;5:2;;;30:1;27;20:12;5:2;72:53:1;;;;;;;;;;;;;;;;;;;;;;;;;;129:70;;8:9:-1;5:2;;;30:1;27;20:12;5:2;129:70:1;;;;;;;;;;;;;;;;;;;;;;;72:53;119:1;106:10;:14;;;;72:53;:::o;129:70::-;165:4;184:10;;177:17;;129:70;:::o",
   "source": "pragma solidity 0.4.24;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
-  "sourcePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
+  "sourcePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
+    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         79
@@ -293,7 +293,7 @@
     "src": "0:202:1"
   },
   "legacyAST": {
-    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/thesis-front/contracts/SimpleStorage.sol",
+    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         79
@@ -555,12 +555,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xB28891d1Dad13e265A86c1ba506d5305E2F024fc",
-      "transactionHash": "0x8a6735ba197113e777c496617c51af018732d4792ca41128f798bb8b4b1c2c3b"
+      "address": "0xbD12aDC30972D7c5D04e77b6e2567ac84523a5ee",
+      "transactionHash": "0x554849e2e21701e8ddbbc3d4b7ec3af776d9e5d245e88b73ff821229b9dd3396"
     }
   },
   "schemaVersion": "3.0.15",
-  "updatedAt": "2019-09-14T03:09:00.557Z",
+  "updatedAt": "2019-10-12T23:49:43.821Z",
   "devdoc": {
     "methods": {}
   },
