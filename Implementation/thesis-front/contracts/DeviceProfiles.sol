@@ -23,7 +23,7 @@ contract DeviceDefaultAttribute{
     int256 _maximumThresold, uint256 _maximumViolationCount, Criticality _maximumCriticality
   ) public;
 
-  function getDefaulltAttributeIndicesByModelName(string memory _modelName) public view returns (string memory);
+  function getDefaulltAttributeIndicesByModelName(string memory _modelName) public view returns (Attribute[] memory);
 }
 
 contract DeviceProfiles {
@@ -58,6 +58,9 @@ contract DeviceProfiles {
   // Store & fetch devices
   mapping (uint => Device) public devices;
 
+  // Test
+  uint public attrCount;
+
   constructor (address _addy) public {
     called_address = DeviceDefaultAttribute(_addy);
 
@@ -85,7 +88,7 @@ contract DeviceProfiles {
     );
   }
 
-  function callDeviceDefaultAttributeMethod() public view returns(string memory){
+  function callDeviceDefaultAttributeMethod() public view returns (DeviceDefaultAttribute.Attribute[] memory){
     return called_address.getDefaulltAttributeIndicesByModelName("RaspberryPi");
   }
 
@@ -132,12 +135,13 @@ contract DeviceProfiles {
   }
 
   function getDeviceAttributes (uint _deviceId)
-  public view
+  public
   returns (
     DeviceDefaultAttribute.Attribute[] memory
   ){
     Device storage device = devices[_deviceId];
     uint size = device.attributeCount;
+    attrCount = size;
     DeviceDefaultAttribute.Attribute[] memory attributes = new DeviceDefaultAttribute.Attribute[](size);
     for (uint i = 1; i <= size; i++) {
       attributes[i - 1] = device.attributes[i];

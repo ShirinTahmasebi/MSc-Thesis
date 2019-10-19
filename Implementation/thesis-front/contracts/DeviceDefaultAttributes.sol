@@ -1,3 +1,4 @@
+pragma experimental ABIEncoderV2;
 pragma solidity ^0.5.12;
 
 contract DeviceDefaultAttributes {
@@ -22,7 +23,7 @@ contract DeviceDefaultAttributes {
   mapping(uint => Attribute) public defaultAttributes;
 
   // Get all default attributes which belong to a specific model
-  mapping(bytes32 => string) public defaulltAttributeIndicesByModelName;
+  mapping(bytes32 => Attribute[]) public defaulltAttributeIndicesByModelName;
 
   // Store default attributes count
   uint defaultAttributeCount;
@@ -84,15 +85,18 @@ contract DeviceDefaultAttributes {
       _maximumThresold, _maximumViolationCount, _maximumCriticality
     );
 
-    // Add attrbute index to its model
-    defaulltAttributeIndicesByModelName[stringToBytes32(_modelName)] = strConcat(
-      defaulltAttributeIndicesByModelName[stringToBytes32(_modelName)],
-      ":",
-      uint2str(defaultAttributeCount)
+    // Create Attribute
+    Attribute memory attribute = Attribute(
+      _attributeName,
+      _minimumThresold, _minimumViolationCount, _minimumCriticality,
+      _maximumThresold, _maximumViolationCount, _maximumCriticality
     );
+
+    // Add attrbute index to its model
+    defaulltAttributeIndicesByModelName[stringToBytes32(_modelName)].push(attribute);
   }
 
-  function getDefaulltAttributeIndicesByModelName(string memory _modelName) public view returns (string memory) {
+  function getDefaulltAttributeIndicesByModelName(string memory _modelName) public view returns (Attribute[] memory) {
     return defaulltAttributeIndicesByModelName[stringToBytes32(_modelName)];
   }
 
