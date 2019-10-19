@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
 import getWeb3 from "../../utils/getWeb3";
 import SimpleStorageContract from "../../contracts/SimpleStorage.json";
+import DeviceDefaultAttributesContract from "../../contracts/DeviceDefaultAttributes.json";
+import DeviceProfilesContract from "../../contracts/DeviceProfiles.json";
 
 export class SmartContractTestPanelComponent extends Component {
-  state = {storageValue: 0, web3: null, accounts: null, contract: null, shouldUseMetaMaskProvider: false};
+  state = {
+    web3: null,
+    accounts: null,
+    simpleStorageContract: null,
+    deviceProfilesContract: null,
+    deviceDefaultAttributesContract: null,
+    contractTestValueSimpleStorage: 0,
+    contractTestValueDeviceProfile: 0,
+    contractTestValueDeviceDefaultAttributes: 0,
+    shouldUseMetaMaskProvider: false,
+  };
 
   componentDidMount = async () => {
     try {
@@ -12,19 +24,41 @@ export class SmartContractTestPanelComponent extends Component {
 
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-
       console.log(accounts);
+
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
-      const instance = new web3.eth.Contract(
+
+      const simpleStorageDeployedNetwork = SimpleStorageContract.networks[networkId];
+      const deviceProfilesDeployedNetwork = DeviceProfilesContract.networks[networkId];
+      const deviceDefaultAttributesDeployedNetwork = DeviceDefaultAttributesContract.networks[networkId];
+
+      const simpleStorageContractInstance = new web3.eth.Contract(
         SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address,
+        simpleStorageDeployedNetwork && simpleStorageDeployedNetwork.address,
+      );
+
+      const deviceProfilesContractInstance = new web3.eth.Contract(
+        DeviceProfilesContract.abi,
+        deviceProfilesDeployedNetwork && deviceProfilesDeployedNetwork.address,
+      );
+
+      const deviceDefaultAttributesContractInstance = new web3.eth.Contract(
+        DeviceDefaultAttributesContract.abi,
+        deviceDefaultAttributesDeployedNetwork && deviceDefaultAttributesDeployedNetwork.address,
       );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({web3, accounts, contract: instance}, this.runExample);
+      this.setState({
+          web3,
+          accounts,
+          simpleStorageContract: simpleStorageContractInstance,
+          deviceProfilesContract: deviceProfilesContractInstance,
+          deviceDefaultAttributesContract: deviceDefaultAttributesContractInstance,
+        },
+        this.runExample,
+      );
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -35,16 +69,27 @@ export class SmartContractTestPanelComponent extends Component {
   };
 
   runExample = async () => {
-    const {accounts, contract} = this.state;
+    const {
+      accounts,
+      simpleStorageContract,
+      deviceProfilesContract,
+      deviceDefaultAttributesContract,
+    } = this.state;
 
     // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({from: accounts[0]});
+    await simpleStorageContract.methods.set(5).send({from: accounts[0]});
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+    // Get some test values from these contracts to prove it worked.
+    const simpleStorageResponse = await simpleStorageContract.methods.get().call();
+    const deviceProfileResponse = await deviceProfilesContract.methods.callDeviceDefaultAttributeMethod().call();
+    const deviceDefaultAttributeResponse = await deviceDefaultAttributesContract.methods.getAllAttributeCount().call();
 
-    // Update state with the result.
-    this.setState({storageValue: response});
+    // Update state with the results.
+    this.setState({
+      contractTestValueSimpleStorage: simpleStorageResponse,
+      contractTestValueDeviceProfile: deviceProfileResponse,
+      contractTestValueDeviceDefaultAttributes: deviceDefaultAttributeResponse,
+    });
   };
 
   render() {
@@ -72,7 +117,9 @@ export class SmartContractTestPanelComponent extends Component {
         <p>
           Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
-        <div>The stored value is: {this.state.storageValue}</div>
+        <div>Test Simple Storage Contract: {this.state.contractTestValueSimpleStorage}</div>
+        <div>Test Device Profile Contract: {this.state.contractTestValueDeviceProfile}</div>
+        <div>Test Device Default Attribute Contract: {this.state.contractTestValueDeviceDefaultAttributes}</div>
       </div>
     );
   };
