@@ -87,6 +87,7 @@ export class MonitoringPanelComponent extends Component {
           ["Username", 2],
         ]}
         body={[
+          // TODO: Get device list from smart contract
           ["Device 1", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User1"],
           ["Device 2", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User2"],
           ["Device 3", "0a6188ec-b156-4d48-9ad3-e6564f5dd57e", "User3"],
@@ -160,6 +161,8 @@ export class MonitoringPanelComponent extends Component {
   };
 
   submitCallback = async (stepsState) => {
+    // TODO: Form input validation
+    // TODO: Error handling
     const {
       accounts,
       deviceProfilesContract,
@@ -176,6 +179,7 @@ export class MonitoringPanelComponent extends Component {
       let maxThreshold = 0;
       let minViolationCount = 0;
       let maxViolationCount = 0;
+      // TODO: Revise smart contracts
       let minCritically = 0;
       let maxCritically = 0;
 
