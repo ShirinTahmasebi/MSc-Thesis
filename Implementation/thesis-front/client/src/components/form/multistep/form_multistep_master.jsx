@@ -76,7 +76,7 @@ export default class FormMultiStepMasterComponent extends Component {
   goToNextStep = () => {
     const {currentStepNumber, stepsCount} = this.state;
     if (currentStepNumber === stepsCount - 1) {
-      // TODO: Submit data and exit from form
+      this.props.submitCallback(this.state.stepsStates);
     } else {
       this.setState({currentStepNumber: currentStepNumber + 1});
     }

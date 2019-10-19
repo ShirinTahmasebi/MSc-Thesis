@@ -66,9 +66,8 @@ export class SmartContractTestPanelComponent extends Component {
     const simpleStorageResponse = await simpleStorageContract.methods.get().call();
     const deviceDefaultAttributeResponse = await deviceDefaultAttributesContract.methods.getAllAttributeCount().call();
 
-    await deviceProfilesContract.methods.addAttributeToDeviceById(1, "Attribute Name", 100, 2, 0, 200, 2, 0).send({from: accounts[0]});
+    // await deviceProfilesContract.methods.addAttributeToDeviceById(1, "Attribute Name", 100, 2, 0, 200, 2, 0).send({from: accounts[0]});
     let deviceProfileResponse = await deviceProfilesContract.methods.getDeviceAttributes(1).call();
-    deviceProfileResponse = deviceProfileResponse.length;
 
     // Update state with the results.
     this.setState({
