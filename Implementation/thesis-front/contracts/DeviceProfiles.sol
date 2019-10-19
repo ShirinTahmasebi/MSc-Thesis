@@ -58,12 +58,6 @@ contract DeviceProfiles {
   // Store & fetch devices
   mapping (uint => Device) public devices;
 
-  // Test
-  string public name;
-  uint public attr;
-  DeviceDefaultAttribute.Attribute public testAttList;
-  DeviceDefaultAttribute.Attribute public testAttList2;
-
   constructor (address _addy) public {
     called_address = DeviceDefaultAttribute(_addy);
 
