@@ -73,6 +73,16 @@ contract DeviceProfiles {
       2,
       DeviceDefaultAttribute.Criticality.LOW
     );
+    addAttributeToDeviceById(
+      1,
+      "attribute name 2",
+      200,
+      2,
+      DeviceDefaultAttribute.Criticality.LOW,
+      400,
+      2,
+      DeviceDefaultAttribute.Criticality.LOW
+    );
   }
 
   function callDeviceDefaultAttributeMethod() public view returns(string memory){
