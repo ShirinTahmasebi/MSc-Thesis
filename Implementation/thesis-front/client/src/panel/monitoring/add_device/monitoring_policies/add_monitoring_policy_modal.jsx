@@ -10,7 +10,8 @@ import {
 import InputTextComponent from "../../../../components/input/input";
 import DualMultiSelectionComponent from "../../../../components/dual_multi_selection/dual_multi_selection";
 import ModalComponent from "../../../../components/modal/modal";
-
+import {getWeb3, getContractInstance} from "../../../../utils/getWeb3";
+import DeviceDefaultAttributesContract from "../../../../contracts/DeviceDefaultAttributes.json";
 
 export default class AddMonitoringPolicyModalComponent extends Component {
 
@@ -30,37 +31,50 @@ export default class AddMonitoringPolicyModalComponent extends Component {
       maxViolationCount: '',
       minCriticalityLevel: this.defaultOption,
       maxCriticalityLevel: this.defaultOption,
+      items: [],
+      // TODO: Get this field using redux (??)
+      shouldUseMetaMaskProvider: false,
     };
     this.attributesRef = React.createRef();
   }
 
+  componentDidMount = async () => {
+    try {
+      // Get network provider and web3 instance.
+      const web3 = await getWeb3(this.state.shouldUseMetaMaskProvider);
+
+      // Use web3 to get the user's accounts.
+      const accounts = await web3.eth.getAccounts();
+
+      // Get the contract instance.
+      const deviceDefaultAttributesContractInstance = await getContractInstance(web3, DeviceDefaultAttributesContract);
+      const attributes = await deviceDefaultAttributesContractInstance.methods.getDefaulltAttributeIndicesByModelName("RaspberryPi").call();
+      const items = [];
+      let i = 0;
+      for (let attribute of attributes) {
+        items.push({key: (i++) + "", name: attribute[0]});
+      }
+
+      // Set web3, accounts, and contract to the state
+      this.setState({
+          web3,
+          accounts,
+          items,
+        },
+      );
+    } catch (error) {
+      // Catch any errors for any of the above operations.
+      alert(
+        `Failed to load web3, accounts, or contract. Check console for details.`,
+      );
+      console.error(error);
+    }
+  };
+
   render() {
     const minimumThresholdComponent = this.getThresholdComponent(true);
     const maximumThresholdComponent = this.getThresholdComponent(false);
-
-    // TODO: Fetch Attributes (In ComponentDidMount)
-    const items = [
-      {key: '1', name: 'Attribute 1'},
-      {key: '2', name: 'Attribute 2'},
-      {key: '3', name: 'Attribute 3'},
-      {key: '4', name: 'Attribute 4'},
-      {key: '5', name: 'Attribute 5'},
-      {key: '6', name: 'Attribute 6'},
-      {key: '7', name: 'Attribute 7'},
-      {key: '8', name: 'Attribute 8'},
-      {key: '9', name: 'Attribute 9'},
-      {key: '10', name: 'Attribute 10'},
-      {key: '11', name: 'Attribute 11'},
-      {key: '12', name: 'Attribute 12'},
-      {key: '13', name: 'Attribute 13'},
-      {key: '14', name: 'Attribute 14'},
-      {key: '15', name: 'Attribute 15'},
-      {key: '16', name: 'Attribute 16'},
-      {key: '17', name: 'Attribute 17'},
-      {key: '18', name: 'Attribute 18'},
-      {key: '19', name: 'Attribute 19'},
-      {key: '20', name: 'Attribute 20'},
-    ];
+    const items = this.state.items;
 
     return (
       <ModalComponent

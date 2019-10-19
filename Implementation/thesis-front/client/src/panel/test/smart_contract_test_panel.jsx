@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import getWeb3 from "../../utils/getWeb3";
+import {getWeb3, getContractInstance} from "../../utils/getWeb3";
 import SimpleStorageContract from "../../contracts/SimpleStorage.json";
 import DeviceDefaultAttributesContract from "../../contracts/DeviceDefaultAttributes.json";
 import DeviceProfilesContract from "../../contracts/DeviceProfiles.json";
@@ -27,26 +27,9 @@ export class SmartContractTestPanelComponent extends Component {
       console.log(accounts);
 
       // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-
-      const simpleStorageDeployedNetwork = SimpleStorageContract.networks[networkId];
-      const deviceProfilesDeployedNetwork = DeviceProfilesContract.networks[networkId];
-      const deviceDefaultAttributesDeployedNetwork = DeviceDefaultAttributesContract.networks[networkId];
-
-      const simpleStorageContractInstance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
-        simpleStorageDeployedNetwork && simpleStorageDeployedNetwork.address,
-      );
-
-      const deviceProfilesContractInstance = new web3.eth.Contract(
-        DeviceProfilesContract.abi,
-        deviceProfilesDeployedNetwork && deviceProfilesDeployedNetwork.address,
-      );
-
-      const deviceDefaultAttributesContractInstance = new web3.eth.Contract(
-        DeviceDefaultAttributesContract.abi,
-        deviceDefaultAttributesDeployedNetwork && deviceDefaultAttributesDeployedNetwork.address,
-      );
+      const simpleStorageContractInstance = await getContractInstance(web3, SimpleStorageContract);
+      const deviceProfilesContractInstance = await getContractInstance(web3, DeviceProfilesContract);
+      const deviceDefaultAttributesContractInstance = await getContractInstance(web3, DeviceDefaultAttributesContract);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.

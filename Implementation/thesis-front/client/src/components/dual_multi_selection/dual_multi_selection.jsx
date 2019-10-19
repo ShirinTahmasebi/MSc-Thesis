@@ -13,12 +13,23 @@ export default class DualMultiSelectionComponent extends Component {
   constructor(props) {
     super(props);
 
-    const convertedItems = props.items.map(value => {
-      return {...value, isSelected: false, isOnLeft: true};
-    });
-
-    this.state = {items: convertedItems};
+    this.state = {
+      items: [],
+    };
   }
+
+  static getDerivedStateFromProps(props, state) {
+    if (state.items.length !== props.items.length) {
+      const convertedItems = props.items.map(value => {
+        return {...value, isSelected: false, isOnLeft: true};
+      });
+
+      return {items: convertedItems};
+    }
+    // When null is returned no update is made to the state
+    return null;
+  }
+
 
   render() {
     const allItemsList = this.getAllItemsList(true);

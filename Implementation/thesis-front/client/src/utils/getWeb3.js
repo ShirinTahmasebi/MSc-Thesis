@@ -45,5 +45,17 @@ const getWeb3 = (shouldUseMetaMaskProvider) => {
   }
 };
 
+const getContractInstance = async (web3, contract) => {
+  const networkId = await web3.eth.net.getId();
 
-export default getWeb3;
+  const deployedNetwork = contract.networks[networkId];
+
+  return new web3.eth.Contract(
+    contract.abi,
+    deployedNetwork && deployedNetwork.address,
+  );
+};
+
+
+export {getWeb3};
+export {getContractInstance};
