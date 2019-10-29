@@ -34,6 +34,18 @@
 ## Scalability
 
 ### Scalable Fog Layer
+Due to the fact that communicating with blockchain is power consuming and requires strong resources, It is not possible to force each fog node contribute in this communication (cost, energy, etc.). Hence, we can have 2 types of fog nodes: sink nodes and regular fog nodes. 
+
+Sink nodes are resuorceful and have enough capability to talk to blockchain. They are responsible for:
+1. Fetching device monitoring policies from relevant smart contracts.
+2. Relay this policies to regular fog nodes.
+3. Persist monitoring data (every one hour):
+   * Fetch monitoring data from TSDB.
+   * Write it to IPFS.
+   * Store IPFS hash code to blockchain.
+
+Regular fog nodes are not necessarily as resourceful as sink nodes. At first, They receive monitoring policies from sink nodes. Then, They are responsible for collecting monitoring data from devices and persisting them in TSDB.
+
 #### Relay Nodes
 
 These papers are about relay nodes which as far as I am concerned are irrelevant to the topic. I should talk about sink nodes, not relay nodes.
@@ -48,6 +60,11 @@ These papers are about relay nodes which as far as I am concerned are irrelevant
 |<sub></sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
 
 #### Sink Nodes
+
+| Title|DOI|Main Contributions|Summarized|
+|---------------|:-:|:---------------------------------------------------------------------------------------:|:---:|
+|<sub>Sink Node Placement Strategies for Wireless Sensor Networks</sub>|<sub>10.1007/s11277-011-0453-x</sub>|<sub>In this paper there is a brief introduction to sink nodes and why it is necessary to use them. After that, some sink placement strategies that have been proposed beforehand are collected. Then, they are evaluated to compare their effects and improvements on network lifetime.</sub>|<sub>No</sub>|
+|<sub></sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
 
 ##### Node Placement Related Works
 
