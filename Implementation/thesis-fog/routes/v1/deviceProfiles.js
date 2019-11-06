@@ -27,4 +27,15 @@ router.get('/deviceId/:device_id', async (req, res, next) => {
   res.json({"deviceProfiles": jsonArrayResponse});
 });
 
+
+/* GET device profile by id. */
+router.get('/addTestDevice', async (req, res, next) => {
+  const getWeb3 = require('../../utils/getWeb3.js');
+  const web3 = await getWeb3.getWeb3();
+  const accounts = await web3.eth.getAccounts();
+  const deviceProfilesContractInstance = await getWeb3.getContractInstance(web3, DeviceProfilesContract);
+  await deviceProfilesContractInstance.methods.addDevice("1.1.1.1", "model 1", 1).send({from: accounts[0]});
+  res.json({"result": "ok"});
+});
+
 module.exports = router;
