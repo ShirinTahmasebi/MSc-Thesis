@@ -1,4 +1,10 @@
+let web3WebSocketProvider;
+let web3HttpProvider;
+
 const getWeb3 = () => {
+  if (web3HttpProvider !== undefined && web3HttpProvider.currentProvider !== undefined) {
+    return web3HttpProvider;
+  }
   const HDWalletProvider = require("truffle-hdwallet-provider");
   const Web3 = require("web3");
   // TODO: Remove hard coded mnemonic
@@ -6,15 +12,19 @@ const getWeb3 = () => {
   // TODO: Enable using provider via private key
   const mnemonic = "pupil state popular consider slab defense pet almost claw arm know report"; // 12 word mnemonic
   let provider = new HDWalletProvider(mnemonic, "http://localhost:7545");
-  return new Web3(provider);
+  web3HttpProvider = new Web3(provider);
+  return web3HttpProvider;
 };
 
 const getWeb3WebSocket = () => {
+  if (web3WebSocketProvider !== undefined && web3WebSocketProvider.currentProvider !== undefined) {
+    return web3WebSocketProvider;
+  }
   const Web3 = require("web3");
-  const web3 = new Web3();
+  web3WebSocketProvider = new Web3();
   const eventProvider = new Web3.providers.WebsocketProvider('ws://localhost:7545');
-  web3.setProvider(eventProvider);
-  return web3;
+  web3WebSocketProvider.setProvider(eventProvider);
+  return web3WebSocketProvider;
 };
 
 const getContractInstance = async (web3, contract) => {

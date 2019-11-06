@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const getDeviceProfileContractEvents = require("./utils/getContracts").getDeviceProfileContractEvents;
 const getDeviceMockData = require("./utils/generateMockData").getDeviceMockData;
 const CronJob = require('cron').CronJob;
 
@@ -60,15 +61,14 @@ const createAndUpdateDeviceMonitoringJobs = () => {
 };
 
 const createEventWatcher = async () => {
-  const getWeb3 = require('./utils/getWeb3.js');
-  const DeviceProfilesContract = require('./contracts/DeviceProfiles');
-  const web3 = await getWeb3.getWeb3WebSocket();
-  const deviceProfilesContractInstance = await getWeb3.getContractInstance(web3, DeviceProfilesContract);
-  console.log(deviceProfilesContractInstance.events);
-  deviceProfilesContractInstance.events.DeviceAdded({
+  const deviceProfileContractEvents = await getDeviceProfileContractEvents();
+  console.log(deviceProfileContractEvents.events);
+  deviceProfileContractEvents.events.DeviceAdded({
     fromBlock: 0,
-  }, function (error, event) {
-    if (error) console.log(error);
+  }, (error, event) => {
+    if (error) {
+      console.log(error);
+    }
     console.log(event);
   });
 };
