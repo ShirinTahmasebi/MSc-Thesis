@@ -59,4 +59,20 @@ const createAndUpdateDeviceMonitoringJobs = () => {
   });
 };
 
+const createEventWatcher = async () => {
+  const getWeb3 = require('./utils/getWeb3.js');
+  const DeviceProfilesContract = require('./contracts/DeviceProfiles');
+  const web3 = await getWeb3.getWeb3WebSocket();
+  const deviceProfilesContractInstance = await getWeb3.getContractInstance(web3, DeviceProfilesContract);
+  console.log(deviceProfilesContractInstance.events);
+  deviceProfilesContractInstance.events.DeviceAdded({
+    fromBlock: 0,
+  }, function (error, event) {
+    if (error) console.log(error);
+    console.log(event);
+  });
+};
+
+createEventWatcher();
+
 module.exports = app;

@@ -4,9 +4,17 @@ const getWeb3 = () => {
   // TODO: Remove hard coded mnemonic
   // TODO: Enable using provider via mnemonic and account index
   // TODO: Enable using provider via private key
-  const mnemonic = "physical note champion that uphold stamp hobby steak beach pink help trap"; // 12 word mnemonic
+  const mnemonic = "pupil state popular consider slab defense pet almost claw arm know report"; // 12 word mnemonic
   let provider = new HDWalletProvider(mnemonic, "http://localhost:7545");
   return new Web3(provider);
+};
+
+const getWeb3WebSocket = () => {
+  const Web3 = require("web3");
+  const web3 = new Web3();
+  const eventProvider = new Web3.providers.WebsocketProvider('ws://localhost:7545');
+  web3.setProvider(eventProvider);
+  return web3;
 };
 
 const getContractInstance = async (web3, contract) => {
@@ -21,4 +29,4 @@ const getContractInstance = async (web3, contract) => {
 };
 
 
-module.exports = {getWeb3, getContractInstance};
+module.exports = {getWeb3, getWeb3WebSocket, getContractInstance};
