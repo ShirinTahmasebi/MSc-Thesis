@@ -15320,12 +15320,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x86657FE7D37FF490D2aA1bc9b0Bb9C4decEE20dF",
-      "transactionHash": "0x61ab9407970b53bc3b80c41c25d06966e64a89e2eb04d5b804b61a8c2165e221"
+      "address": "0x94a2FC7b6d6CA679fAF3bc016d5dB6dc9d18767d",
+      "transactionHash": "0x18b2249001362a7629f1d23257069ab0a646443b0e435b8a97d519c3b6d5c3c6"
     }
   },
   "schemaVersion": "3.0.15",
-  "updatedAt": "2019-10-19T22:27:46.414Z",
+  "updatedAt": "2019-11-06T12:33:03.842Z",
   "devdoc": {
     "methods": {}
   },

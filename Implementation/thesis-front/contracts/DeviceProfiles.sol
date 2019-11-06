@@ -1,7 +1,7 @@
 pragma experimental ABIEncoderV2;
 pragma solidity ^0.5.12;
 
-contract DeviceDefaultAttribute{
+contract DeviceDefaultAttribute {
   enum Criticality {LOW, MEDIUM, HIGH}
 
   struct Attribute {
@@ -56,10 +56,17 @@ contract DeviceProfiles {
   uint public devicesCount;
 
   // Store & fetch devices
-  mapping (uint => Device) public devices;
+  mapping(uint => Device) public devices;
 
   // Test
   uint public attrCount;
+
+  // Emit this event after adding devices
+  event DeviceAdded(
+    uint deivceId,
+    string deviceIp,
+    string deviceModel
+  );
 
   constructor (address _addy) public {
     called_address = DeviceDefaultAttribute(_addy);
@@ -104,6 +111,7 @@ contract DeviceProfiles {
     device.deviceModel = _model;
     device.samplingRateMinute = _samplingRateMinute;
     devices[devicesCount] = device;
+    emit DeviceAdded(device.deviceId, device.deviceIp, device.deviceModel);
   }
 
   function addAttributeToDeviceById(
@@ -134,7 +142,7 @@ contract DeviceProfiles {
     return device.attributeCount;
   }
 
-  function getDeviceAttributes (uint _deviceId)
+  function getDeviceAttributes(uint _deviceId)
   public
   returns (
     DeviceDefaultAttribute.Attribute[] memory
