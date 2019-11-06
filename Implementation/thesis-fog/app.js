@@ -16,24 +16,16 @@ require('./routes')(app);
 require('./errors')(app);
 
 const deviceInfoMap = new Map();
-const updatedDeviceInfoMap = new Map();
 const deviceJobMap = new Map();
+let updatedDeviceInfoMap = new Map();
+let deprecatedDeviceInfoList = [];
 
 const getDevicesInfoJob = new CronJob(
-  // TODO: Modify time
   '0 */1 * * * *',
   // Lambda function is used - Thus, this.stop() doesn't work in this scope.
   () => {
     const date = new Date();
     console.log('Fetch device data every 1 minutes:', date);
-    // TODO: Connect to smart contracts and get monitoring data
-    // TODO: Add monitoring data by device id to hash map (deviceId => monitoring data)
-
-    // Fill device map
-    getDeviceMockData().forEach((value, key) => {
-      deviceInfoMap.set(key, value);
-      updatedDeviceInfoMap.set(key, value);
-    });
 
     // Generate and store device monitoring job
     createAndUpdateDeviceMonitoringJobs();
@@ -43,12 +35,14 @@ getDevicesInfoJob.start();
 
 
 const createAndUpdateDeviceMonitoringJobs = () => {
-  updatedDeviceInfoMap.forEach((value, key) => {
-    if (deviceJobMap.get(key) !== undefined) {
-      console.log('Previous monitoring job stopped - deviceId: ', key);
-      deviceJobMap.get(key).stop();
-    }
+  // Delete deprecated device monitoring jobs
+  deprecatedDeviceInfoList.forEach((value, key) => {
+    console.log('Previous monitoring job stopped - deviceId: ', key);
+    deviceJobMap.get(key) && deviceJobMap.get(key).stop();
+  });
 
+  // Create job for newly added or updated devices
+  updatedDeviceInfoMap.forEach((value, key) => {
     // TODO: Set time based on samplingRateMinute field in value
     const job = new CronJob('0 */1 * * * *', () => {
       const date = new Date();
@@ -58,18 +52,24 @@ const createAndUpdateDeviceMonitoringJobs = () => {
 
     deviceJobMap.set(key, job);
   });
+
+  // Reset variables
+  deprecatedDeviceInfoList = [];
+  updatedDeviceInfoMap = new Map();
 };
 
 const createEventWatcher = async () => {
   const deviceProfileContractEvents = await getDeviceProfileContractEvents();
-  console.log(deviceProfileContractEvents.events);
-  deviceProfileContractEvents.events.DeviceAdded({
-    fromBlock: 0,
-  }, (error, event) => {
-    if (error) {
-      console.log(error);
-    }
-    console.log(event);
+  deviceProfileContractEvents.events.DeviceAdded({fromBlock: 0}, (error, event) => {
+    error && console.log(error);
+    const deviceInfo = {
+      deviceId: event.returnValues.deivceId,
+      deviceIp: event.returnValues.deviceIp,
+      deviceModel: event.returnValues.deviceModel,
+    };
+    deviceInfoMap.get(deviceInfo.deviceId) && deprecatedDeviceInfoList.push(deviceInfo.deviceId);
+    deviceInfoMap.set(deviceInfo.deviceId, {deviceIp: deviceInfo.deviceIp, deviceModel: deviceInfo.deviceModel});
+    updatedDeviceInfoMap.set(deviceInfo.deviceId, {deviceIp: deviceInfo.deviceIp, deviceModel: deviceInfo.deviceModel});
   });
 };
 
