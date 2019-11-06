@@ -1,20 +1,72 @@
 # Papers
 
+
+[Overall directory tree](#directory-tree)
+
+[Scalability](#scalability)
+
+[Scalable Fog Layer](#scalable-fog-layer)
+
+[Relay Nodes](#relay-nodes)
+
+[Sink Nodes](#sink-nodes)
+
+[Node Placement Related Works](#node-placement-related-works)
+
+[Scalable Blockchain](#scalable-blockchain)
+
+[Evaluation](#evaluation)
+
+## Directory Tree
+```
++-- Scalability
+|   +-- Scalable Fog Layer
+|   |   +-- Relay Nodes
+|   |   +-- Sink Nodes
+|   |   |   +-- Node Placement Related Works
+|   +-- Scalable Blockchain
++-- Evaluation
+|
+...
+```
+
+
 ## Scalability
 
-### Relay Nodes
+### Scalable Fog Layer
+Due to the fact that communicating with blockchain is power consuming and requires strong resources, It is not possible to force each fog node contribute in this communication (cost, energy, etc.). Hence, we can have 2 types of fog nodes: sink nodes and regular fog nodes. 
 
+Sink nodes are resuorceful and have enough capability to talk to blockchain. They are responsible for:
+1. Fetching device monitoring policies from relevant smart contracts.
+2. Relay this policies to regular fog nodes.
+3. Persist monitoring data (every one hour):
+   * Fetch monitoring data from TSDB.
+   * Write it to IPFS.
+   * Store IPFS hash code to blockchain.
+
+Regular fog nodes are not necessarily as resourceful as sink nodes. At first, They receive monitoring policies from sink nodes. Then, They are responsible for collecting monitoring data from devices and persisting them in TSDB.
+
+#### Relay Nodes
+
+These papers are about relay nodes which as far as I am concerned are irrelevant to the topic. I should talk about sink nodes, not relay nodes.
 
 | Title|DOI|Main Contributions|Summarized|
 |---------------|:-:|:---------------------------------------------------------------------------------------:|:---:|
-|<sub>A Novel Scheme for an Energy Efficient Internet of Things Based on Wireless Sensor Networks</sub>|<sub>10.3390/s151128603</sub>|<sub></sub>|<sub>No</sub>|
-|<sub>Age of Information as a QoS Metric in a Relay-Based IoT Mobility Solution</sub>|<sub>10.1109/IWCMC.2018.8450441</sub>|<sub></sub>|<sub>No</sub>|
-|<sub>Relay Node Deployment for a Reliable and Energy Efficient Wireless Sensor Network</sub>|<sub>10.1007/978-3-642-25462-8_41</sub>|<sub></sub>|<sub>No</sub>|
-|<sub>Scalable Video Streaming Relay for Smart Mobile Devices in Wireless Networks</sub>|<sub>10.1371/journal.pone.0167403</sub>|<sub></sub>|<sub>No</sub>|
-|<sub>Wireless Sensor Network Deployment for Water Use Efficiency in Irrigation</sub>|<sub>10.1145/1435473.1435487</sub>|<sub></sub>|<sub>No</sub>|
+|<sub>A Novel Scheme for an Energy Efficient Internet of Things Based on Wireless Sensor Networks</sub>|<sub>10.3390/s151128603</sub>|<sub>Not relevant to the topic</sub>|<sub>No</sub>|
+|<sub>Age of Information as a QoS Metric in a Relay-Based IoT Mobility Solution</sub>|<sub>10.1109/IWCMC.2018.8450441</sub>|<sub>Not relevant to the topic</sub>|<sub>No</sub>|
+|<sub>Relay Node Deployment for a Reliable and Energy Efficient Wireless Sensor Network</sub>|<sub>10.1007/978-3-642-25462-8_41</sub>|<sub>Not relevant to the topic</sub>|<sub>No</sub>|
+|<sub>Scalable Video Streaming Relay for Smart Mobile Devices in Wireless Networks</sub>|<sub>10.1371/journal.pone.0167403</sub>|<sub>Not relevant to the topic</sub>|<sub>No</sub>|
+|<sub>Wireless Sensor Network Deployment for Water Use Efficiency in Irrigation</sub>|<sub>10.1145/1435473.1435487</sub>|<sub>Not relevant to the topic</sub>|<sub>No</sub>|
 |<sub></sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
 
-#### Node Placement Related Works
+#### Sink Nodes
+
+| Title|DOI|Main Contributions|Summarized|
+|---------------|:-:|:---------------------------------------------------------------------------------------:|:---:|
+|<sub>Sink Node Placement Strategies for Wireless Sensor Networks</sub>|<sub>10.1007/s11277-011-0453-x</sub>|<sub>In this paper there is a brief introduction to sink nodes and why it is necessary to use them. After that, some sink placement strategies that have been proposed beforehand are collected. Then, they are evaluated to compare their effects and improvements on network lifetime.</sub>|<sub>No</sub>|
+|<sub></sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
+
+##### Node Placement Related Works
 
 
 | Title|DOI|Main Contributions|Summarized|
@@ -37,3 +89,15 @@
 |<sub>A Safe and Efficient Storage Scheme Based on BlockChain and IPFS for Agricultural Products Tracking</sub>|<sub>10.3966/199115992018122906015</sub>|<sub>It has used IPFS to create a tree structure to store data for each sensor.</sub>|<sub>Yes</sub>|
 |<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
 
+
+## Evaluation
+
+| Title|DOI|Main Contributions|Summarized|
+|---------------|:-:|:---------------------------------------------------------------------------------------:|:---:|
+|<sub>Scalable Access Management in IoT using Blockchain: a Performance Evaluation</sub>|<sub>10.1109/JIOT.2018.2879679</sub>|<sub>There is an extension of the paper with DOI 10.1109/JIOT.2018.2812239 which proposes an architecture for scalable access management in iot device management. In this paper some metrics are proposed to evaluate the scalibilty of the architecture. The important note about this evaluation is that, the evaluated scenarios are the ones which just read data from blockchain. In other words, we don't want to measure scenarios which write data to blockchain. Because writing data to blockchain is obviously more time consuming than the traditional approaches which use centralized databases. <br/>The performance metrics which are measured in this paper are: 1- Response time 2- Throughput. </sub>|<sub>Yes</sub>|
+|<sub>Performance Evaluation of the Quorum Blockchain Platform</sub>|<sub>arXiv:1809.03421</sub>|<sub>Maybe not necessary</sub>|<sub>No</sub>|
+|<sub>FogBus: A Blockchain-based Lightweight Framework for Edge and Fog Computing</sub>|<sub>arXiv:1811.11978</sub>|<sub>Maybe not necessary</sub>|<sub>No</sub>|
+|<sub>Design and Implementation of an Integrated  IoT Blockchain Platform for Sensing Data Integrity</sub>|<sub>10.3390/s19102228</sub>|<sub>Maybe not necessary</sub>|<sub>No</sub>|
+|<sub>A detailed and real-time performance monitoring framework for blockchain systems</sub>|<sub>10.1145/3183519.3183546</sub>|<sub>This paper focus on presenting some important metrics to evaluate the blockchain system. To do so, it has mentioned some stages in confirming a transaction: validating, execution, state update and commiting. Thus, the proposed metrics are used to evaluate performace of a blockchain in different stages. There are two main categories of metrics: overall metrics and detailed metrics. Overall metrics include: Gas(common but unsuitable metric), Throughput, Average Response Delay, Transaction per CPU, Transaction per Memory Second, Transaction per Disk IO, Transaction per Network Data. Detailed metrics include: Peer Discovery Rate, RPC Response Rate, Transaction Propagation Rate, Contract Execution Time, State updating Time Consensus Cost Time. Then the paper presents two methods for data acquisition: RPC methods and log-based method.</sub>|<sub>Yes</sub>|
+|<sub>A decentralized marketplace application on the ethereum blockchain</sub>|<sub>10.1109/cic.2018.00023</sub>|<sub>In this paper, a decentralized platform and architecture is designed to launch a marketplace application. The main advantage of decentralizing such a marketplace application is to eliminate middle-man. Then, by eliminating the middle-man, the users' (sellers and buyers) data will be more secure and also they can gain more profit. Main components of the designed structure are: 1- Frontend: A web interface to communicate with the application using special browsers or extensions. To implement the frontend component, web3js is heavily used. 2- Blockchain: To store smart contracts (E-commerce - Escrew) and store user's data. 3- IPFS: To store user's data like images, files of product descriptions and etc. 4- Backend: A backend script t listen to smart contracts events and extract relevent metrics from them. In implementing backend, a document based nosql named BigChainDb is used to be able to store some information to respond to queries as fast as possible. <br/>The performance metrics which are measured in this paper are: 1- Transaction time vs Gas consumption, 2- Tranction number vs Gas cosumption, 3- Average gas cost per smart contract (per transaction type).</sub>|<sub>Yes</sub>|
+|<sub></sub>|<sub></sub>|<sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub>|<sub></sub>|
