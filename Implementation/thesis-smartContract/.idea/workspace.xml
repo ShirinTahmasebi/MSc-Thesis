@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="80cb15b5-8fac-4058-aa22-53f4525c991b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/public/favicon.ico" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/public/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/public/manifest.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/App.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/App.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/App.test.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/checkbox/checkbox.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/checkbox/checkbox_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/dual_multi_selection/dual_multi_selection.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/dual_multi_selection/dual_multi_selection_item.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/dual_multi_selection/dual_multi_selection_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/form/multistep/form_multistep_item.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/form/multistep/form_multistep_master.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/form/multistep/form_multistep_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/input/input.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/input/input_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/loading/loading.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/loading/loading_hoc.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/menu/menu.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/menu/menu_item.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/modal/modal.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/modal/modal_hoc.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/modal/modal_hoc_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/table/table.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/table/table_row.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/table/table_row_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/components/table/table_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/contracts/DeviceDefaultAttribute.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/contracts/DeviceDefaultAttributes.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/contracts/DeviceProfiles.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/contracts/Migrations.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/contracts/SimpleStorage.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/contracts/Users.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/index.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/logo.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/access_policies/add_access_policy_modal.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/access_policies/add_access_policy_modal_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/access_policies/add_device_access_policies.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/access_policies/add_device_access_policies_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/access_policies/show_ids_table_modal.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/info/add_device_info_form.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/info/add_device_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/info/dropDownStyle.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/monitoring_policies/add_device_monitoring_policies.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/monitoring_policies/add_device_monitoring_policies_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/monitoring_policies/add_monitoring_policy_modal.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/add_device/monitoring_policies/add_monitoring_policy_modal_style.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/monitoring/monitoring_panel.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/panel.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/search/search_panel.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/panel/test/smart_contract_test_panel.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/serviceWorker.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../thesis-front/src/utils/getWeb3.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/thesis-smartContract.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/contracts/DeviceDefaultAttribute.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/contracts/DeviceDefaultAttributes.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/contracts/DeviceProfiles.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/contracts/Migrations.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/contracts/SimpleStorage.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/contracts/Users.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/contracts/DeviceDefaultAttributes.sol" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/contracts/DeviceProfiles.sol" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/contracts/Migrations.sol" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/contracts/SimpleStorage.sol" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/contracts/Users.sol" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/migrations/1_initial_migration.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/TestSimpleStorage.sol" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/simplestorage.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/truffle-config.js" />
+      <change beforePath="$PROJECT_DIR$/../Cheat Sheets/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterPath="$PROJECT_DIR$/../Cheat Sheets/.ipynb_checkpoints/Untitled-checkpoint.ipynb" />
+      <change beforePath="$PROJECT_DIR$/../thesis-fog/app.js" afterPath="$PROJECT_DIR$/../thesis-fog/app.js" />
+      <change beforePath="$PROJECT_DIR$/../thesis-fog/utils/generateMockData.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/public/favicon.ico" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/public/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/public/manifest.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/App.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/App.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/App.test.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/checkbox/checkbox.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/checkbox/checkbox_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/dual_multi_selection/dual_multi_selection.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/dual_multi_selection/dual_multi_selection_item.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/dual_multi_selection/dual_multi_selection_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/form/multistep/form_multistep_item.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/form/multistep/form_multistep_master.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/form/multistep/form_multistep_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/input/input.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/input/input_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/loading/loading.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/loading/loading_hoc.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/menu/menu.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/menu/menu_item.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/modal/modal.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/modal/modal_hoc.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/modal/modal_hoc_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/table/table.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/table/table_row.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/table/table_row_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/components/table/table_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/contracts/DeviceDefaultAttribute.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/contracts/DeviceDefaultAttributes.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/contracts/DeviceProfiles.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/contracts/Migrations.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/contracts/SimpleStorage.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/contracts/Users.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/index.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/logo.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/access_policies/add_access_policy_modal.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/access_policies/add_access_policy_modal_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/access_policies/add_device_access_policies.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/access_policies/add_device_access_policies_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/access_policies/show_ids_table_modal.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/info/add_device_info_form.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/info/add_device_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/info/dropDownStyle.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/monitoring_policies/add_device_monitoring_policies.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/monitoring_policies/add_device_monitoring_policies_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/monitoring_policies/add_monitoring_policy_modal.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/add_device/monitoring_policies/add_monitoring_policy_modal_style.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/monitoring/monitoring_panel.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/panel.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/search/search_panel.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/panel/test/smart_contract_test_panel.jsx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/serviceWorker.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/client/src/utils/getWeb3.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/contracts/DeviceDefaultAttributes.sol" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/contracts/DeviceProfiles.sol" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/contracts/Migrations.sol" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/contracts/SimpleStorage.sol" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/contracts/Users.sol" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/migrations/1_initial_migration.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/migrations/2_deploy_contracts.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/test/TestSimpleStorage.sol" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/test/simplestorage.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../thesis-front/truffle-config.js" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="truffle-config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/truffle-config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="66" lean-forward="false" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/truffle-config.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>ECMAScript 6 migration aidsJavaScript</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Node.jsJavaScript</id>
+          </State>
+          <State>
+            <id>TypeScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="thesis-smartContract" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thesis-smartContract" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thesis-smartContract" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thesis-smartContract" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thesis-smartContract" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thesis-smartContract" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thesis-smartContract" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thesis-smartContract" type="462c0819:PsiDirectoryNode" />
+              <item name="contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thesis-smartContract" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thesis-smartContract" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.XML" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.11.3" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80cb15b5-8fac-4058-aa22-53f4525c991b" name="Default" comment="" />
+      <created>1573079068806</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573079068806</updated>
+      <workItem from="1573079070764" duration="258000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="258000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/truffle-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="66" lean-forward="false" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

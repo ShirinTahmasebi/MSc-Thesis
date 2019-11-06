@@ -2,7 +2,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const getDeviceProfileContractEvents = require("./utils/getContracts").getDeviceProfileContractEvents;
-const getDeviceMockData = require("./utils/generateMockData").getDeviceMockData;
 const CronJob = require('cron').CronJob;
 
 const app = express();

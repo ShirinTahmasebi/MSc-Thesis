@@ -32,15 +32,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x2bef2f9b9f9d868ec4826fdc29e47f4bbdbfb9c08bdf1f3f044eab645a52c2f9\",\"urls\":[\"bzz-raw://53f9e5829498c031e56ffbe7dcf4bc119d47b7a0358a4915e24abc8c711cefb4\",\"dweb:/ipfs/QmcyB8JvFiaYLP9LPSkKGUfQWK2GTpMNnzS3wCZNgXbWh8\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a723158202bb544424badc6f7cd6aa0e8daf2d412827fe3e4c2694f7ba652806999f3f09f64736f6c634300050c0032",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a723158202bb544424badc6f7cd6aa0e8daf2d412827fe3e4c2694f7ba652806999f3f09f64736f6c634300050c0032",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-smartContract/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-smartContract/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x2bef2f9b9f9d868ec4826fdc29e47f4bbdbfb9c08bdf1f3f044eab645a52c2f9\",\"urls\":[\"bzz-raw://53f9e5829498c031e56ffbe7dcf4bc119d47b7a0358a4915e24abc8c711cefb4\",\"dweb:/ipfs/QmcyB8JvFiaYLP9LPSkKGUfQWK2GTpMNnzS3wCZNgXbWh8\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820b2b9a0c9aff8a42347c38417c8b344635f16e892d1503152c32c87180b48e66f64736f6c634300050c0032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820b2b9a0c9aff8a42347c38417c8b344635f16e892d1503152c32c87180b48e66f64736f6c634300050c0032",
   "sourceMap": "26:176:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:176:3;;;;;;;",
   "deployedSourceMap": "26:176:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:176:3;;;;;;;;;;;;;;;;;;;;;;;;73:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;73:53:3;;;;;;;;;;;;;;;;;:::i;:::-;;130:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;73:53;120:1;107:10;:14;;;;73:53;:::o;130:70::-;166:4;185:10;;178:17;;130:70;:::o",
   "source": "pragma solidity ^0.5.12;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
-  "sourcePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol",
+  "sourcePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-smartContract/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol",
+    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-smartContract/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         965
@@ -292,7 +292,7 @@
     "src": "0:203:3"
   },
   "legacyAST": {
-    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-front/contracts/SimpleStorage.sol",
+    "absolutePath": "/Users/shirin/Desktop/Thesis/Implementation/MSc-Thesis/Implementation/thesis-smartContract/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         965
@@ -556,7 +556,7 @@
     }
   },
   "schemaVersion": "3.0.15",
-  "updatedAt": "2019-11-06T12:33:03.901Z",
+  "updatedAt": "2019-11-06T22:27:43.397Z",
   "devdoc": {
     "methods": {}
   },
