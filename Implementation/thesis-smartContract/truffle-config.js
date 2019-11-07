@@ -8,7 +8,7 @@ module.exports = {
   //     port: 8545
   //   }
   // }
-  contracts_build_directory: path.join(__dirname, "../thesis-front/src/contracts"),
+  // contracts_build_directory: path.join(__dirname, "../thesis-front/src/contracts"),
   compilers: {
     solc: {
       version: "0.5.12",

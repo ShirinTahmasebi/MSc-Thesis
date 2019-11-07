@@ -49,7 +49,9 @@ contract DeviceProfiles {
     mapping(uint => DeviceDefaultAttribute.Attribute) attributes;
 
     // Get ipfs hash code of each attribute monitoring data (by attribute name)
-    mapping(string => string) attributeNameDataIpfsHashMap;
+    string[] monitoringDataStartTimeHashMap;
+    string[] monitoringDataEndTimeHashMap;
+    string[] monitoringDataIpfsHashMap;
   }
 
   // Store devices count
@@ -140,6 +142,32 @@ contract DeviceProfiles {
     device.attributes[device.attributeCount] = attribute;
     devices[_deviceId] = device;
     return device.attributeCount;
+  }
+
+  function addMonitoringDataByDeviceId(
+    uint _deviceId,
+    string memory _data,
+    string memory _startRange,
+    string memory _endRange
+  ) public
+  returns (
+    string[] memory
+  ){
+    Device storage device = devices[_deviceId];
+    device.monitoringDataIpfsHashMap.push(_data);
+    device.monitoringDataStartTimeHashMap.push(_startRange);
+    device.monitoringDataEndTimeHashMap.push(_endRange);
+    return device.monitoringDataIpfsHashMap;
+  }
+
+  function getMonitoringDataByDeviceId(
+    uint _deviceId
+  ) public view
+  returns (
+    string[] memory
+  ){
+    Device storage device = devices[_deviceId];
+    return device.monitoringDataIpfsHashMap;
   }
 
   function getDeviceAttributes(uint _deviceId)
