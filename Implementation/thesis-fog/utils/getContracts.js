@@ -1,4 +1,10 @@
+let deviceProfileContractHttpProvider = undefined;
+let deviceProfileContractWebSocketProvider = undefined;
+
 const getDeviceProfileContract = async () => {
+  if (deviceProfileContractHttpProvider) {
+    return deviceProfileContractHttpProvider;
+  }
   const getWeb3 = require('./getWeb3.js');
   const DeviceProfilesContract = require('../contracts/DeviceProfiles');
   const web3 = await getWeb3.getWeb3();
@@ -6,6 +12,9 @@ const getDeviceProfileContract = async () => {
 };
 
 const getDeviceProfileContractEvents = async () => {
+  if (deviceProfileContractWebSocketProvider) {
+    return deviceProfileContractWebSocketProvider;
+  }
   const getWeb3 = require('./getWeb3.js');
   const DeviceProfilesContract = require('../contracts/DeviceProfiles');
   const web3 = await getWeb3.getWeb3WebSocket();

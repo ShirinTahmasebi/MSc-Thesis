@@ -1,6 +1,9 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const getWeb3 = require("./utils/getWeb3").getWeb3;
+const getMonitoringMockData = require("./utils/generateMockData").getMonitoringMockData;
+const getDeviceProfileContract = require("./utils/getContracts").getDeviceProfileContract;
 const getDeviceProfileContractEvents = require("./utils/getContracts").getDeviceProfileContractEvents;
 const CronJob = require('cron').CronJob;
 
@@ -32,6 +35,35 @@ const getDevicesInfoJob = new CronJob(
 );
 getDevicesInfoJob.start();
 
+const sendMonitoringDataToIpfsJob = new CronJob(
+  // TODO: Set time = every one hour
+  '0 */1 * * * *',
+  () => {
+    deviceInfoMap.forEach(async (value, keyDeviceId) => {
+      // Set time range
+      const date = new Date();
+      const dateLastHour = new Date(date.getTime() - (1000 * 60 * 60));
+
+      // Fetch monitoring data (Polling simulation)
+      const data = getMonitoringMockData(keyDeviceId);
+
+      // Send data to smart contract
+      const web3 = getWeb3();
+      const accounts = await web3.eth.getAccounts();
+      const deviceProfileContract = await getDeviceProfileContract();
+      await deviceProfileContract.methods.addMonitoringDataByDeviceId(
+        keyDeviceId, data, dateLastHour.getTime().toString(), date.getTime().toString(),
+      ).send({from: accounts[0]});
+
+      console.log(`Send monitoring data to IPFS every 1 minutes: ${date}, deviceId is ${keyDeviceId}, data is ${data}`);
+      // TODO: Send to IPFS
+      // TODO: Get IPFS hash
+      // TODO: Add IPFS hash to smart contract
+    });
+  },
+);
+sendMonitoringDataToIpfsJob.start();
+
 
 const createAndUpdateDeviceMonitoringJobs = () => {
   // Delete deprecated device monitoring jobs
@@ -41,7 +73,7 @@ const createAndUpdateDeviceMonitoringJobs = () => {
   });
 
   // Create job for newly added or updated devices
-  updatedDeviceInfoMap.forEach((value, key) => {
+  updatedDeviceInfoMap.forEach((value, keyDeviceId) => {
     // TODO: Set time based on samplingRateMinute field in value
     const job = new CronJob('0 */1 * * * *', () => {
       const date = new Date();
@@ -49,7 +81,7 @@ const createAndUpdateDeviceMonitoringJobs = () => {
     });
     job.start();
 
-    deviceJobMap.set(key, job);
+    deviceJobMap.set(keyDeviceId, job);
   });
 
   // Reset variables
