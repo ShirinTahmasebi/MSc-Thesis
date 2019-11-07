@@ -51,14 +51,20 @@ const sendMonitoringDataToIpfsJob = new CronJob(
       const web3 = getWeb3();
       const accounts = await web3.eth.getAccounts();
       const deviceProfileContract = await getDeviceProfileContract();
-      await deviceProfileContract.methods.addMonitoringDataByDeviceId(
-        keyDeviceId, data, dateLastHour.getTime().toString(), date.getTime().toString(),
-      ).send({from: accounts[0]});
+
+      // Get IPFS
+      const addToIpfs = require("./utils/getIpfs").addToIpfs;
+      const results = await addToIpfs(data);
+
+      // Results should have exactly one element
+      if (results && results.length === 1) {
+        console.log(results[0].path);
+        await deviceProfileContract.methods.addMonitoringDataByDeviceId(
+          keyDeviceId, results[0].path, dateLastHour.getTime().toString(), date.getTime().toString(),
+        ).send({from: accounts[0]});
+      }
 
       console.log(`Send monitoring data to IPFS every 1 minutes: ${date}, deviceId is ${keyDeviceId}, data is ${data}`);
-      // TODO: Send to IPFS
-      // TODO: Get IPFS hash
-      // TODO: Add IPFS hash to smart contract
     });
   },
 );
@@ -77,7 +83,7 @@ const createAndUpdateDeviceMonitoringJobs = () => {
     // TODO: Set time based on samplingRateMinute field in value
     const job = new CronJob('0 */1 * * * *', () => {
       const date = new Date();
-      console.log('Fetch monitoring data every 1 minutes: ', date, ', deviceId: ', key);
+      console.log('Fetch monitoring data every 1 minutes: ', date, ', deviceId: ', keyDeviceId);
     });
     job.start();
 

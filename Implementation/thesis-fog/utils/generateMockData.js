@@ -1,6 +1,6 @@
 const getMonitoringMockData = (deviceId) => {
-  return `{attribute1: ${deviceId} - attribute 1, attribute2: ${deviceId} - attribute 2}`;
+  const date = new Date();
+  return `{attribute1: \'${deviceId} - attribute 1 - ${date}\', attribute2: \'${deviceId} - attribute 2 - ${date}\'}`;
 };
-
 
 module.exports = {getMonitoringMockData};
