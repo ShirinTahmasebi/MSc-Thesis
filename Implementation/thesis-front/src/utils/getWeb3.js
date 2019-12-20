@@ -39,7 +39,7 @@ const getWeb3 = (shouldUseMetaMaskProvider) => {
     // TODO: Remove hard coded mnemonic
     // TODO: Enable using provider via mnemonic and account index
     // TODO: Enable using provider via private key
-    const mnemonic = "physical note champion that uphold stamp hobby steak beach pink help trap"; // 12 word mnemonic
+    const mnemonic = "pupil state popular consider slab defense pet almost claw arm know report"; // 12 word mnemonic
     let provider = new HDWalletProvider(mnemonic, "http://localhost:7545");
     return new Web3(provider);
   }
