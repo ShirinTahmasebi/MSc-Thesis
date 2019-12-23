@@ -17,9 +17,9 @@ const getAddAttributeLogRowTemplate = (date, timestamp, blockNumber, txUUID, dev
   return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txHash=${txHash}  txStage=${txStage}  gasUsed=${gasUsed}\n`;
 };
 
-const getFetchDevicesLogFilePath = (usersCount) => `${__dirname}/logs/fetch_devices/log_fetchDevices_${usersCount}.txt`;
+const getFetchAttributesLogFilePath = (usersCount) => `${__dirname}/logs/fetch_attributes/log_fetchAttributes_${usersCount}.txt`;
 
-const getFetchDevicesLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txStage) => {
+const getFetchAttributesLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txStage) => {
   return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txStage=${txStage}\n`;
 };
 
@@ -29,6 +29,6 @@ module.exports = {
   getAddDeviceLogRowTemplate,
   getAddAttributeLogFilePath,
   getAddAttributeLogRowTemplate,
-  getFetchDevicesLogFilePath,
-  getFetchDevicesLogRowTemplate,
+  getFetchAttributesLogFilePath,
+  getFetchAttributesLogRowTemplate,
 };

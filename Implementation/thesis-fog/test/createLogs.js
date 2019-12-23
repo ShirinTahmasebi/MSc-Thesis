@@ -5,6 +5,9 @@ const getAddDeviceLogFilePath = require("./utils").getAddDeviceLogFilePath;
 const getAddDeviceLogRowTemplate = require("./utils").getAddDeviceLogRowTemplate;
 const getAddAttributeLogFilePath = require("./utils").getAddAttributeLogFilePath;
 const getAddAttributeLogRowTemplate = require("./utils").getAddAttributeLogRowTemplate;
+const getFetchAttributesLogFilePath = require("./utils").getFetchAttributesLogFilePath;
+const getFetchAttributesLogRowTemplate = require("./utils").getFetchAttributesLogRowTemplate;
+
 const web3 = getWeb3();
 const fs = require('fs');
 
@@ -16,6 +19,8 @@ const txStageEnum = {
   TX_RECEIPT_RECEIVED: 'TX_RECEIPT_RECEIVED',
   TX_RECEIPT_CONFIRMED_1: 'TX_RECEIPT_CONFIRMED_1',
   TX_ERROR: 'TX_ERROR',
+  CALL_SUBMITTED: 'CALL_SUBMITTED',
+  CALL_RECEIVED_RESPONSE: 'CALL_RECEIVED_RESPONSE',
 };
 
 let deviceProfileInstance;
@@ -178,6 +183,38 @@ const createAndLogAddAttributeMockTx = async (counter) => {
   }
 };
 
+const createAndLogFetchAttributesMockCall = async (counter) => {
+  const logFilePath = getFetchAttributesLogFilePath(counter);
+
+  // Create/Reset log file
+  fs.writeFileSync(logFilePath, "");
+
+  for (let i = 0; i < counter; i++) {
+    const txUUID = generateUUID();
+    const deviceId = baseDeviceModel + i + 1;
+    const now = new Date();
+    const blockNumber = await web3.eth.getBlockNumber();
+
+    fs.appendFile(
+      logFilePath,
+      getFetchAttributesLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, txStageEnum.CALL_SUBMITTED),
+      (err) => {
+        if (err) throw err;
+      },
+    );
+
+    await deviceProfileInstance.methods.getDeviceAttributes(deviceId).call();
+
+    fs.appendFile(
+      logFilePath,
+      getFetchAttributesLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, txStageEnum.CALL_RECEIVED_RESPONSE),
+      (err) => {
+        if (err) throw err;
+      },
+    );
+  }
+};
+
 const init = async () => {
   const shouldCreateUsers = false;
   shouldCreateUsers && createUsers();
@@ -195,11 +232,26 @@ const main = async () => {
   // await createAndLogAddDeviceMockTx(100);
   // await createAndLogAddDeviceMockTx(150);
   // await createAndLogAddDeviceMockTx(200);
+  // await createAndLogAddDeviceMockTx(300);
+  // await createAndLogAddDeviceMockTx(500);
+  // await createAndLogAddDeviceMockTx(1000);
 
   // await createAndLogAddAttributeMockTx(50);
   // await createAndLogAddAttributeMockTx(100);
   // await createAndLogAddAttributeMockTx(150);
-  await createAndLogAddAttributeMockTx(200);
+  // await createAndLogAddAttributeMockTx(200);
+  // await createAndLogAddAttributeMockTx(300);
+  // await createAndLogAddAttributeMockTx(500);
+  // await createAndLogAddAttributeMockTx(1000);
+
+  // await createAndLogFetchAttributesMockCall(50);
+  // await createAndLogFetchAttributesMockCall(100);
+  // await createAndLogFetchAttributesMockCall(150);
+  // await createAndLogFetchAttributesMockCall(200);
+  // await createAndLogFetchAttributesMockCall(300);
+  // await createAndLogFetchAttributesMockCall(500);
+  // await createAndLogFetchAttributesMockCall(1000);
+  // await createAndLogFetchAttributesMockCall(5000);
 };
 
 
