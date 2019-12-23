@@ -36,6 +36,9 @@ const createUsers = async () => {
 };
 
 const createAndLogAddDeviceMockTx = async (counter) => {
+  // Create/Reset log file
+  fs.writeFileSync(getAddDeviceLogFilePath(counter), "");
+
   const logFilePath = getAddDeviceLogFilePath(counter);
   const accountAddress = "0xd22f9E46718d7f3A37698490E2373BE250e4150D";
 
@@ -107,20 +110,14 @@ const init = async () => {
   // accountsInfo = JSON.parse(data);
 
   deviceProfileInstance = await getDeviceProfileContract();
-
-  // Create/Reset log files
-  fs.writeFileSync(getAddDeviceLogFilePath(50), "");
-  fs.writeFileSync(getAddDeviceLogFilePath(100), "");
-  fs.writeFileSync(getAddDeviceLogFilePath(150), "");
-  fs.writeFileSync(getAddDeviceLogFilePath(200), "");
 };
 
 const main = async () => {
   await init();
-  createAndLogAddDeviceMockTx(50);
-  createAndLogAddDeviceMockTx(100);
-  createAndLogAddDeviceMockTx(150);
-  createAndLogAddDeviceMockTx(200);
+  // await createAndLogAddDeviceMockTx(50);
+  // await createAndLogAddDeviceMockTx(100);
+  // await createAndLogAddDeviceMockTx(150);
+  await createAndLogAddDeviceMockTx(200);
 };
 
 
