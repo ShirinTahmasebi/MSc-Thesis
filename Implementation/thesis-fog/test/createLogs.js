@@ -117,10 +117,10 @@ const init = async () => {
 
 const main = async () => {
   await init();
-  await createAndLogAddDeviceMockTx(50);
-// createAndLogAddDeviceMockTx(100);
-// createAndLogAddDeviceMockTx(150);
-// createAndLogAddDeviceMockTx(200);
+  createAndLogAddDeviceMockTx(50);
+  createAndLogAddDeviceMockTx(100);
+  createAndLogAddDeviceMockTx(150);
+  createAndLogAddDeviceMockTx(200);
 };
 
 
