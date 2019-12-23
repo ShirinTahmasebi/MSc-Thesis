@@ -7,6 +7,8 @@ const getAddAttributeLogFilePath = require("./utils").getAddAttributeLogFilePath
 const getAddAttributeLogRowTemplate = require("./utils").getAddAttributeLogRowTemplate;
 const getFetchAttributesLogFilePath = require("./utils").getFetchAttributesLogFilePath;
 const getFetchAttributesLogRowTemplate = require("./utils").getFetchAttributesLogRowTemplate;
+const getFetchIpfsHashesLogFilePath = require("./utils").getFetchIpfsHashesLogFilePath;
+const getFetchIpfsHashesLogRowTemplate = require("./utils").getFetchIpfsHashesLogRowTemplate;
 
 const web3 = getWeb3();
 const fs = require('fs');
@@ -203,15 +205,51 @@ const createAndLogFetchAttributesMockCall = async (counter) => {
       },
     );
 
-    await deviceProfileInstance.methods.getDeviceAttributes(deviceId).call();
+    deviceProfileInstance.methods.getDeviceAttributes(deviceId)
+      .call()
+      .then(value => {
+        fs.appendFile(
+          logFilePath,
+          getFetchAttributesLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, txStageEnum.CALL_RECEIVED_RESPONSE),
+          (err) => {
+            if (err) throw err;
+          },
+        );
+      });
+  }
+};
+
+const createAndLogFetchIpfsHashesMockCall = async (counter) => {
+  const logFilePath = getFetchIpfsHashesLogFilePath(counter);
+
+  // Create/Reset log file
+  fs.writeFileSync(logFilePath, "");
+
+  for (let i = 0; i < counter; i++) {
+    const txUUID = generateUUID();
+    const deviceId = baseDeviceModel + i + 1;
+    const now = new Date();
+    const blockNumber = await web3.eth.getBlockNumber();
 
     fs.appendFile(
       logFilePath,
-      getFetchAttributesLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, txStageEnum.CALL_RECEIVED_RESPONSE),
+      getFetchIpfsHashesLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, txStageEnum.CALL_SUBMITTED),
       (err) => {
         if (err) throw err;
       },
     );
+
+    deviceProfileInstance.methods.getMonitoringDataByDeviceId(deviceId)
+      .call()
+      .then(value => {
+        fs.appendFile(
+          logFilePath,
+          getFetchIpfsHashesLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, txStageEnum.CALL_RECEIVED_RESPONSE),
+          (err) => {
+            if (err) throw err;
+          },
+        );
+      });
   }
 };
 
@@ -244,7 +282,7 @@ const main = async () => {
   // await createAndLogAddAttributeMockTx(500);
   // await createAndLogAddAttributeMockTx(1000);
 
-  // await createAndLogFetchAttributesMockCall(50);
+  await createAndLogFetchAttributesMockCall(50);
   // await createAndLogFetchAttributesMockCall(100);
   // await createAndLogFetchAttributesMockCall(150);
   // await createAndLogFetchAttributesMockCall(200);
@@ -252,6 +290,14 @@ const main = async () => {
   // await createAndLogFetchAttributesMockCall(500);
   // await createAndLogFetchAttributesMockCall(1000);
   // await createAndLogFetchAttributesMockCall(5000);
+
+  // await createAndLogFetchIpfsHashesMockCall(50);
+  // await createAndLogFetchIpfsHashesMockCall(100);
+  // await createAndLogFetchIpfsHashesMockCall(150);
+  // await createAndLogFetchIpfsHashesMockCall(200);
+  // await createAndLogFetchIpfsHashesMockCall(300);
+  // await createAndLogFetchIpfsHashesMockCall(500);
+  // await createAndLogFetchIpfsHashesMockCall(1000);
 };
 
 

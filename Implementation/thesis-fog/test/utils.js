@@ -23,6 +23,12 @@ const getFetchAttributesLogRowTemplate = (date, timestamp, blockNumber, txUUID, 
   return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txStage=${txStage}\n`;
 };
 
+const getFetchIpfsHashesLogFilePath = (usersCount) => `${__dirname}/logs/fetch_ipfs_hashes/log_fetchIpfsHashes_${usersCount}.txt`;
+
+const getFetchIpfsHashesLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txStage) => {
+  return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txStage=${txStage}\n`;
+};
+
 module.exports = {
   generateUUID,
   getAddDeviceLogFilePath,
@@ -31,4 +37,6 @@ module.exports = {
   getAddAttributeLogRowTemplate,
   getFetchAttributesLogFilePath,
   getFetchAttributesLogRowTemplate,
+  getFetchIpfsHashesLogFilePath,
+  getFetchIpfsHashesLogRowTemplate,
 };
