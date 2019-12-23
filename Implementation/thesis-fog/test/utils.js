@@ -7,8 +7,20 @@ const generateUUID = () => {
 
 const getAddDeviceLogFilePath = (usersCount) => `${__dirname}/logs/add_device/log_addDevice_${usersCount}.txt`;
 
-const getAddDeviceLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txHash, txStage) => {
-  return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txHash=${txHash}  txStage=${txStage}\n`;
+const getAddDeviceLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txHash, gasUsed, txStage) => {
+  return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txHash=${txHash}  txStage=${txStage}  gasUsed=${gasUsed}\n`;
 };
 
-module.exports = {generateUUID, getAddDeviceLogFilePath, getAddDeviceLogRowTemplate};
+const getFetchDevicesLogFilePath = (usersCount) => `${__dirname}/logs/fetch_devices/log_fetchDevices_${usersCount}.txt`;
+
+const getFetchDevicesLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txStage) => {
+  return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txStage=${txStage}\n`;
+};
+
+module.exports = {
+  generateUUID,
+  getAddDeviceLogFilePath,
+  getAddDeviceLogRowTemplate,
+  getFetchDevicesLogFilePath,
+  getFetchDevicesLogRowTemplate,
+};

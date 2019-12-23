@@ -47,7 +47,7 @@ const createAndLogAddDeviceMockTx = async (counter) => {
 
     fs.appendFile(
       logFilePath,
-      getAddDeviceLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, "-", txStageEnum.TX_SUBMITTED),
+      getAddDeviceLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, "-", "-", txStageEnum.TX_SUBMITTED),
       (err) => {
         if (err) throw err;
       },
@@ -61,7 +61,7 @@ const createAndLogAddDeviceMockTx = async (counter) => {
         const now = new Date();
         fs.appendFile(
           logFilePath,
-          getAddDeviceLogRowTemplate(now, now.getTime(), "-", txUUID, deviceId, accountAddress, hash, txStageEnum.TX_HASH_RECEIVED),
+          getAddDeviceLogRowTemplate(now, now.getTime(), "-", txUUID, deviceId, accountAddress, hash, "-", txStageEnum.TX_HASH_RECEIVED),
           (err) => {
             if (err) throw err;
           },);
@@ -69,7 +69,7 @@ const createAndLogAddDeviceMockTx = async (counter) => {
       .on('receipt', (receipt) => {
         fs.appendFile(
           logFilePath,
-          getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, txStageEnum.TX_RECEIPT_RECEIVED),
+          getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_RECEIPT_RECEIVED),
           (err) => {
             if (err) throw err;
           },
@@ -79,7 +79,7 @@ const createAndLogAddDeviceMockTx = async (counter) => {
         if (confirmationNumber === 1) {
           fs.appendFile(
             logFilePath,
-            getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, txStageEnum.TX_RECEIPT_CONFIRMED_1),
+            getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_RECEIPT_CONFIRMED_1),
             (err) => {
               if (err) throw err;
             },
@@ -88,7 +88,7 @@ const createAndLogAddDeviceMockTx = async (counter) => {
       }).on('error', (receipt) => {
         fs.appendFile(
           logFilePath,
-          getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, txStageEnum.TX_ERROR),
+          getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_ERROR),
           (err) => {
             if (err) throw err;
           },);
