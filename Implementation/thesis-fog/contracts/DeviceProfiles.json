@@ -10888,6 +10888,39 @@
     "version": "0.5.12+commit.7709ece9.Emscripten.clang"
   },
   "networks": {
+    "3": {
+      "events": {
+        "0xb89dae6f79ce740c8f64a816f7060781c54c0c5ad24df7fc163a842d30daa497": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "deivceId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "deviceIp",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "deviceModel",
+              "type": "string"
+            }
+          ],
+          "name": "DeviceAdded",
+          "type": "event",
+          "signature": "0xb89dae6f79ce740c8f64a816f7060781c54c0c5ad24df7fc163a842d30daa497"
+        }
+      },
+      "links": {},
+      "address": "0xa9D4D4324c856eD52bBEBf7f8B083A7c3C102E82",
+      "transactionHash": "0x570a3ff8c9c321d788ee240528ff666ddc81a0824ffd7715f703719768b16e81"
+    },
     "5777": {
       "events": {
         "0xb89dae6f79ce740c8f64a816f7060781c54c0c5ad24df7fc163a842d30daa497": {
@@ -10923,7 +10956,7 @@
     }
   },
   "schemaVersion": "3.0.15",
-  "updatedAt": "2019-12-20T08:44:23.044Z",
+  "updatedAt": "2019-12-25T09:42:48.456Z",
   "devdoc": {
     "methods": {}
   },
