@@ -29,6 +29,22 @@ const getFetchIpfsHashesLogRowTemplate = (date, timestamp, blockNumber, txUUID, 
   return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txStage=${txStage}\n`;
 };
 
+const getFetchIpfsContentsLogFilePath = (usersCount) => `${__dirname}/logs/fetch_ipfs_contents/log_fetchIpfsContents_${usersCount}.txt`;
+
+const getFetchIpfsContentsLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txStage) => {
+  return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txStage=${txStage}\n`;
+};
+
+const txStageEnum = {
+  TX_SUBMITTED: 'TX_SUBMITTED',
+  TX_HASH_RECEIVED: 'TX_HASH_RECEIVED',
+  TX_RECEIPT_RECEIVED: 'TX_RECEIPT_RECEIVED',
+  TX_RECEIPT_CONFIRMED_1: 'TX_RECEIPT_CONFIRMED_1',
+  TX_ERROR: 'TX_ERROR',
+  CALL_SUBMITTED: 'CALL_SUBMITTED',
+  CALL_RECEIVED_RESPONSE: 'CALL_RECEIVED_RESPONSE',
+};
+
 module.exports = {
   generateUUID,
   getAddDeviceLogFilePath,
@@ -39,4 +55,7 @@ module.exports = {
   getFetchAttributesLogRowTemplate,
   getFetchIpfsHashesLogFilePath,
   getFetchIpfsHashesLogRowTemplate,
+  getFetchIpfsContentsLogFilePath,
+  getFetchIpfsContentsLogRowTemplate,
+  txStageEnum
 };
