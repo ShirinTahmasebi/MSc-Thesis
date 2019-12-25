@@ -17,7 +17,7 @@ const web3 = getWeb3();
 const fs = require('fs');
 
 const baseDeviceModel = 10000;
-const accountAddress = "0xd22f9E46718d7f3A37698490E2373BE250e4150D";
+const accountAddress = "0xa99D9ee6f9a5B42bc9A91A57742eb1975c1E3526";
 
 let deviceProfileInstance;
 
@@ -62,6 +62,7 @@ const createAndLogAddDeviceMockTx = async (counter) => {
     deviceProfileInstance
       .methods
       .addDevice(`${deviceId}.${deviceId}.${deviceId}.${deviceId}`, "model 1", deviceId)
+      // .send({from: accountAddress})
       .send({from: accountAddress})
       .on('transactionHash', (hash) => {
         const now = new Date();
@@ -80,18 +81,17 @@ const createAndLogAddDeviceMockTx = async (counter) => {
             if (err) throw err;
           },
         );
-      })
-      .on('confirmation', (confirmationNumber, receipt) => {
-        if (confirmationNumber === 1) {
-          let txStageEnum;
-          fs.appendFile(
-            logFilePath,
-            getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_RECEIPT_CONFIRMED_1),
-            (err) => {
-              if (err) throw err;
-            },
-          );
-        }
+        // }).on('confirmation', (confirmationNumber, receipt) => {
+        // if (confirmationNumber === 1) {
+        //   let txStageEnum;
+        //   fs.appendFile(
+        //     logFilePath,
+        //     getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_RECEIPT_CONFIRMED_1),
+        //     (err) => {
+        //       if (err) throw err;
+        //     },
+        //   );
+        // }
       }).on('error', (receipt) => {
         fs.appendFile(
           logFilePath,
@@ -157,25 +157,15 @@ const createAndLogAddAttributeMockTx = async (counter) => {
           },
         );
       })
-      .on('confirmation', (confirmationNumber, receipt) => {
-        if (confirmationNumber === 2) {
+      .on('error', (receipt) => {
           fs.appendFile(
             logFilePath,
-            getAddAttributeLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_RECEIPT_CONFIRMED_1),
+            getAddAttributeLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_ERROR),
             (err) => {
               if (err) throw err;
-            },
-          );
-        }
-      }).on('error', (receipt) => {
-        fs.appendFile(
-          logFilePath,
-          getAddAttributeLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_ERROR),
-          (err) => {
-            if (err) throw err;
-          },);
-      },
-    );
+            },);
+        },
+      );
 
   }
 };
@@ -312,34 +302,34 @@ const init = async () => {
 const main = async () => {
   await init();
   await createAndLogAddDeviceMockTx(50);
-  // await createAndLogAddDeviceMockTx(100);
-  // await createAndLogAddDeviceMockTx(150);
-  // await createAndLogAddDeviceMockTx(200);
+  await createAndLogAddDeviceMockTx(100);
+  await createAndLogAddDeviceMockTx(150);
+  await createAndLogAddDeviceMockTx(200);
   // await createAndLogAddDeviceMockTx(300);
   // await createAndLogAddDeviceMockTx(500);
   // await createAndLogAddDeviceMockTx(1000);
 
-  // await createAndLogAddAttributeMockTx(50);
-  // await createAndLogAddAttributeMockTx(100);
-  // await createAndLogAddAttributeMockTx(150);
-  // await createAndLogAddAttributeMockTx(200);
+  await createAndLogAddAttributeMockTx(50);
+  await createAndLogAddAttributeMockTx(100);
+  await createAndLogAddAttributeMockTx(150);
+  await createAndLogAddAttributeMockTx(200);
   // await createAndLogAddAttributeMockTx(300);
   // await createAndLogAddAttributeMockTx(500);
   // await createAndLogAddAttributeMockTx(1000);
 
-  // await createAndLogFetchAttributesMockCall(50);
-  // await createAndLogFetchAttributesMockCall(100);
-  // await createAndLogFetchAttributesMockCall(150);
-  // await createAndLogFetchAttributesMockCall(200);
-  // await createAndLogFetchAttributesMockCall(300);
-  // await createAndLogFetchAttributesMockCall(500);
-  // await createAndLogFetchAttributesMockCall(1000);
-  // await createAndLogFetchAttributesMockCall(5000);
-
-  // await createAndLogFetchIpfsHashesMockCall(50);
-  // await createAndLogFetchIpfsHashesMockCall(100);
-  // await createAndLogFetchIpfsHashesMockCall(150);
-  // await createAndLogFetchIpfsHashesMockCall(200);
+  await createAndLogFetchAttributesMockCall(50);
+  await createAndLogFetchAttributesMockCall(100);
+  await createAndLogFetchAttributesMockCall(150);
+  await createAndLogFetchAttributesMockCall(200);
+  // // await createAndLogFetchAttributesMockCall(300);
+  // // await createAndLogFetchAttributesMockCall(500);
+  // // await createAndLogFetchAttributesMockCall(1000);
+  // // await createAndLogFetchAttributesMockCall(5000);
+  //
+  await createAndLogFetchIpfsHashesMockCall(50);
+  await createAndLogFetchIpfsHashesMockCall(100);
+  await createAndLogFetchIpfsHashesMockCall(150);
+  await createAndLogFetchIpfsHashesMockCall(200);
   // await createAndLogFetchIpfsHashesMockCall(300);
   // await createAndLogFetchIpfsHashesMockCall(500);
   // await createAndLogFetchIpfsHashesMockCall(1000);

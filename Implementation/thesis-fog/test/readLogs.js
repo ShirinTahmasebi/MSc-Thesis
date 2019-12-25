@@ -5,6 +5,7 @@ const txSubmittedRegex = /Date=(.*)\s\stimestamp=(\d+)\s\sblockNumber=(\d+)\s\st
 const txHashReceivedRegex = /Date=(.*)\s\stimestamp=(\d+)\s\sblockNumber=\-\s\stxUUID=(.*)\s\sdeviceId=(\d*)\s\saccountIndex=(.*)\s\stxStage=TX_HASH_RECEIVED\s\sgasUsed=\-[\n|\r|\r\n]?/;
 const txReceiptReceivedRegex = /Date=(.*)\s\stimestamp=(\d+)\s\sblockNumber=(\d*)\s\stxUUID=(.*)\s\sdeviceId=(\d*)\s\saccountIndex=(.*)\s\stxHash=(.*)\s\stxStage=TX_RECEIPT_RECEIVED\s\sgasUsed=(\d*)[\n|\r|\r\n]?/;
 const txFirstConfirmationRegex = /Date=(.*)\s\stimestamp=(\d+)\s\sblockNumber=(\d*)\s\stxUUID=(.*)\s\sdeviceId=(\d*)\s\saccountIndex=(.*)\s\stxHash=(.*)\s\stxStage=TX_RECEIPT_CONFIRMED_1\s\sgasUsed=(\d*)[\n|\r|\r\n]?/;
+const txErrorRegex = /Date=(.*)\s\stimestamp=(\d+)\s\sblockNumber=(\d*|undefined)\s\stxUUID=(.*)\s\sdeviceId=(\d*)\s\saccountIndex=(.*)\s\stxHash=(.*)\s\stxStage=TX_ERROR\s\sgasUsed=(\d*)[\n|\r|\r\n]?/;
 
 const callTypeRegex = /(?:.*)txStage=(.*)/;
 const callSubmittedResponseRegex = /Date=(.*)\s\stimestamp=(\d+)\s\sblockNumber=(\d*)\s\stxUUID=(.*)\s\sdeviceId=(\d*)\s\saccountIndex=(.*)\s\stxStage=CALL_SUBMITTED[n|\r|\r\n]?/;
@@ -50,25 +51,26 @@ const calculateReadCallStatistics = (size, getFileName) => {
 
   let totalExecutionTimeDiff = 0;
   for (let submissionInfo in submitCall) {
-    const start = submitCall[submissionInfo].timestamp;
-    const end = receiveResponseCall[submissionInfo].timestamp;
-    totalExecutionTimeDiff += (end - start);
-    console.log(`Start = ${start}   Mined = ${end}    Diff = ${end - start}`);
+    if (submitCall[submissionInfo] && receiveResponseCall[submissionInfo]) {
+      const start = submitCall[submissionInfo].timestamp;
+      const end = receiveResponseCall[submissionInfo].timestamp;
+      totalExecutionTimeDiff += (end - start);
+    }
   }
 
 
   const averageExecutionTime = totalExecutionTimeDiff / size;
-  console.log(`Size = ${size} - Average execution time = ${averageExecutionTime}ms`);
+  console.log(`Size = ${size} - Average execution time = ${Math.trunc(averageExecutionTime)}ms`);
 
   console.log('---------------------------------------');
 };
 
 const calculateWriteTxStatistics = (size, getFileName) => {
 
+  const error = {};
   const addDeviceLogSubmissionInfo = {};
   const addDeviceLogHashReceivedInfo = {};
   const addDeviceLogReceiptReceivedInfo = {};
-  const addDeviceLogFirstConfirmationInfo = {};
 
   require('fs').readFileSync(getFileName(size), 'utf-8')
     .split('\n')
@@ -77,7 +79,11 @@ const calculateWriteTxStatistics = (size, getFileName) => {
       if (!txType) return;
       const txTypeStr = txType[1];
 
-      if (txTypeStr === txStageEnum.TX_SUBMITTED.toString()) {
+      if (txTypeStr === txStageEnum.TX_ERROR.toString()) {
+        const matched = line.match(txErrorRegex);
+        const txUUID = matched[4];
+        error[txUUID] = {};
+      } else if (txTypeStr === txStageEnum.TX_SUBMITTED.toString()) {
         const matched = line.match(txSubmittedRegex);
         const date = matched[1];
         const timestamp = matched[2];
@@ -114,24 +120,24 @@ const calculateWriteTxStatistics = (size, getFileName) => {
           gasUsed,
         };
       } else if (txTypeStr === txStageEnum.TX_RECEIPT_CONFIRMED_1.toString()) {
-        const matched = line.match(txFirstConfirmationRegex);
-        const date = matched[1];
-        const timestamp = matched[2];
-        const blockNumber = matched[3];
-        const txUUID = matched[4];
-        const deviceId = matched[5];
-        const accountIndex = matched[6];
-        const txHash = matched[7];
-        const gasUsed = matched[8];
-        addDeviceLogFirstConfirmationInfo[txUUID] = {
-          date,
-          timestamp,
-          blockNumber,
-          deviceId,
-          accountIndex,
-          txHash,
-          gasUsed,
-        };
+        // const matched = line.match(txFirstConfirmationRegex);
+        // const date = matched[1];
+        // const timestamp = matched[2];
+        // const blockNumber = matched[3];
+        // const txUUID = matched[4];
+        // const deviceId = matched[5];
+        // const accountIndex = matched[6];
+        // const txHash = matched[7];
+        // const gasUsed = matched[8];
+        // addDeviceLogFirstConfirmationInfo[txUUID] = {
+        //   date,
+        //   timestamp,
+        //   blockNumber,
+        //   deviceId,
+        //   accountIndex,
+        //   txHash,
+        //   gasUsed,
+        // };
       }
     });
 
@@ -147,36 +153,27 @@ const calculateWriteTxStatistics = (size, getFileName) => {
 
   let totalMiningTimeDiff = 0;
   for (let submissionInfo in addDeviceLogSubmissionInfo) {
+    if (error[submissionInfo] !== undefined) {
+      continue;
+    }
     const start = addDeviceLogSubmissionInfo[submissionInfo].blockNumber;
     const mined = addDeviceLogReceiptReceivedInfo[submissionInfo].blockNumber;
     totalMiningTimeDiff += (mined - start);
-    // console.log(`Start = ${start}   Mined = ${mined}    Diff = ${mined - start}`);
   }
 
   const averageMiningTime = totalMiningTimeDiff / size;
   console.log(`Size = ${size} - Average Mining time = ${averageMiningTime} blocks`);
 
   let totalGasUsed = .0;
-  for (let submissionInfo in addDeviceLogSubmissionInfo) {
-    totalGasUsed += (addDeviceLogFirstConfirmationInfo[submissionInfo].gasUsed / 100);
-    // console.log(addDeviceLogFirstConfirmationInfo[submissionInfo].gasUsed);
+  for (let submissionInfo in addDeviceLogReceiptReceivedInfo) {
+    if (error[submissionInfo] !== undefined) {
+      continue;
+    }
+    totalGasUsed += (addDeviceLogReceiptReceivedInfo[submissionInfo].gasUsed / 100);
   }
 
   const averageGasUsed = totalGasUsed * 100 / size;
   console.log(`Size = ${size} - Average Gas Used = ${averageGasUsed}`);
-
-
-  let totalFirstConfirmationTimeDiff = 0;
-  for (let submissionInfo in addDeviceLogSubmissionInfo) {
-    const start = addDeviceLogSubmissionInfo[submissionInfo].blockNumber;
-    const firstConfirm = addDeviceLogFirstConfirmationInfo[submissionInfo].blockNumber;
-    totalFirstConfirmationTimeDiff += (firstConfirm - start);
-    // console.log(`Start = ${start}   Mined = ${mined}    Diff = ${mined - start}`);
-  }
-
-  const averageConfirmationTime = totalFirstConfirmationTimeDiff / size;
-  console.log(`Size = ${size} - Average Confirmation Time = ${averageConfirmationTime} blocks`);
-
   console.log('---------------------------------------');
 };
 
@@ -184,17 +181,17 @@ calculateReadCallStatistics(50, getFetchAttributesLogFilePath);
 calculateReadCallStatistics(100, getFetchAttributesLogFilePath);
 calculateReadCallStatistics(150, getFetchAttributesLogFilePath);
 calculateReadCallStatistics(200, getFetchAttributesLogFilePath);
-calculateReadCallStatistics(300, getFetchAttributesLogFilePath);
-calculateReadCallStatistics(500, getFetchAttributesLogFilePath);
-calculateReadCallStatistics(1000, getFetchAttributesLogFilePath);
+// calculateReadCallStatistics(300, getFetchAttributesLogFilePath);
+// calculateReadCallStatistics(500, getFetchAttributesLogFilePath);
+// calculateReadCallStatistics(1000, getFetchAttributesLogFilePath);
 
 calculateReadCallStatistics(50, getFetchIpfsHashesLogFilePath);
 calculateReadCallStatistics(100, getFetchIpfsHashesLogFilePath);
 calculateReadCallStatistics(150, getFetchIpfsHashesLogFilePath);
 calculateReadCallStatistics(200, getFetchIpfsHashesLogFilePath);
-calculateReadCallStatistics(300, getFetchIpfsHashesLogFilePath);
-calculateReadCallStatistics(500, getFetchIpfsHashesLogFilePath);
-calculateReadCallStatistics(1000, getFetchIpfsHashesLogFilePath);
+// calculateReadCallStatistics(300, getFetchIpfsHashesLogFilePath);
+// calculateReadCallStatistics(500, getFetchIpfsHashesLogFilePath);
+// calculateReadCallStatistics(1000, getFetchIpfsHashesLogFilePath);
 
 calculateWriteTxStatistics(50, getAddDeviceLogFilePath);
 calculateWriteTxStatistics(100, getAddDeviceLogFilePath);
