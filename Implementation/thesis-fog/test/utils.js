@@ -30,10 +30,11 @@ const getFetchIpfsHashesLogRowTemplate = (date, timestamp, blockNumber, txUUID, 
 };
 
 const getFetchIpfsContentsLogFilePath = (usersCount) => `${__dirname}/logs/fetch_ipfs_contents/log_fetchIpfsContents_${usersCount}.txt`;
-
 const getFetchIpfsContentsLogRowTemplate = (date, timestamp, blockNumber, txUUID, deviceId, accountAddress, txStage) => {
   return `Date=${date}  timestamp=${timestamp}  blockNumber=${blockNumber}  txUUID=${txUUID}  deviceId=${deviceId}  accountIndex=${accountAddress}  txStage=${txStage}\n`;
 };
+
+const getAddIpfsHashLogFilePath = (usersCount) => `${__dirname}/logs/add_ipfs_hash/log_addIpfsHash_${usersCount}.txt`;
 
 const txStageEnum = {
   TX_SUBMITTED: 'TX_SUBMITTED',
@@ -57,5 +58,6 @@ module.exports = {
   getFetchIpfsHashesLogRowTemplate,
   getFetchIpfsContentsLogFilePath,
   getFetchIpfsContentsLogRowTemplate,
-  txStageEnum
+  getAddIpfsHashLogFilePath,
+  txStageEnum,
 };

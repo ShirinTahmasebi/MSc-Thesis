@@ -15,6 +15,7 @@ const getAddDeviceLogFilePath = require("./utils").getAddDeviceLogFilePath;
 const getAddAttributeLogFilePath = require("./utils").getAddAttributeLogFilePath;
 const getFetchAttributesLogFilePath = require("./utils").getFetchAttributesLogFilePath;
 const getFetchIpfsHashesLogFilePath = require("./utils").getFetchIpfsHashesLogFilePath;
+const getAddIpfsHashLogFilePath = require("./utils").getAddIpfsHashLogFilePath;
 
 const calculateReadCallStatistics = (size, getFileName) => {
 
@@ -205,6 +206,14 @@ calculateWriteTxStatistics(50, getAddAttributeLogFilePath);
 calculateWriteTxStatistics(100, getAddAttributeLogFilePath);
 calculateWriteTxStatistics(150, getAddAttributeLogFilePath);
 calculateWriteTxStatistics(200, getAddAttributeLogFilePath);
+// calculateWriteTxStatistics(300, getAddAttributeLogFilePath);
+// calculateWriteTxStatistics(500, getAddAttributeLogFilePath);
+// calculateWriteTxStatistics(1000, getAddAttributeLogFilePath);
+
+calculateWriteTxStatistics(50, getAddIpfsHashLogFilePath);
+calculateWriteTxStatistics(100, getAddIpfsHashLogFilePath);
+calculateWriteTxStatistics(150, getAddIpfsHashLogFilePath);
+calculateWriteTxStatistics(200, getAddIpfsHashLogFilePath);
 // calculateWriteTxStatistics(300, getAddAttributeLogFilePath);
 // calculateWriteTxStatistics(500, getAddAttributeLogFilePath);
 // calculateWriteTxStatistics(1000, getAddAttributeLogFilePath);

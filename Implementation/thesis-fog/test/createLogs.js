@@ -11,6 +11,7 @@ const getFetchIpfsHashesLogFilePath = require("./utils").getFetchIpfsHashesLogFi
 const getFetchIpfsHashesLogRowTemplate = require("./utils").getFetchIpfsHashesLogRowTemplate;
 const getFetchIpfsContentsLogFilePath = require("./utils").getFetchIpfsContentsLogFilePath;
 const getFetchIpfsContentsLogRowTemplate = require("./utils").getFetchIpfsContentsLogRowTemplate;
+const getAddIpfsHashLogFilePath = require("./utils").getAddIpfsHashLogFilePath;
 const txStageEnum = require("./utils").txStageEnum;
 
 const web3 = getWeb3();
@@ -63,6 +64,75 @@ const createAndLogAddDeviceMockTx = async (counter) => {
       .methods
       .addDevice(`${deviceId}.${deviceId}.${deviceId}.${deviceId}`, "model 1", deviceId)
       // .send({from: accountAddress})
+      .send({from: accountAddress})
+      .on('transactionHash', (hash) => {
+        const now = new Date();
+        fs.appendFile(
+          logFilePath,
+          getAddDeviceLogRowTemplate(now, now.getTime(), "-", txUUID, deviceId, accountAddress, hash, "-", txStageEnum.TX_HASH_RECEIVED),
+          (err) => {
+            if (err) throw err;
+          },);
+      })
+      .on('receipt', (receipt) => {
+        fs.appendFile(
+          logFilePath,
+          getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_RECEIPT_RECEIVED),
+          (err) => {
+            if (err) throw err;
+          },
+        );
+        // }).on('confirmation', (confirmationNumber, receipt) => {
+        // if (confirmationNumber === 1) {
+        //   let txStageEnum;
+        //   fs.appendFile(
+        //     logFilePath,
+        //     getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_RECEIPT_CONFIRMED_1),
+        //     (err) => {
+        //       if (err) throw err;
+        //     },
+        //   );
+        // }
+      }).on('error', (receipt) => {
+        fs.appendFile(
+          logFilePath,
+          getAddDeviceLogRowTemplate(now, now.getTime(), receipt.blockNumber, txUUID, deviceId, accountAddress, receipt.transactionHash, receipt.gasUsed, txStageEnum.TX_ERROR),
+          (err) => {
+            if (err) throw err;
+          },);
+      },
+    );
+
+  }
+};
+
+const createAndLogIpfsHashMockTx = async (counter) => {
+  const logFilePath = getAddIpfsHashLogFilePath(counter);
+
+  // Create/Reset log file
+  fs.writeFileSync(logFilePath, "");
+
+  for (let i = 0; i < counter; i++) {
+    const txUUID = generateUUID();
+    const deviceId = baseDeviceModel + i + 1;
+    const now = new Date();
+    const blockNumber = await web3.eth.getBlockNumber();
+
+    fs.appendFile(
+      logFilePath,
+      getAddDeviceLogRowTemplate(now, now.getTime(), blockNumber, txUUID, deviceId, accountAddress, "-", "-", txStageEnum.TX_SUBMITTED),
+      (err) => {
+        if (err) throw err;
+      },
+    );
+
+    deviceProfileInstance
+      .methods
+      .addMonitoringDataByDeviceId(
+        deviceId,
+        "0x64EC88CA00B268E5BA1A35678A1B5316D212F4F366B2477232534A8AECA37F3C",
+        (new Date(now.getTime() - (1000 * 60 * 60))).getTime().toString(),
+        now.getTime().toString())
       .send({from: accountAddress})
       .on('transactionHash', (hash) => {
         const now = new Date();
@@ -342,6 +412,10 @@ const main = async () => {
   // await createAndLogFetchIpfsContentsMockCall(500);
   // await createAndLogFetchIpfsContentsMockCall(1000);
 
+  // await createAndLogIpfsHashMockTx(50);
+  // await createAndLogIpfsHashMockTx(100);
+  // await createAndLogIpfsHashMockTx(150);
+  await createAndLogIpfsHashMockTx(200);
 };
 
 
